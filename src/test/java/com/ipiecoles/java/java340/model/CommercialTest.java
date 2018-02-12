@@ -1,13 +1,21 @@
 package com.ipiecoles.java.java340.model;
 
+import org.assertj.core.api.Assertions;
+import org.junit.Test;
+
+
 public class CommercialTest {
 
-	public Boolean TestGetPrimeAnnuel() {
-		boolean bool =false;
+	@Test
+	public void TestGetPrimeAnnuel() {
+		//given 
+		Commercial commercial= new Commercial();;
+		commercial.setCaAnnuel(null);
+		//when 
+		Double prime = commercial.getPrimeAnnuelle();
 		
-		
-		return bool;
-		
+		//then
+		Assertions.assertThat(prime).isEqualTo(500d);
 		
 	}
 	
