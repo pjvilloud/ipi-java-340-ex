@@ -15,7 +15,7 @@ public class CommercialTest {
 		
 		
 		//Then
-		Assertions.assertThat(prime).isEqualTo(500d);
+		Assertions.assertThat(prime).isEqualTo(50d);
 		
 	}
 }
