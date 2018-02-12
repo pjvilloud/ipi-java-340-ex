@@ -1,4 +1,4 @@
-package com.ipiecoles.java.java340.exception;
+package com.ipiecoles.java.java340.model.exception;
 
 
 import org.springframework.http.HttpStatus;

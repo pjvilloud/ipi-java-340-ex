@@ -1,4 +1,4 @@
-package com.ipiecoles.java.java340;
+package com.ipiecoles.java.java340.model;
 
 
 import org.springframework.boot.SpringApplication;

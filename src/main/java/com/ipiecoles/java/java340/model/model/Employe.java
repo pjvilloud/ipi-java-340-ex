@@ -1,6 +1,6 @@
-package com.ipiecoles.java.java340.model;
+package com.ipiecoles.java.java340.model.model;
 
-import com.ipiecoles.java.java340.exception.EmployeException;
+import com.ipiecoles.java.java340.model.exception.EmployeException;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 

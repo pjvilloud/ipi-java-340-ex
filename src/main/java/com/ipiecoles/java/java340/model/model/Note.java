@@ -1,4 +1,4 @@
-package com.ipiecoles.java.java340.model;
+package com.ipiecoles.java.java340.model.model;
 
 /**
  * Created by pjvilloud on 27/09/17.

@@ -1,6 +1,6 @@
-package com.ipiecoles.java.java340.repository;
+package com.ipiecoles.java.java340.model.repository;
 
-import com.ipiecoles.java.java340.model.Employe;
+import com.ipiecoles.java.java340.model.model.Employe;
 import org.joda.time.LocalDate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

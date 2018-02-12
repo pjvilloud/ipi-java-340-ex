@@ -1,9 +1,9 @@
-package com.ipiecoles.java.java340.service;
+package com.ipiecoles.java.java340.model.service;
 
-import com.ipiecoles.java.java340.model.Manager;
-import com.ipiecoles.java.java340.model.Technicien;
-import com.ipiecoles.java.java340.repository.ManagerRepository;
-import com.ipiecoles.java.java340.repository.TechnicienRepository;
+import com.ipiecoles.java.java340.model.model.Manager;
+import com.ipiecoles.java.java340.model.model.Technicien;
+import com.ipiecoles.java.java340.model.repository.ManagerRepository;
+import com.ipiecoles.java.java340.model.repository.TechnicienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

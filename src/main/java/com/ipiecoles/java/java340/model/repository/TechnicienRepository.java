@@ -1,6 +1,6 @@
-package com.ipiecoles.java.java340.repository;
+package com.ipiecoles.java.java340.model.repository;
 
-import com.ipiecoles.java.java340.model.Technicien;
+import com.ipiecoles.java.java340.model.model.Technicien;
 import org.springframework.data.domain.Slice;
 
 import java.util.List;
