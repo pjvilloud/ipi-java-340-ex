@@ -7,7 +7,7 @@ import org.junit.Test;
 public class CommercialTest {
 
     @Test
-    public void testPerformanceEquality() {
+    public void testPerformanceNotEquals() {
         //Given
         Integer perf = new Integer(3);
         Commercial commercial = new Commercial();
@@ -27,5 +27,16 @@ public class CommercialTest {
         Double prime = commercial.getPrimeAnnuelle();
         //Then
         Assertions.assertThat(prime).isEqualTo(500d);
+    }
+
+    @Test
+    public void testGetPrimeAnnuelleWithBigCA() {
+        //Given
+        Commercial commercial = new Commercial();
+        commercial.setCaAnnuel(20000d);
+        //When
+        Double prime = commercial.getPrimeAnnuelle();
+        //Then
+        Assertions.assertThat(prime).isEqualTo(commercial.getCaAnnuel() * 0.05);
     }
 }
