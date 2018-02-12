@@ -28,13 +28,13 @@ public class CommercialTest {
 	public void testGetMinimumPrimeAnnuelle(){
 		//Given
 		Commercial commercial = new Commercial();
-		commercial.setCaAnnuel(250000d);
+		commercial.setCaAnnuel(10000d);
 		
 		//When
 		Double prime = commercial.getPrimeAnnuelle();
 		
 		//Then
-		Assertions.assertThat(prime).isLessThan(1250d);
+		Assertions.assertThat(prime).isEqualByComparingTo(500d);
 		
 		
 	}
