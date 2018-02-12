@@ -1,22 +1,34 @@
 package com.ipiecoles.java.java340;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
+import com.ipiecoles.java.java340.model.Commercial;
+
 
 public class CommercialTests {
 
-	/*Methode prime annuelle
-	public Double getPrimeAnnuelle() {
-		if(this.getCaAnnuel() != null){
-			return Math.max(Math.ceil(this.getCaAnnuel() * 0.05), 500d);
-		}
-		else {
-			return 500d;
-		}
-	}*/
-	
 	 @Test //dans org.junit.Test
 	  public void testPrimeAnnuelle(){
 		 
+		 //Given = 
+		 Commercial commercial = new Commercial();
+		 commercial.setCaAnnuel(null);
 		 
+		 //When
+		Double prime = commercial.getPrimeAnnuelle();
+		 		
+		//Then
+		Assertions.assertThat(prime).isEqualTo(500d);
+	 }
+	 
+	 @Test //dans org.junit.Test
+	  public void testPerformance(){
+		 Commercial commercial = new Commercial();
+		  
+		 //Given
+		 Integer performance = commercial.getPerformance();
+		 
+		 //Then
+		 Assertions.assertThat(performance).isNull();
 	 }
 }
