@@ -19,6 +19,23 @@ public class CommercialTest {
 		
 		//Then
 		Assertions.assertThat(prime).isEqualTo(500d);
-		Assertions.assertThat(prime).isGreaterThanOrEqualTo(1500d);
+		
+		
+	}
+	
+	@Test
+	//Les test sont tjs en class void
+	public void testGetMinimumPrimeAnnuelle(){
+		//Given
+		Commercial commercial = new Commercial();
+		commercial.setCaAnnuel(250000d);
+		
+		//When
+		Double prime = commercial.getPrimeAnnuelle();
+		
+		//Then
+		Assertions.assertThat(prime).isEqualTo(1250d);
+		
+		
 	}
 }
