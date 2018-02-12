@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 @Entity
 public class Commercial extends Employe {
 
-
 	private static final long serialVersionUID = 5415800951599717353L;
 
 	private Double caAnnuel = 0d;
