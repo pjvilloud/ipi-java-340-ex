@@ -19,7 +19,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class TechnicienServiceTest {
     @InjectMocks
-    public EmployeService employeService;
+    public TechnicienService technicienService;
     @Mock
     public EmployeRepository employeRepository;
     @Mock
@@ -31,17 +31,19 @@ public class TechnicienServiceTest {
     public Manager employeManager;
     @Test
     public void testAddProprietaire() throws EmployeException {
-        /*
+/*
         //Given
         employeTechnicien = new Technicien();
         employeTechnicien.setNom("DURAND");
+        employeTechnicien.setMatricule("C4321");
         employeManager = new Manager();
         employeManager.setNom("JULES");
+        employeManager.setMatricule("C1234");
         Mockito.when(technicienRepository.findOne(Mockito.anyLong())).thenReturn(employeTechnicien);
         Mockito.when(managerRepository.findByMatricule(Mockito.anyString())).thenReturn(employeManager);
         Mockito.when(technicienRepository.save(Mockito.any(Employe.class))).then(Mockito.returnsFirstArg());
         //When Manager addManager(Long idTechnicien, String matricule)
-        employeService.addManager(1L, 2L);
+        technicienService.addManager(employeTechnicien.getId(), employeManager.getMatricule());
         //Then
         ArgumentCaptor<Employe> vehiculeCaptor = ArgumentCaptor.forClass(Employe.class);
         Mockito.verify(employeRepository, Mockito.times(1)).save(vehiculeCaptor.capture());
