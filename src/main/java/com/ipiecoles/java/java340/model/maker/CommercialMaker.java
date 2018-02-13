@@ -6,6 +6,7 @@ public class CommercialMaker {
     public static CommercialBuilder aCommercial(){
         return CommercialBuilder.aCommercial()
                     .withNom("DURAND")
+                    .withMatricule("C1212")
                     .withPrenom("JEAN");
     }
 }
