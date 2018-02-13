@@ -1,1 +1,5 @@
 language: java
+addons:
+  sonarcloud:
+    organization: "luciebnnt-github"
+script: mvn clean install sonar:sonar
