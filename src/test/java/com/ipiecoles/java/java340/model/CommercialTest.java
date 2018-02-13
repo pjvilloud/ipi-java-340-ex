@@ -18,5 +18,16 @@ public class CommercialTest{
         Assertions.assertThat(prime).isEqualTo(500d);
     }
 
+    @Test
+    public void testGetPrimeAnnuelleWithCA(){
+        //Given
+        Commercial commercial =new Commercial();
+        commercial.setCaAnnuel(5000d);
 
+        //When
+        Double prime = commercial.getPrimeAnnuelle();
+
+        //Then
+        Assertions.assertThat(prime).isEqualTo(Math.max(Math.ceil(prime * 0.05), 500d));
+    }
 }
