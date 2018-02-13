@@ -4,4 +4,4 @@ addons:
   sonarcloud:
     organization: "j6455lienv-github"
 
-script: mvn clean instagit ll sonar:sonar
+script: mvn clean install sonar:sonar
