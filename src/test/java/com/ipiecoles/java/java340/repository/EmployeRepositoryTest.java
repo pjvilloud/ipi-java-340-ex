@@ -23,23 +23,26 @@ public class EmployeRepositoryTest {
 	@Autowired
 	EmployeRepository employeRepository;
 	
-	Commercial pierreDurand, jeanJacques, jacquesDupond;
+    @Autowired
+    CommercialRepository commercialRepository;
+
+	Commercial pierreDurand = new Commercial("Durand", "Pierre", "C12345",new LocalDate(), 1500d, 0d, 0);
+	Commercial jeanJacques = new Commercial("Jacques", "Jean", "C12346",new LocalDate(), 1500d, 0d, 0);
+	Commercial jacquesDupond = new Commercial("Dupond", "Jacques", "C12347",new LocalDate(), 1500d, 0d, 0);
 	
 	@Before
-	//purge
-	//initialise
 	public void setUp(){
 		//Given
-		Commercial pierreDurand = new Commercial("Durand", "Pierre", "C12345",new LocalDate(), 1500d, 0d, 0);
-		Commercial jeanJacques = new Commercial("Jean", "Jacques", "C12346",new LocalDate(), 1500d, 0d, 0);
-		Commercial jacquesDupond = new Commercial("Jacques", "Dupond", "C12347",new LocalDate(), 1500d, 0d, 0);
-
+        commercialRepository.deleteAll();
+        employeRepository.deleteAll();
 		pierreDurand = employeRepository.save(pierreDurand);
 		jeanJacques = employeRepository.save(jeanJacques);
 		jacquesDupond = employeRepository.save(jacquesDupond);
+		
 	}
 	
-	@After //n'accede pas a spring
+	//n'accede pas a spring
+	@After 
 	public void tearDown(){
 		employeRepository.deleteAll();
 	}
@@ -73,7 +76,7 @@ public class EmployeRepositoryTest {
 		//Given
 		
 		//When
-		List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("pierreDurand");
+		List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("pierre");
 		
 		//Then
 		Assertions.assertThat(employes).hasSize(1);
