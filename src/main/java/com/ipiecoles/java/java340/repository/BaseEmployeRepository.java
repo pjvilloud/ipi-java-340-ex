@@ -14,7 +14,7 @@ public interface BaseEmployeRepository<T extends Employe> extends PagingAndSorti
     T findByMatricule(String matricule);
 
     List<T> findByNomAndPrenom(String nom, String prenom);
-
+ 
     @Query("select e from #{#entityName} e where lower(e.prenom) = lower(:nomOuPrenom) or lower(e.nom) = lower(:nomOuPrenom)")
     List<T> findByNomOrPrenomAllIgnoreCase(@Param("nomOuPrenom") String nomOuPrenom);
 

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.assertj.core.api.Assertions; //Biblio d'assertions mieux que junit donc à mettre aussi
+import org.junit.Test;
 //import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -30,7 +31,7 @@ import org.junit.runners.Parameterized.Parameters;
 	        {50, Note.INSUFFISANT}, {100, Note.PASSABLE}, {150, Note.BIEN}, {200, Note.TRES_BIEN}, {null, null}, {600, null}
 	      });
 	  }
-	
+	@Test
 		public void testEquivalenceNote( )
 		{
 			//Given
