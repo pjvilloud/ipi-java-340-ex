@@ -1,8 +1,10 @@
 package com.ipiecoles.java.java340.repository;
 
+import com.ipiecoles.java.java340.exception.EmployeException;
 import com.ipiecoles.java.java340.model.Commercial;
 import com.ipiecoles.java.java340.model.Employe;
 import com.ipiecoles.java.java340.model.Note;
+import com.ipiecoles.java.java340.model.builder.CommercialBuilder;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,16 +30,11 @@ public class EmployeRepositoryTest {
     public void setUp() {
         employeRepository.deleteAll();
 
-        pierreDurand = new Commercial();
-        jeanJacques = new Commercial();
-        jacquesDupont = new Commercial();
-
-        pierreDurand.setPrenom("Pierre");
-        pierreDurand.setNom("Durand");
-        jeanJacques.setPrenom("Jean");
-        jeanJacques.setNom("Jacques");
-        jacquesDupont.setPrenom("Jacques");
-        jacquesDupont.setNom("Dupont");
+        try{
+            pierreDurand = CommercialBuilder.aCommercial().withNom("Durand").withPrenom("Pierre").build();
+            jeanJacques = CommercialBuilder.aCommercial().withNom("Jacques").withPrenom("Jean").build();
+            jacquesDupont = CommercialBuilder.aCommercial().withNom("Dupont").withPrenom("Jacques").build();
+        } catch (EmployeException e){};
 
         pierreDurand = employeRepository.save(pierreDurand);
         jeanJacques = employeRepository.save(jeanJacques);
@@ -53,15 +50,6 @@ public class EmployeRepositoryTest {
         //Then
         Assertions.assertThat(liste).hasSize(2);
         Assertions.assertThat(liste).contains(jeanJacques,jacquesDupont);
-
-
-//        //Given
-//
-//        //When
-//        List<Employe> liste = employeRepository.findByNomOrPrenomAllIgnoreCase("piErRe");
-//        //Then
-//        Assertions.assertThat(liste).hasSize(1);
-//        Assertions.assertThat(liste).contains(pierreDurand);
     }
 
     @Test
