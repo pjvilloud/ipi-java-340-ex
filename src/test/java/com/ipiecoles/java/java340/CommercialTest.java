@@ -1,4 +1,4 @@
-package test.ipiecoles.java.java340;
+package com.ipiecoles.java.java340;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;

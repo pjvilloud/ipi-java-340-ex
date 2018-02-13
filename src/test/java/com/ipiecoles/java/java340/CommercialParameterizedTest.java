@@ -1,4 +1,4 @@
-package test.ipiecoles.java.java340;
+package com.ipiecoles.java.java340;
 
 import java.util.Arrays;
 import java.util.Collection;
