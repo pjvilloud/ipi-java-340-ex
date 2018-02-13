@@ -1,4 +1,5 @@
-package com.ipiecoles.java340.repository;
+package com.ipiecoles.java340.repository.repository;
+import com.ipiecoles.java.java340.SpringWebApplication;
 import com.ipiecoles.java.java340.model.Commercial;
 import com.ipiecoles.java.java340.model.Employe;
 import com.ipiecoles.java.java340.repository.EmployeRepository;
@@ -10,16 +11,17 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 @RunWith(SpringRunner.class)
-@DataJpaTest
+@SpringBootTest(classes = SpringWebApplication.class)
 public class EmployeRepositoryTest {
 
-Commercial  pierreDurand;
-Commercial jeanJacques;
-Commercial jacquesDupond;
+        Commercial pierreDurand;
+        Commercial jeanJacques;
+        Commercial jacquesDupond;
         @Autowired
         EmployeRepository employeRepository;
         @Before
@@ -42,7 +44,7 @@ Commercial jacquesDupond;
 
 
             //when
-            List<Employe> emp=employeRepository.findByNomOrPrenomAllIgnoreCase("pierre");
+            List<Employe> emp=employeRepository.findByNomOrPrenomAllIgnoreCase("Pierre");
             //then
             Assertions.assertThat(emp).hasSize(1);
             Assertions.assertThat(emp).contains(pierreDurand);
@@ -54,13 +56,10 @@ Commercial jacquesDupond;
 
 
             //when
-            List<Employe> emp=employeRepository.findByNomOrPrenomAllIgnoreCase("Jacques");
+            List<Employe> emp=employeRepository.findByNomOrPrenomAllIgnoreCase("Jean-Jacques");
             //then
             Assertions.assertThat(emp).hasSize(2);
             Assertions.assertThat(emp).contains(jeanJacques,jacquesDupond);
         }
 
     }
-
-
-

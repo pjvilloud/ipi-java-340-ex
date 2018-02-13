@@ -1,3 +1,5 @@
+package com.ipiecoles.java340.repository.model;
+
 import com.ipiecoles.java.java340.model.Commercial;
 import com.ipiecoles.java.java340.model.Note;
 import org.assertj.core.api.Assertions;
