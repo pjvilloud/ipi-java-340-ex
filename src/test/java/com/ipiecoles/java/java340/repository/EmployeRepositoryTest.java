@@ -27,14 +27,12 @@ public class EmployeRepositoryTest {
     Commercial pierreDurand, jeanJacques, jacquesDupont;
 
     @Before
-    public void setUp() {
+    public void setUp() throws EmployeException{
         employeRepository.deleteAll();
 
-        try{
-            pierreDurand = CommercialBuilder.aCommercial().withNom("Durand").withPrenom("Pierre").build();
-            jeanJacques = CommercialBuilder.aCommercial().withNom("Jacques").withPrenom("Jean").build();
-            jacquesDupont = CommercialBuilder.aCommercial().withNom("Dupont").withPrenom("Jacques").build();
-        } catch (EmployeException e){};
+        pierreDurand = CommercialBuilder.aCommercial().withNom("Durand").withPrenom("Pierre").build();
+        jeanJacques = CommercialBuilder.aCommercial().withNom("Jacques").withPrenom("Jean").build();
+        jacquesDupont = CommercialBuilder.aCommercial().withNom("Dupont").withPrenom("Jacques").build();
 
         pierreDurand = employeRepository.save(pierreDurand);
         jeanJacques = employeRepository.save(jeanJacques);
