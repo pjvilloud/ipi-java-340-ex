@@ -1,4 +1,6 @@
 package com.ipiecoles.java.java340.model;
+import com.ipiecoles.java.java340.exception.EmployeException;
+import com.ipiecoles.java.java340.model.builder.CommercialBuilder;
 
 import com.ipiecoles.java.java340.repository.EmployeRepository;
 import org.assertj.core.api.Assertions;
@@ -19,10 +21,13 @@ public class EmployeRepositoryTest {
     @Autowired
     EmployeRepository employeRepository;
 
-    Commercial v, v2, v3;
+    Commercial com, v, v2, v3;
     @Before
-    public void before(){//Nom before arbitraire
+    public void before() throws EmployeException {//Nom before arbitraire
         //Appelé avant chaque test
+
+        com = CommercialBuilder.aCommercial().withPrenom("REMI").build();
+
         employeRepository.deleteAll();
         v = new Commercial();
         v.setPrenom("REMI");
@@ -38,6 +43,7 @@ public class EmployeRepositoryTest {
         v3.setPrenom("PIERRE");
         v3.setNom("REMI");
         employeRepository.save(v3);
+
     }
 
     @Test
