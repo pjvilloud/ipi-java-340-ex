@@ -17,9 +17,22 @@ public class CommercialTest {
 		// Then
 		Assertions.assertThat(prime).isEqualTo(500d);
 	}
+	
+	@Test
+	public void testerPrimeAnnuelleWithCA0() {
+		// Given
+		Commercial commercial = new Commercial();
+		commercial.setCaAnnuel(0d);
+
+		// When
+		Double prime = commercial.getPrimeAnnuelle();
+
+		// Then
+		Assertions.assertThat(prime).isEqualTo(500d);
+	}
 
 	@Test
-	public void testerPrimeAnnuelleWithCAMinimum() {
+	public void testerPrimeAnnuelleWithCA10000() {
 		// Given
 		Commercial commercial = new Commercial();
 		commercial.setCaAnnuel(10000d);
@@ -32,7 +45,7 @@ public class CommercialTest {
 	}
 
 	@Test
-	public void testerPrimeAnnuelleWithCA() {
+	public void testerPrimeAnnuelleWithCA100000() {
 		// Given
 		Commercial commercial = new Commercial();
 		commercial.setCaAnnuel(100000d);
