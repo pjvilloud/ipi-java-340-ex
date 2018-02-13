@@ -6,7 +6,6 @@ import org.assertj.core.api.Assertions;
 import org.joda.time.LocalDate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -31,8 +30,10 @@ public class EmployeServiceTest {
 		Commercial commercial = new Commercial("mohamed", "pois", "connu", new LocalDate(), 500d, 600d, 5);
 		Mockito.when(employeRepository.findByMatricule("connu")).thenReturn(commercial);
 		
-		// WHEN THEN
+		// WHEN 
 		Employe employe = employeService.findByMatricule("connu");	
+		
+		// THEN
 		Assertions.assertThat(employe.getPrenom()).isEqualTo("pois");
 	}
 	
@@ -45,5 +46,4 @@ public class EmployeServiceTest {
 		// WHEN THEN
 		Employe employe = employeService.findByMatricule("connu");	
 	}
-	
 }
