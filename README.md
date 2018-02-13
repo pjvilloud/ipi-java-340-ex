@@ -28,3 +28,14 @@
 
 - Tests d'acceptation
    - A faire ensemble...
+
+Manager -> SetSalaire
+        -> getPrimeAnnuelle
+        -> AugmenterSalaire
+        (Un cas avec Paramétrage)
+
+Employe -> findEmployePlusRiche (avec Spring = vraies données - min 3)
+    Faire k cas avec k >= 3
+    
+ManagerService -> tu te MOCK ?
+    -> AddManager

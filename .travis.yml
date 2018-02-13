@@ -1,1 +1,5 @@
 language: java
+addons: 
+    sonarcloud:
+        organization: "yannouxt-github"
+script: mvn clean install sonar:sonar
