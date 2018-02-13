@@ -1,1 +1,7 @@
 language: java
+
+addons: 
+    sonarcloud:
+        organization: "Mikekim3-github"
+        
+script: mvn clean install sonar:sonar

@@ -30,6 +30,11 @@ public class Commercial extends Employe {
 		this.performance = performance;
 	}
 
+	public Commercial(String string, String string2, String string3, java.time.LocalDate localDate, double d, double e,
+			int i) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Double getPrimeAnnuelle() {
 		if(this.getCaAnnuel() != null){
 			return Math.max(Math.ceil(this.getCaAnnuel() * 0.05), 500d);
