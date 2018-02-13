@@ -16,7 +16,10 @@ import com.ipiecoles.java.java340.repository.EmployeRepository;
 @RunWith(MockitoJUnitRunner.class)
 public class EmployeServiceTest {
 
-		//InjectMock permet de tester unitairement employeService en s'affranchissant de la dépendance au repository EmployeRepository
+		/*InjectMock permet de tester unitairement employeService en s'affranchissant de la dépendance 
+		au repository EmployeRepository. Permet de vérifier que la logique du service est correcte
+		*/
+	
 	  @InjectMocks
 	  private EmployeService employeService;  
 	  
