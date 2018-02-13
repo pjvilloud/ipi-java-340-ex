@@ -24,9 +24,9 @@ public class EmployeRepositoryTest {
 	
 	@Before
 	  public void before(){//Nom before arbitraire
+		employeRepository.deleteAll();
 		pierreDurand = new Commercial("Durand", "pierre", "b", null, null, null);
 		pierreDurand = employeRepository.save(pierreDurand);
-	    employeRepository.deleteAll();
 	  }
 
     @Test

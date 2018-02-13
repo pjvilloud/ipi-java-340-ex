@@ -1,1 +1,7 @@
 language: java
+
+addons:
+	sonarcloud:
+		organisation: "dylanben-github"
+
+script: mvn clean install sonar:sonar
