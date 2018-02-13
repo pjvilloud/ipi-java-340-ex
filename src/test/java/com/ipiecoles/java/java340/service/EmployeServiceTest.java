@@ -31,7 +31,7 @@ public class EmployeServiceTest {
 	    employeService.findByMatricule("C12345");
 	    //Then exception
 	  }
-	  @Test(expected = EntityNotFoundException.class)
+	  @Test
 	  
 	  public void testFindByMatriculeFound(){
 	    //Given
