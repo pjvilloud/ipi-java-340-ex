@@ -22,7 +22,7 @@ import org.junit.runners.Parameterized.Parameters;
 	  @Parameter(value = 1)
 	  public Note quelleNote;
 	  //org.junit.runners.Parameterized.Parameters
-	  @Parameterized.Parameters(name = "performance {0} est valide : {1}")
+	  @Parameters(name = "performance {0} est valide : {1}")
 	  public static Collection<Object[]> data()
 	  {
 	      return Arrays.asList(new Object[][]
