@@ -9,33 +9,32 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(value = Parameterized.class)//org.junit.runners.Parameterized
-public class CommercialTest
-{
-    @Parameterized.Parameter(value = 0)//org.junit.runners.Parameterized.Parameter
-    public Double caAnnuel;
-    @Parameterized.Parameter(value = 1)//org.junit.runners.Parameterized.Parameter
-    public Double caAnnuel2;
+public class CommercialParameterizedTest {
 
+    @Parameterized.Parameter(value = 0)//org.junit.runners.Parameterized.Parameter
+    public Integer perf;
+
+    @Parameterized.Parameter(value = 1)//org.junit.runners.Parameterized.Parameter
+    public Note ExNote;
 
     //org.junit.runners.Parameterized.Parameters
-    @Parameterized.Parameters(name = "caAnnuel mata est nul {0} {1} ")
+    @Parameterized.Parameters(name = "equi {0} {1} ")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {null,500d}, {10000d,500d},{100000d,5000d}
+                {null,null}, {0,Note.INSUFFISANT},{100,Note.PASSABLE}
         });
     }
 
     @Test
-    public void testGetPrimeAnnuelleWithCaNull(){
+    public void testEqui(){
         //Given
         Commercial commercial = new Commercial();
-        commercial.setCaAnnuel(caAnnuel);
+        commercial.setPerformance(perf);
 
-        //When
-        Double prime = commercial.getPrimeAnnuelle();
+        //when
+        Note note = commercial.equivalenceNote();
 
-        //Then
-        Assertions.assertThat(prime).isEqualTo(caAnnuel2);
+        //then
+        Assertions.assertThat(note).isEqualTo(ExNote);
     }
-
 }
