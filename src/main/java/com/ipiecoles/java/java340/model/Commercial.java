@@ -45,6 +45,8 @@ public class Commercial extends Employe {
 	
 	
 	
+	
+	
 
 	public Note equivalenceNote(){
 		if(performance == null){

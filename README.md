@@ -32,3 +32,25 @@ TP de Java, module 340 pour l'IPI
 - Tests d'acceptation
    - A faire ensemble...
 
+
+   
+   Evaluation:
+   
+   tester une méthode parmis ces 3 setSalaire, getPrimeAnnuelle, augmenterSalaire
+   
+   Le faire ensuite en utilisant les tests paramétrés.
+   
+   tester méthode findEmployePlusRiche avec Spring (ressource de test, test avec Spring, initialisation et réinitialisation) minimum 3 employés.
+   exemple de cas au limite ex salaires identiques pour les 3.
+   
+   ManagerService pour la partie Mock (facultatif addTechnicien)
+   
+   
+   Sonar : token
+   1fe514a053d73f2a8c91813f19d58181da5cdbbe
+   
+   commande
+   mvn sonar:sonar-Dsonar.organization=pereau-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=1fe514a053d73f2a8c91813f19d58181da5cdbbe
+   
+   
+   
