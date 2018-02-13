@@ -1,4 +1,4 @@
-package com.ipiecoles.java.java340;
+package com.ipiecoles.java.java340.model;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import com.ipiecoles.java.java340.model.Commercial;
 /*Un test doit etre unitaire. Pas necessaire de tester tous les cas possibles 
  * mais le plus important est de verifier au moins les cas aux limites. 
  * On peut afficher le pourcentage de couverture de la classe par les tests mais avec une version 
- * plus récente d'eclipse en faisant rus As Coverage
+ * plus récente d'eclipse en faisant run as Coverage
 
 */
 
@@ -79,5 +79,6 @@ public class CommercialTests {
 		 //then
 		 Assertions.assertThat(nom).isNotBlank();
 	 }
+	 
 	 
 }
