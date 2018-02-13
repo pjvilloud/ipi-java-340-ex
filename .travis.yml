@@ -1,5 +1,7 @@
 language: java
 
-           mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+addons:
+  sonarcloud:
+    organization: "j6455lienv-github"
 
-           mvn test -B
+script: mvn clean install sonar:sonar
