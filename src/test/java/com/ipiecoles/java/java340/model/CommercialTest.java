@@ -9,7 +9,7 @@ public class CommercialTest {
 	@Test
 	public void TestGetPrimeAnnuel() {
 		//given 
-		Commercial commercial= new Commercial();;
+		Commercial commercial= new Commercial();
 		commercial.setCaAnnuel(null);
 		//when 
 		Double prime = commercial.getPrimeAnnuelle();

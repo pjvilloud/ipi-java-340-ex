@@ -14,7 +14,7 @@ import org.junit.runners.Parameterized.Parameters;
 public class CommercialParameterizedTest {
 	
 	@Parameter(value=0)
-	public Integer Perf;
+	public Integer perf;
 	
 	
 	@Parameter(value = 1)
@@ -23,7 +23,7 @@ public class CommercialParameterizedTest {
 	@Parameters(name = "")
 	  public static Collection<Object[]> data() {
 	      return Arrays.asList(new Object[][]{
-	        {0,Note.INSUFFISANT},{50,Note.INSUFFISANT},{100,Note.PASSABLE},{150,Note.BIEN},{200,Note.TRES_BIEN}?{null,null},{600, null}
+	        {0,Note.INSUFFISANT},{50,Note.INSUFFISANT},{100,Note.PASSABLE},{150,Note.BIEN},{200,Note.TRES_BIEN},{null,null},{600, null}
 	      });
 	  }
 	
@@ -34,11 +34,11 @@ public class CommercialParameterizedTest {
 	@Test 
 	public void TestEquivalenceNote() {
 		Commercial commercial= new Commercial();
-		commercial.setPerformance(Perf);
+		commercial.setPerformance(perf);
 		
 		Note note =commercial.equivalenceNote();
 		
-		Assertions.assertThat(commercial.equivalenceNote()).isEqualTo(note);
+		Assertions.assertThat(commercial.equivalenceNote()).isEqualTo(result);
 		
 	}
 
