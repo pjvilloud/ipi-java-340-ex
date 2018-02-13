@@ -1,4 +1,4 @@
-package com.ipiecoles.java340.model;
+package com.ipiecoles.java.java340.model;
 import java.util.Arrays;
 import java.util.Collection;
 import org.assertj.core.api.Assertions;

@@ -54,7 +54,7 @@ public class EmployeRepositoryTest {
 	@Test
 	public void testFindByNomOrPrenomAllIgnoreCaseNom() {
 		//Given
-		
+		 
 		//When
 		List <Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("Durand");
 		
