@@ -39,7 +39,7 @@ public class EmployeRepositoryTest {
 	public EmployeRepository employeRepository;
 
 	@Test
-	public void findByNomOrPrenomAllIgnoreCaseTest() {
+	public void testFindByNomOrPrenomAllIgnoreCaseNomOrPrenom() {
 		// Given
 		String test = "yann";
 		String test2 = "clem";
