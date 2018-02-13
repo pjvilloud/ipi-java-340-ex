@@ -54,7 +54,7 @@ public class CommercialTest {
 	public void getPrimeAnnuelleWithCA100000() {
 		//Given
 		Commercial commercial =  new Commercial();
-		commercial.setCaAnnuel(100000d);
+		commercial.setCaAnnuel(500d);
 		
 		//When
 		Double prime = commercial.getPrimeAnnuelle();
