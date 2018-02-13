@@ -1,1 +1,7 @@
 language: java
+
+addons:
+  sonarcloud:
+    organization: "julienpinteaux-github"
+    
+script: mvn dclean install sonar:sonar
