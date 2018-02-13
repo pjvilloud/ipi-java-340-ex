@@ -25,13 +25,12 @@ Commercial jacquesDupond;
         @Before
         public void setUp() {
             employeRepository.deleteAll();
-             pierreDurand=new Commercial("Durand","Pierre","C12345",new LocalDate(),1500d,0d,0);
-             jeanJacques=new Commercial("Jean-Jacques","Jean","C12346",new LocalDate(),1500d,0d,0);
-             jacquesDupond=new Commercial("Dupond","Jean-Jacques","C12347",new LocalDate(),1500d,0d,0);
+            pierreDurand=new Commercial("Durand","Pierre","C12345",new LocalDate(),1500d,0d,0);
+            jeanJacques=new Commercial("Jean-Jacques","Jean","C12346",new LocalDate(),1500d,0d,0);
+            jacquesDupond=new Commercial("Dupond","Jean-Jacques","C12347",new LocalDate(),1500d,0d,0);
             pierreDurand=employeRepository.save(pierreDurand);
             jeanJacques=employeRepository.save(jeanJacques);
             jacquesDupond=employeRepository.save(jacquesDupond);
-
         }
         @After
         public void tearDown(){
