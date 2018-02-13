@@ -50,8 +50,10 @@ public class Manager extends Employe {
 
 	//A tester
 	public void augmenterSalaire(Double pourcentage) {
-		super.augmenterSalaire(pourcentage);
-		augmenterSalaireEquipe(pourcentage);
+		if(pourcentage != null) {
+			super.augmenterSalaire(pourcentage);
+			augmenterSalaireEquipe(pourcentage);
+		}
 	}
 
 	private void augmenterSalaireEquipe(Double pourcentage) {

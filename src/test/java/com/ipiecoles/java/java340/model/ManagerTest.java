@@ -28,4 +28,30 @@ public class ManagerTest {
         //Then
         Assertions.assertThat(salaireResultat).isEqualTo(salaireEntre*1.1d);
     }
+
+    @Test
+    public void testAugmenterSalaireAvecPourcentageZero(){
+        //Given
+        Manager manager = new Manager();
+        manager.setSalaire(1500d);
+        Double salaireEntre = manager.getSalaire();
+        //When
+        manager.augmenterSalaire(0d);
+        Double salaireResultat = manager.getSalaire();
+        //Then
+        Assertions.assertThat(salaireResultat).isEqualTo(salaireEntre);
+    }
+
+    @Test
+    public void testAugmenterSalaireAvecPourcentageNull(){
+        //Given
+        Manager manager = new Manager();
+        manager.setSalaire(1500d);
+        Double salaireEntre = manager.getSalaire();
+        //When
+        manager.augmenterSalaire(null);
+        Double salaireResultat = manager.getSalaire();
+        //Then
+        Assertions.assertThat(salaireResultat).isEqualTo(salaireEntre);
+    }
 }
