@@ -20,7 +20,7 @@ public abstract class Employe implements Serializable {
 	private Long id;
 
 	private String nom;
-	
+
 	private String prenom;
 
 	private String matricule;

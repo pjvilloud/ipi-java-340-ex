@@ -37,6 +37,17 @@ public class CommercialTest {
         //When
         Double prime = commercial.getPrimeAnnuelle();
         //Then
-        Assertions.assertThat(prime).isEqualTo(commercial.getCaAnnuel() * 0.05);
+        Assertions.assertThat(prime).isEqualTo(1000d);
+    }
+
+    @Test
+    public void testGetPrimeAnnuelleWithCA9000() {
+        //Given
+        Commercial commercial = new Commercial();
+        commercial.setCaAnnuel(9000d);
+        //When
+        Double prime = commercial.getPrimeAnnuelle();
+        //Then
+        Assertions.assertThat(prime).isEqualTo(500d);
     }
 }
