@@ -57,14 +57,6 @@ public class Manager extends Employe {
 		}
 	}
 
-	public List<Technicien> equipeParGrade(){
-		return equipe.stream().sorted(Technicien::compareTo).collect(Collectors.toList());
-	}
-
-	public double salaireEquipeGrade1(){
-		return equipe.stream().filter(t -> t.getGrade().equals(1)).mapToDouble(Technicien::getSalaire).sum();
-	}
-
 	/**
 	 * @return the equipe
 	 */
