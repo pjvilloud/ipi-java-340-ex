@@ -27,7 +27,7 @@ import org.junit.runners.Parameterized.Parameters;
 	  {
 	      return Arrays.asList(new Object[][]
 	    		  {
-	        {null, "Absent"}, {50, Note.INSUFFISANT}, {100, Note.PASSABLE}, {150, Note.BIEN}, {200, Note.TRES_BIEN}, {600, null}
+	        {50, Note.INSUFFISANT}, {100, Note.PASSABLE}, {150, Note.BIEN}, {200, Note.TRES_BIEN}, {null, null}, {600, null}
 	      });
 	  }
 	
