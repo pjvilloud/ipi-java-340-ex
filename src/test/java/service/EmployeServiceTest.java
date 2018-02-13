@@ -8,7 +8,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-
 import javax.persistence.EntityNotFoundException;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -24,9 +23,11 @@ public class EmployeServiceTest {
     public void testFindByImmatNotFound(){
 
         //Given
-        Mockito.when(employeRepository.findByMatricule("inconnu")).thenReturn(null);
+        Mockito.when(employeRepository.findByMatricule("C12345")).thenReturn(null);
 
         //When
-        employeService.findByMatricule("inconnu");
+        employeService.findByMatricule("C12345");
+
+        //then on attends une exeption
     }
 }
