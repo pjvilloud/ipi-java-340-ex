@@ -48,6 +48,7 @@ public class EmployeRepositoryTest {
 
         //When
         List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("pierre");
+        //Then
         Assertions.assertThat(employes).hasSize(1);
         Assertions.assertThat(employes.get(0)).isEqualTo(pierreDurand);
     }
@@ -58,6 +59,7 @@ public class EmployeRepositoryTest {
 
         //When
         List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("durand");
+        //Then
         Assertions.assertThat(employes).hasSize(1);
         Assertions.assertThat(employes.get(0)).isEqualTo(pierreDurand);
     }
@@ -68,6 +70,7 @@ public class EmployeRepositoryTest {
 
         //When
         List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("jacques");
+        //Then
         Assertions.assertThat(employes).hasSize(2);
         Assertions.assertThat(employes).contains(jeanJacques, jacquesDupond);
     }
