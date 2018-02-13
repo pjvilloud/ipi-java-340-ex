@@ -20,7 +20,11 @@ public class CommercialParameterizedTest {
     @Parameterized.Parameters(name = "performance {0} donne la note : {1}")
     public static Collection<Object[]> Data() {
         return Arrays.asList(new Object[][]{
-                {50, Note.INSUFFISANT},{100, Note.PASSABLE}
+                {null, null},
+                {50, Note.INSUFFISANT},
+                {100, Note.PASSABLE},
+                {150, Note.BIEN},
+                {200, Note.TRES_BIEN}
         });
     }
 
