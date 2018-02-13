@@ -42,6 +42,9 @@ public class Commercial extends Employe {
 	public Double getCaAnnuel() {
 		return caAnnuel;
 	}
+	
+	
+	
 
 	public Note equivalenceNote(){
 		if(performance == null){
