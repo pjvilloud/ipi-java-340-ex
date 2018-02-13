@@ -24,14 +24,11 @@ public class EmployeRepositoryTest {
 	
 	@Before
 	public void setUpMyTest() {
+		employeRepository.deleteAll();
 		Commercial commercial = new Commercial("mama", "opla", "000VB", new LocalDate(), 500d, 5000d, 5);
 		Commercial commercialDeux = new Commercial("olala", "mama", "000VB", new LocalDate(), 500d, 5000d, 5);
 		employeRepository.save(commercial);
 		employeRepository.save(commercialDeux);
-	}
-	
-	public void After() {
-		employeRepository.deleteAll();
 	}
 	
 	@Autowired
