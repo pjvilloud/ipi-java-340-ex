@@ -37,15 +37,18 @@ public class Manager extends Employe {
 	public void ajoutTechnicienEquipe(String nom, String prenom, String matricule, LocalDate dateEmbauche, Double salaire, Integer grade)  {
 		this.ajoutTechnicienEquipe(new Technicien(nom, prenom, matricule, dateEmbauche, salaire, grade));
 	}
-	
+
+	//A tester
 	public void setSalaire(Double salaire) {
 		super.setSalaire(salaire * Entreprise.INDICE_MANAGER + (salaire * (double)equipe.size() / 10));
 	}
 
+	//A tester
 	public Double getPrimeAnnuelle() {
 		return Entreprise.primeAnnuelleBase() + equipe.size() * Entreprise.PRIME_MANAGER_PAR_TECHNICIEN;
 	}
-	
+
+	//A tester
 	public void augmenterSalaire(Double pourcentage) {
 		super.augmenterSalaire(pourcentage);
 		augmenterSalaireEquipe(pourcentage);
