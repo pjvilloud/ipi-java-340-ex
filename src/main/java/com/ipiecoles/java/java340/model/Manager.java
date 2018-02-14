@@ -41,12 +41,15 @@ public class Manager extends Employe {
 	public void setSalaire(Double salaire) {
 		super.setSalaire(salaire * Entreprise.INDICE_MANAGER + (salaire * (double)equipe.size() / 10));
 	}
-
+									//Indice dans fichier Entreprise.java = 1.3	
 	public Double getPrimeAnnuelle() {
 		return Entreprise.primeAnnuelleBase() + equipe.size() * Entreprise.PRIME_MANAGER_PAR_TECHNICIEN;
 	}
 	
 	public void augmenterSalaire(Double pourcentage) {
+		//super() sert à appeler un constructeur de la classe parente d'une classe.
+		//Ceci est rendu nécessaire lorsque qu'on déclare une classe étendant une autre classe, et que celle-ci ne possède pas de constructeur avec les mêmes arguments. 
+		//Nous permet d'utiliser la methode augmenterSalaire se trouvant dans Employe.java
 		super.augmenterSalaire(pourcentage);
 		augmenterSalaireEquipe(pourcentage);
 	}
@@ -64,7 +67,6 @@ public class Manager extends Employe {
 	public double salaireEquipeGrade1(){
 		return equipe.stream().filter(t -> t.getGrade().equals(1)).mapToDouble(Technicien::getSalaire).sum();
 	}
-
 	/**
 	 * @return the equipe
 	 */
@@ -82,5 +84,10 @@ public class Manager extends Employe {
 	@Override
 	public String toString() {
 		return "Manager{} " + super.toString();
+	}
+
+	public Double augmenterSalaire() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

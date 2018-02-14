@@ -1,6 +1,6 @@
 package com.ipiecoles.java.java340.model;
 
-//Pour afficher dans le fichier "source"(dans ce cas commercial.java) les cas traités par les test : clic droit,coverage As, JUnit test.
+//Pour afficher dans le fichier "source"(dans ce cas commercial.java) les cas traités par les tests : clic droit,coverage As, JUnit test.
 
 import org.assertj.core.api.Assertions; //Biblio d'assertions mieux que junit donc à mettre aussi
 import org.junit.Test;
@@ -18,9 +18,7 @@ public class CommercialTest {
 		Double prime = commercial.getPrimeAnnuelle();
 		
 		//Then
-		Assertions.assertThat(prime).isEqualTo(500d);
-		
-		
+		Assertions.assertThat(prime).isEqualTo(500d);	
 	}
 	
 	@Test
