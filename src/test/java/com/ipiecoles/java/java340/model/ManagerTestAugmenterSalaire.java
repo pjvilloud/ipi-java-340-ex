@@ -4,26 +4,52 @@ import com.ipiecoles.java.java340.exception.EmployeException;
 import com.ipiecoles.java.java340.model.builder.ManagerBuilder;
 import com.ipiecoles.java.java340.model.builder.TechnicienBuilder;
 import org.assertj.core.api.Assertions;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashSet;
 
 public class ManagerTestAugmenterSalaire {
-    @Test
-    public void testAugmenterSalaire() throws EmployeException {
-        //Given
+
+
+    Double salaireTechnicien = 1200d;
+    Double expectedSalaireTechnicien = 1728d;
+    Double salaireManager = 1000d;
+    Double expectedSalaireManager = 1680d;
+    Double pourcentage = 0.2d;
+    public Manager manager;
+    public Technicien technicien;
+
+    @Before
+    public void before() throws EmployeException {//Nom before arbitraire
         HashSet<Technicien> equipe = new HashSet<>();
-        Technicien technicien = TechnicienBuilder.aTechnicien().withGrade(2).withSalaire(1200d).build();
+        technicien = TechnicienBuilder.aTechnicien().withGrade(2).withSalaire(salaireTechnicien).build();
         equipe.add(technicien);
-        Manager manager = ManagerBuilder.aManager().build();
+        manager = ManagerBuilder.aManager().build();
         manager.setEquipe(equipe);
-        manager.setSalaire(1000d);
-        Double pourcentage = 0.2d;
-        Double expectedSalaire = 1680d;
+        manager.setSalaire(salaireManager);
+    }
+
+    @Test
+    public void testAugmenterSalaireManager() throws EmployeException {
+        //Given
         //When
         manager.augmenterSalaire(pourcentage);
 
         //Then
-        Assertions.assertThat(manager.getSalaire()).isEqualTo(expectedSalaire);
+        Assertions.assertThat(manager.getSalaire()).isEqualTo(expectedSalaireManager);
+    }
+
+    @Test
+    public void testAugmenterSalaireTechnicien() throws EmployeException {
+        //Given
+        //When
+        manager.augmenterSalaire(pourcentage);
+
+        //Then
+        Assertions.assertThat(technicien.getSalaire()).isEqualTo(expectedSalaireTechnicien);
     }
 }
