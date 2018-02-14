@@ -4,8 +4,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import java.lang.reflect.Array;
 import java.util.*;
 
 import org.joda.time.LocalDate;
@@ -21,20 +19,23 @@ public class ManagerParameterizedTest {
         return Arrays.asList(new Object[][]{
                 {new HashSet<>(), 1009d},
                 {new HashSet<>(Arrays.asList(new Technicien("Wayne", "Bruce", "T12345", new LocalDate(), 1000d, 1))), 1259d},
-                {null, 1009d}
+                {null, null} //on part du principe que s'il n'y a pas d'équipe, la prime n'est pas calculée
         });
     }
 
     @Test
     public void testGetPrimeAnnuelle(){
-        //Given
         Manager manager = new Manager();
-        manager.setEquipe(equipe);
 
-        //When
-        Double prime = manager.getPrimeAnnuelle();
+        try {
+            manager.setEquipe(equipe);
+            Double prime = manager.getPrimeAnnuelle();
+            Assertions.assertThat(prime).isEqualTo(expectedPrime);
 
-        //Then
-        Assertions.assertThat(prime).isEqualTo(expectedPrime);
+        } catch (NullPointerException n){
+            Assertions.assertThat(n.getMessage()).isEqualTo(expectedPrime);
+            Assertions.assertThat(expectedPrime).isNull();
+        }
+
     }
 }
