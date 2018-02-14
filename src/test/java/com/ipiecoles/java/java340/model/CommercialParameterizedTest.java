@@ -1,3 +1,5 @@
+package com.ipiecoles.java.java340.model;
+
 import com.ipiecoles.java.java340.model.Commercial;
 import com.ipiecoles.java.java340.model.Note;
 import org.junit.Test;

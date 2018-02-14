@@ -1,3 +1,5 @@
+package com.ipiecoles.java.java340.model;
+
 import com.ipiecoles.java.java340.model.Commercial;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;

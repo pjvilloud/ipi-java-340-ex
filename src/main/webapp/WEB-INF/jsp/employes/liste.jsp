@@ -97,7 +97,7 @@
                 <div class="col-lg-6">
                     <ul class="pagination">
                         <c:choose>
-                            <c:when test="model.getNumber.equals(0)">
+                            <c:when test="com.ipiecoles.java.java340.model.getNumber.equals(0)">
                                 <li class= "disabled">&laquo;</li>
                             </c:when>
                             <c:otherwise>
@@ -108,7 +108,7 @@
                         <li><a href="#">Page ${page+1}</a></li>
 
                         <c:choose>
-                            <c:when test="model.totalPages==pageAffichage">
+                            <c:when test="com.ipiecoles.java.java340.model.totalPages==pageAffichage">
                                 <li class= "disabled">&raquo;</li>
                             </c:when>
                             <c:otherwise>

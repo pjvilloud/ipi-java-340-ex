@@ -1,3 +1,5 @@
+package com.ipiecoles.java.java340.repository;
+
 import com.ipiecoles.java.java340.repository.EmployeRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;

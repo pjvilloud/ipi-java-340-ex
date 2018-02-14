@@ -78,7 +78,7 @@
                     <div class="col-lg-2 text-center">
                         <div class="list-group text-center">
                             <c:forEach items="${model.equipe}" var="tech">
-                                <li class="list-group-item"><a href="/managers/${model.id}/techniciens/${tech.id}/delete"><span class="glyphicon glyphicon-remove"></span></a></li>
+                                <li class="list-group-item"><a href="/managers/${com.ipiecoles.java.java340.model.id}/techniciens/${tech.id}/delete"><span class="glyphicon glyphicon-remove"></span></a></li>
                             </c:forEach>
                         </div>
                     </div>
@@ -90,12 +90,12 @@
         <div class="col-lg-6">
             <input form="saveForm" class="btn btn-primary" type="submit" value="Enregistrer"></input>
             <c:if test="${!empty model.id}">
-                <a href="/employes/${model.id}/delete" class="btn btn-danger">Supprimer</a>
+                <a href="/employes/${com.ipiecoles.java.java340.model.id}/delete" class="btn btn-danger">Supprimer</a>
             </c:if>
         </div>
         <div class="col-lg-6">
             <% if (employe instanceof Manager && employe.getId() != null) { %>
-            <form action="/managers/${model.id}/techniciens/add" method="get">
+            <form action="/managers/${com.ipiecoles.java.java340.model.id}/techniciens/add" method="get">
                 <div class="col-lg-10">
                     <input type="text" name="matricule" value="" placeholder="Ajouter un technicien avec le matricule..." class="form-control">
                 </div>
@@ -113,16 +113,16 @@
                     <div class="col-lg-10">
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <a href="/employes/${model.manager.id}">${model.manager.prenom} ${model.manager.nom}
+                                <a href="/employes/${com.ipiecoles.java.java340.model.manager.id}">${model.manager.prenom} ${model.manager.nom}
                                     <span class="badge pull-right">${model.manager.matricule}</span></a>
                             </li>
                         </ul>
                     </div>
                     <div class="col-lg-2">
-                        <li class="list-group-item"><a href="/techniciens/${model.id}/manager/${model.manager.id}/delete"><span class="glyphicon glyphicon-remove"></span></a></li>
+                        <li class="list-group-item"><a href="/techniciens/${com.ipiecoles.java.java340.model.id}/manager/${com.ipiecoles.java.java340.model.manager.id}/delete"><span class="glyphicon glyphicon-remove"></span></a></li>
                     </div>
                     <% } else { %>
-                    <form action="/techniciens/${model.id}/manager/add" method="get">
+                    <form action="/techniciens/${com.ipiecoles.java.java340.model.id}/manager/add" method="get">
                     <div class="col-lg-10">
                         <input type="text" name="matricule" value="" placeholder="Ajouter un manager avec le matricule..." class="form-control">
                     </div>
