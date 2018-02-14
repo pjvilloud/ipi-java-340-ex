@@ -47,8 +47,14 @@ public class Manager extends Employe {
 	}
 	
 	public void augmenterSalaire(Double pourcentage) {
-		super.augmenterSalaire(pourcentage);
-		augmenterSalaireEquipe(pourcentage);
+		if(pourcentage!=null) {
+				super.augmenterSalaire(pourcentage);
+				augmenterSalaireEquipe(pourcentage);
+			}else {
+				super.augmenterSalaire(0d);
+				augmenterSalaireEquipe(0d);
+			}
+		
 	}
 
 	private void augmenterSalaireEquipe(Double pourcentage) {
