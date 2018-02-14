@@ -14,7 +14,7 @@ import com.ipiecoles.java.java340.model.Commercial;
 import com.ipiecoles.java.java340.model.Note;
 
 @RunWith(value = Parameterized.class)
-public class CommercialParameteredTests {
+public class CommercialParameterisedTests {
 
 		/* L'annotation parameter permet d'identifier le numero de parametre. 
 		 * Quand on a plusieurs couples de données a tester on numerote chaque parametre utilisé 
@@ -54,5 +54,6 @@ public class CommercialParameteredTests {
 			//Then
 			Assertions.assertThat(Notefinale).isEqualTo(result);
 		}
+		
 		
 }

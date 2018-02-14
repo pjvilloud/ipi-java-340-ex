@@ -48,6 +48,16 @@ public class EmployeServiceTest {
 		  Assertions.assertThat(e).isEqualTo(c);
 		  
 	  }
+	  
+	 /*@Test
+	 public void test(){
+	  //Given
+	  Mockito.when(employeRepository.test()).thenReturn(5);
+	  //When
+	  Integer integer = employeService.testService();
+	  Assertions.assertThat(integer).isEqualTo(5);
+	  */
+	  }
 	}
 	
 	
