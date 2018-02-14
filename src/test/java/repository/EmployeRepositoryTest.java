@@ -35,7 +35,6 @@ import com.ipiecoles.java.java340.repository.EmployeRepository;
 		Commercial jeanJacques = new Commercial("Jacques", "Jean", "C12346", new LocalDate(), 5400d, 500d, 100);
 		Commercial jacquesDupont = new Commercial("Dupont", "Jacques", "C12347", new LocalDate(), 2345d, 500d, 200);
 	
-		
 		@Before
 		public void setUp() {
 		commercialRepository.deleteAll();
@@ -46,20 +45,23 @@ import com.ipiecoles.java.java340.repository.EmployeRepository;
 		
 		}
 		
-		
 		@Test
 		public void testFindByNomOrPrenomAllIgnoreCase() {
 		
-		
-			//When
-			List <Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("Jacques");
+		//When
+		List <Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("Jacques");
 			
 		//Then
-			Assertions.assertThat(employes).hasSize(2);
-			Assertions.assertThat(employes).contains(jacquesDupont);
+		Assertions.assertThat(employes).hasSize(2);
+		Assertions.assertThat(employes).contains(jacquesDupont);
 		
 		}
 		
+		@Test
+	    public void testfindEmployesPlusRiches() {
+	       
+	        Assertions.assertThat(employeRepository.findEmployePlusRiches().get(0)).isEqualTo(jeanJacques);
+	     }
 		
 		@After
 		public void tearDown() {
