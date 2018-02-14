@@ -4,4 +4,4 @@ addons:
   sonarcloud:
     organization: "j6455lienv-github"
 
-script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.organization=j6455lienv-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=8f16daaec52272a403f5760250402aed068e1a3a
+script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.organization=j6455lienv-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=com.ipiecoles.java:java340:master -Dsonar.login=24c33f58fac8eb59dee412fda2457ae4bd6f4e6b
