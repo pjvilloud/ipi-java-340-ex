@@ -32,7 +32,7 @@ public class ManagerTest{
     }
 
     @Test
-    public void testGetPrimeAnnuelleWithCANull(){
+    public void testGetPrimeAnnuelle(){
         //Given
         Manager manager =new Manager();
         //When
