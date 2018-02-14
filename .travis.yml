@@ -4,7 +4,7 @@ addons:
   sonarcloud:
     organization: "stephipi-github"
 
-script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.organization=stephipi-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=com.ipiecoles.java:java340  -Dsonar.branch=master
+script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.organization=stephipi-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=com.ipiecoles.java:java340:master  -Dsonar.branch=master
 #language: java
 
 #addons:
