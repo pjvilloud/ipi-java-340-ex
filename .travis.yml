@@ -3,11 +3,18 @@ language: java
 addons:
   sonarcloud:
     organization: "stephipi-github"
+
+script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.organization=stephipi-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=com.ipiecoles.java:java341:master  -Dsonar.branch=master
+#language: java
+
+#addons:
+#  sonarcloud:
+#    organization: "stephipi-github"
     #token:
        #secure: 821efbc22a1b3e578c0ee50c42952f56ee02c702 # encrypted value of your token
     #branches:
      # - master
-  script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.organization=stephipi-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=com.ipiecoles.java.java341 -Dsonar.branch=master
+#  script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.organization=stephipi-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=com.ipiecoles.java.java341 -Dsonar.branch=master
           # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
           #- mvn clean install sonar:sonar
           #- sonar-scanner
