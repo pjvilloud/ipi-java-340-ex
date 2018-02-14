@@ -8,6 +8,7 @@ public class TechnicienMaker {
         return TechnicienBuilder.aTechnicien()
                 .withNom("DURAND")
                 .withMatricule("C1212")
+                .withGrade(5)
                 .withPrenom("JEAN");
     }
 }

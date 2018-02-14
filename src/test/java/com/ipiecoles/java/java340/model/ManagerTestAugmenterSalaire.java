@@ -3,6 +3,7 @@ package com.ipiecoles.java.java340.model;
 import com.ipiecoles.java.java340.exception.EmployeException;
 import com.ipiecoles.java.java340.model.builder.ManagerBuilder;
 import com.ipiecoles.java.java340.model.builder.TechnicienBuilder;
+import com.ipiecoles.java.java340.model.maker.TechnicienMaker;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +17,7 @@ public class ManagerTestAugmenterSalaire {
 
 
     Double salaireTechnicien = 1200d;
-    Double expectedSalaireTechnicien = 1728d;
+    Double expectedSalaireTechnicien = 2160d;// = grade : 5, 1728 = grade : 2
     Double salaireManager = 1000d;
     Double expectedSalaireManager = 1680d;
     Double pourcentage = 0.2d;
@@ -26,7 +27,7 @@ public class ManagerTestAugmenterSalaire {
     @Before
     public void before() throws EmployeException {//Nom before arbitraire
         HashSet<Technicien> equipe = new HashSet<>();
-        technicien = TechnicienBuilder.aTechnicien().withGrade(2).withSalaire(salaireTechnicien).build();
+        technicien = TechnicienMaker.aTechnicien().withSalaire(salaireTechnicien).build();
         equipe.add(technicien);
         manager = ManagerBuilder.aManager().build();
         manager.setEquipe(equipe);
