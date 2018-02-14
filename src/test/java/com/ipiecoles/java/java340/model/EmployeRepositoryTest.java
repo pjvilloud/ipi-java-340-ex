@@ -28,7 +28,8 @@ public class EmployeRepositoryTest {
 
         com = CommercialBuilder.aCommercial().withPrenom("REMI").build();
 
-        employeRepository.deleteAll();
+        //employeRepository.deleteAll();
+
         v = new Commercial();
         v.setPrenom("REMI");
         v.setNom("TEST");
