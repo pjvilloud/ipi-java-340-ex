@@ -14,7 +14,7 @@ import org.junit.runners.Parameterized.Parameters;
 
 import com.ipiecoles.java.java340.model.Manager;
 import com.ipiecoles.java.java340.model.Technicien;
-
+/*
 @RunWith(value=Parameterized.class)
 public class ManagerParameterizedTest {
 	
@@ -86,6 +86,6 @@ public class ManagerParameterizedTest {
 			
 			// Then 
 			Assertions.assertThat(equipe).isEqualTo(resultat);
-	  }*/
+	  }
 
-}
+}*/

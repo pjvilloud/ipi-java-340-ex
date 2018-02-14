@@ -18,7 +18,7 @@ import com.ipiecoles.java.java340.model.Employe;
 import com.ipiecoles.java.java340.repository.CommercialRepository;
 import com.ipiecoles.java.java340.repository.EmployeRepository;
 
-@RunWith(SpringRunner.class)
+/*@RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringWebApplication.class)
 public class EmployeRepositoryTest {
 	
@@ -65,6 +65,6 @@ public class EmployeRepositoryTest {
 		List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("toto");
 		Assertions.assertThat(employes).isEmpty();
 
-	}*/
+	}
 
-}
+}*/
