@@ -2,6 +2,8 @@ package com.ipiecoles.java.java340.model;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
@@ -13,7 +15,7 @@ import org.junit.runners.Parameterized.Parameters;
 //Test paramétré------------------------------------------------------------------------------
 
 @RunWith(value=Parameterized.class)
-public class ManagerTest {
+public class ManagerParameterizedTest {
 	
 		@Parameter(value=0)
 		public Double salaireAvantAugmentation;
@@ -61,22 +63,4 @@ public class ManagerTest {
 			Assertions.assertThat(salaireApresAugmentation).isEqualTo(salaireAvantAugmentation*Entreprise.INDICE_MANAGER*(1+pourcentageAugmentation));
 		}
 		
-		//Tests unitaires-------------------------------------------------------------------------------
-		@Test
-		public void testUnitAugmenterSalaire() {
-					
-			//Given
-			Manager manager = new Manager();
-			
-			Double salaireBase = 1000d;
-			manager.setSalaire(salaireBase);
-			Double pc = 0.5d;
-			manager.augmenterSalaire(pc);
-			
-			//When
-			Double salaire = manager.getSalaire();
-			
-			//Then
-			Assertions.assertThat(salaire).isEqualTo(salaireBase*Entreprise.INDICE_MANAGER*(1+pc));
-		}	
 }
