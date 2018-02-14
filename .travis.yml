@@ -1,7 +1,1 @@
 language: java
-
-addons:
-  sonarcloud:
-    organization: "cedricBerth-github"
-
-script: mvn clean install sonar:sonar
