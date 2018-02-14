@@ -22,7 +22,6 @@ import com.ipiecoles.java.java340.repository.TechnicienRepository;
 public class TechnicienServiceTest
 {
 	@InjectMocks
-	
 	public TechnicienService technicienService;
 	
 	@Mock
