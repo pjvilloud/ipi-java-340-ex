@@ -4,9 +4,4 @@ addons:
   sonarcloud:
     organization: "julienpinteaux-github"
 
-script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
-	 -Dsonar.organization=julienpinteaux-github 
-	-Dsonar.host.url=https://sonarcloud.io
-	-Dsonar.login=b88df42f8eb43a42925edc51a6ba4121c145ab3a
-	-Dsonar.projectKey=com.ipiecoles.java.java340
-	-Dsonar.branch=master	
+script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar  -Dsonar.organization=julienpinteaux-github  -Dsonar.host.url=https://sonarcloud.io  -Dsonar.projectKey=java.java340  -Dsonar.branch=master
