@@ -1,5 +1,4 @@
 package com.ipiecoles.java.java340.model;
-
 import com.ipiecoles.java.java340.exception.EmployeException;
 import com.ipiecoles.java.java340.model.builder.ManagerBuilder;
 import com.ipiecoles.java.java340.model.builder.TechnicienBuilder;
@@ -7,14 +6,13 @@ import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.lang.Double;
 
 @RunWith(value = Parameterized.class)//org.junit.runners.Parameterized
-public class ManagerTestParemeters {
+public class ManagerTestSalaireParams {
 
     @Parameterized.Parameter(value = 0)//org.junit.runners.Parameterized.Parameter
     public Double salaire;
