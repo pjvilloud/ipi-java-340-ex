@@ -16,6 +16,9 @@ import com.ipiecoles.java.java340.model.Employe;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class EmployeRepositoryTest {
+
+//Ici j'ai essayer de reprendre en partie la correcton du tableau pour que les tests passent mais sans succès.
+//Je n'arrive pas à comprendre pourquoi les tests ne passent pas.
 	
 	@Autowired
     EmployeRepository employeRepository;
