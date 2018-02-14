@@ -22,4 +22,10 @@ public class ManagerTest
 		//Then
 		Assertions.assertThat(augmentation).isEqualTo(1600d);
 	}
+	
+	@Test
+	public void testSetSalaire() {
+		
+	}
+	
 }

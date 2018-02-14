@@ -29,6 +29,7 @@ public class EmployeServiceTest{
 	
 	@Mock
 	private EmployeRepository employeRepository;
+	//On utilise la version mocké de employeRepository car repository ey spring (@autowired)
 	
 	@Test(expected = EntityNotFoundException.class)
 	public void testFindByMatriculeNotFound()
