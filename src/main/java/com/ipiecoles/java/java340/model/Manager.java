@@ -40,7 +40,13 @@ public class Manager extends Employe {
 
 	//A tester
 	public void setSalaire(Double salaire) {
-		super.setSalaire(salaire * Entreprise.INDICE_MANAGER + (salaire * (double)equipe.size() / 10));
+	    if(salaire != null) {
+	        if(equipe != null) {
+                super.setSalaire(salaire * Entreprise.INDICE_MANAGER + (salaire * (double) equipe.size() / 10));
+            } else {
+	            super.setSalaire(salaire * Entreprise.INDICE_MANAGER);
+            }
+        }
 	}
 
 	//A tester
@@ -51,6 +57,7 @@ public class Manager extends Employe {
 	//A tester
 	public void augmenterSalaire(Double pourcentage) {
 		if(pourcentage != null) {
+		    if(pourcentage >= 0 && pourcentage <= 1)
 			super.augmenterSalaire(pourcentage);
 			augmenterSalaireEquipe(pourcentage);
 		}
