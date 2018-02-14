@@ -1,4 +1,0 @@
-mvn sonar:sonar 
-  -Dsonar.organization=luciebnnt-github 
-  -Dsonar.host.url=https://sonarcloud.io 
-  -Dsonar.login=e327d5fcee7676746669677b3e79191358006c8c

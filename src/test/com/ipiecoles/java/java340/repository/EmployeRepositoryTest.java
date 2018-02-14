@@ -29,7 +29,7 @@ public class EmployeRepositoryTest {
 
         // créa des objets + save de ces objets
         peterParker = new Commercial("Parker","Peter", "C12345", new LocalDate(),1500d, 0d, 0);
-        tonyStark = new Commercial("Stark","Tony", "C12345", new LocalDate(),2000d, 0d, 0);
+        tonyStark = new Commercial("Stark","Tony", "C12348", new LocalDate(),2000d, 0d, 0);
 
         peterParker = employeRepository.save(peterParker);
         tonyStark = employeRepository.save(tonyStark);
