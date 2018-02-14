@@ -4,4 +4,9 @@ addons:
     sonarcloud:
         organization: "Mikekim3-github"
         
-script: mvn clean install sonar:sonar
+script: 
+mvn sonar:sonar 
+  Dsonar.organization=mikekim3-github 
+  Dsonar.host.url=https://sonarcloud.io 
+  Dsonar.login=e560c2ef91c36bf167460a1c4f000f35d05886af
+
