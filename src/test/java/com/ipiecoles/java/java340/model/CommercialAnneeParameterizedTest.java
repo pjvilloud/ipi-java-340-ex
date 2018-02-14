@@ -44,7 +44,7 @@ public class CommercialAnneeParameterizedTest {
 		Assertions.assertThat(commercial.getDateEmbauche()).isEqualTo(dateEmbauche);	
 	    }
 	    catch (EmployeException e) {
-	    	Assertions.assertThat(e.getMessage()).isEqualTo("la date d'embauche peut être posterieurs");
+	    	Assertions.assertThat(e.getMessage()).isEqualTo("la date d'embauche peut être posterieure");
 	    	Assertions.assertThat(dateEmbaucheExpected).isNull();
 	    }
 	}
