@@ -1,1 +1,8 @@
 language: java
+
+addons : 
+    sonarcloud:
+        organisations:"pcharlet-github"
+        
+script: mvn clean org.jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.organization=pcharlet-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=f122b9730aaa3dd9c68aa4014e0f5f60f8747781 -Dsonar.branch=master
+
