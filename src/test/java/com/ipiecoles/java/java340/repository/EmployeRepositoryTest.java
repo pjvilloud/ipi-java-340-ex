@@ -1,23 +1,23 @@
 package com.ipiecoles.java.java340.repository;
 
-import com.ipiecoles.java.java340.SpringWebApplication;
-import com.ipiecoles.java.java340.exception.EmployeException;
-import com.ipiecoles.java.java340.model.Commercial;
-import com.ipiecoles.java.java340.model.Employe;
-import com.ipiecoles.java.java340.model.builder.CommercialBuilder;
-import com.ipiecoles.java.java340.model.maker.CommercialMaker;
+import java.util.List;
+
 import org.assertj.core.api.Assertions;
 import org.joda.time.LocalDate;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import java.util.List;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import com.ipiecoles.java.java340.SpringWebApplication;
+import com.ipiecoles.java.java340.exception.EmployeException;
+import com.ipiecoles.java.java340.model.Commercial;
+import com.ipiecoles.java.java340.model.Employe;
+
+@RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringWebApplication.class)
 public class EmployeRepositoryTest {
 

@@ -8,7 +8,7 @@ public class CommercialTest {
     @Test
     public void testGetPrimeAnnuelleWithCANull(){
         //Given
-        Commercial commercial = new Commercial();
+        Commercial commercial = new Commercial(); 
         commercial.setCaAnnuel(null);
 
         //When
