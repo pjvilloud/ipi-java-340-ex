@@ -9,6 +9,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -44,5 +45,5 @@ public class CommercialParameterizedTest {
 		  
 		  Assertions.assertThat(note).isEqualTo(expectedNote);
 	  }
-	
+	  
 }

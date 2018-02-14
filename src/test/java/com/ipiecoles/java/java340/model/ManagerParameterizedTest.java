@@ -25,7 +25,7 @@ public class ManagerParameterizedTest {
 	  }
 	
 	//Entreprise.primeAnnuelleBase() + equipe.size() * Entreprise.PRIME_MANAGER_PAR_TECHNICIEN
-		//2018 * 0.5     + 1 * 250d
+	//2018 * 0.5     + 1 * 250d
 		
 		@Test
 		public void testgetPrimeAnnuelle() {
