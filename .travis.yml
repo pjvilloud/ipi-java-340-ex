@@ -2,4 +2,4 @@ language: java
 addons:
   sonarcloud:
     organization: "luciebnnt-github"
-script: mvn clean install sonar:sonar
+script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.organization=luciebnnt-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=e327d5fcee7676746669677b3e79191358006c8c -Dsonar.projectKey-	ipiecoles.java -Dsonar.branch-master

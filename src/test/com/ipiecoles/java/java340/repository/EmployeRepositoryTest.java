@@ -21,29 +21,29 @@ public class EmployeRepositoryTest {
     EmployeRepository employeRepository;
 
     // init var
-    Commercial Toto, Titi;
+    Commercial peterParker, tonyStark;
 
     @Before
     public void setUp(){
         employeRepository.deleteAll();
-        // créa des objets + save
-        Toto = new Commercial("Toto","Toto", "C12345", new LocalDate(),1500d, 0d, 0);
-        Titi = new Commercial("Titi","Titi", "C12345", new LocalDate(),1500d, 0d, 0);
 
-        Toto = employeRepository.save(Toto);
-        Titi = employeRepository.save(Titi);
+        // créa des objets + save de ces objets
+        peterParker = new Commercial("Parker","Peter", "C12345", new LocalDate(),1500d, 0d, 0);
+        tonyStark = new Commercial("Stark","Tony", "C12345", new LocalDate(),2000d, 0d, 0);
+
+        peterParker = employeRepository.save(peterParker);
+        tonyStark = employeRepository.save(tonyStark);
     }
 
     @Test
     public void testFindByNomOrPrenomAllIgnoreCase(){
-        //Given
 
         //When
-        List<Employe> result = employeRepository.findByNomOrPrenomAllIgnoreCase("Toto");
+        List<Employe> result = employeRepository.findByNomOrPrenomAllIgnoreCase("Parker");
 
         //Then
         Assertions.assertThat(result).hasSize(1); // on vérifie que la liste à un seul élément
-        Assertions.assertThat(result).contains(Toto);
+        Assertions.assertThat(result).contains(peterParker); // on vérifie qu'il contient bien l'objet
     }
 
     @Test
@@ -51,6 +51,51 @@ public class EmployeRepositoryTest {
 
         //When
         List<Employe> result = employeRepository.findByNomOrPrenomAllIgnoreCase(null);
+
+        //Then
+        Assertions.assertThat(result).isEmpty();
+    }
+
+    @Test
+    public void testFindEmployePlusRiche(){
+
+        //When
+        List<Employe> result = employeRepository.findEmployePlusRiches();
+
+        //Then
+        Assertions.assertThat(result).hasSize(1);
+        Assertions.assertThat(result).contains(tonyStark);
+    }
+
+    @Test
+    public void testFindEmployePlusRicheNotFound(){
+        //Given
+        peterParker.setSalaire(1500d);
+        tonyStark.setSalaire(1500d);
+
+        peterParker = employeRepository.save(peterParker);
+        tonyStark = employeRepository.save(tonyStark);
+
+        //When
+        List<Employe> result = employeRepository.findEmployePlusRiches();
+        //Boolean isSalaireEqual = peterParker.getSalaire().equals(tonyStark.getSalaire());
+
+        //Then
+        Assertions.assertThat(result).isEmpty();
+        //Assertions.assertThat(isSalaireEqual).isTrue();
+    }
+
+    @Test
+    public void testFindEmployePlusRicheNull(){
+        //Given
+        peterParker.setSalaire(null);
+        tonyStark.setSalaire(null);
+
+        peterParker = employeRepository.save(peterParker);
+        tonyStark = employeRepository.save(tonyStark);
+
+        //When
+        List<Employe> result = employeRepository.findEmployePlusRiches();
 
         //Then
         Assertions.assertThat(result).isEmpty();

@@ -32,10 +32,9 @@ public class ManagerParameterizedTest {
             Double prime = manager.getPrimeAnnuelle();
             Assertions.assertThat(prime).isEqualTo(expectedPrime);
 
-        } catch (NullPointerException n){
-            Assertions.assertThat(n.getMessage()).isEqualTo(expectedPrime);
+        } catch (NullPointerException e){
+            Assertions.assertThat(e.getMessage()).isEqualTo(expectedPrime);
             Assertions.assertThat(expectedPrime).isNull();
         }
-
     }
 }
