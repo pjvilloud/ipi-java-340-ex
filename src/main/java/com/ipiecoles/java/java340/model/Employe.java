@@ -126,7 +126,7 @@ public abstract class Employe implements Serializable {
 	 */
 	public void setDateEmbauche(LocalDate dateEmbauche) throws EmployeException {
 		if(dateEmbauche != null && dateEmbauche.isAfter(LocalDate.now())) {
-			throw new EmployeException("la date d'embauche peut être posterieure");
+			throw new EmployeException("La date d'embauche ne peut être postérieure à la date courante");
 		}
 		this.dateEmbauche = dateEmbauche;
 	}
