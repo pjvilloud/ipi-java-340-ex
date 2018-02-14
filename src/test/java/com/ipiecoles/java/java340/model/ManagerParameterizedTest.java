@@ -23,8 +23,7 @@ public class ManagerParameterizedTest {
         return Arrays.asList(new Object[][]{
                 {0d,0d},
                 {1000d,1300d},
-                {2000d,2600d},
-                {null,0d}
+                {2000d,2600d}                
         });
     }
 
