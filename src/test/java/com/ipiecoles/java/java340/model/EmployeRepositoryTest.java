@@ -56,8 +56,8 @@ public class EmployeRepositoryTest {
         List<Employe> result = employeRepository.findByNomOrPrenomAllIgnoreCase("TEST");
 
         //Then
-        //Assertions.assertThat(result).hasSize(1);
-        //Assertions.assertThat(result).contains(v);
+        Assertions.assertThat(result).hasSize(1);
+        Assertions.assertThat(result).contains(v);
     }
 
     @Test
@@ -69,8 +69,8 @@ public class EmployeRepositoryTest {
         List<Employe> result2 = employeRepository.findByNomOrPrenomAllIgnoreCase("REmI");
 
         //Then
-        //Assertions.assertThat(result2).hasSize(2);
-        //Assertions.assertThat(result2).contains(v);
+        Assertions.assertThat(result2).hasSize(2);
+        Assertions.assertThat(result2).contains(v);
     }
 
     @Test
@@ -82,7 +82,7 @@ public class EmployeRepositoryTest {
         List<Employe> result2 = employeRepository.findByNomOrPrenomAllIgnoreCase("toto");
 
         //Then
-        //Assertions.assertThat(result2).isEmpty();
+        Assertions.assertThat(result2).isEmpty();
     }
 
 }
