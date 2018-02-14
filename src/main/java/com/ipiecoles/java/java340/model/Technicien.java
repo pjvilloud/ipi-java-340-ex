@@ -10,6 +10,11 @@ import java.util.Objects;
 public class Technicien extends Employe implements Comparable<Technicien> {
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	//@JsonBackReference
 	@ManyToOne
 	private Manager manager;

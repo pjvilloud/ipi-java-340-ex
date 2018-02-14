@@ -38,7 +38,7 @@ public class TechnicienServiceTest {
 		final Long ID_TECHNICIEN = 1L;
 		
 		Technicien technicien = new Technicien("Pierre", "Jean", "T01234", new LocalDate(), 2500d, 3) ;
-		Manager manager = new Manager("Dupond", "Jack", MATRICULE, new LocalDate(), 2500d, new HashSet<>());
+		Manager manager = new Manager("Dupond", "Jack", MATRICULE, new LocalDate(), 2500d, new HashSet<Technicien>());
 		
 		//On s'assure que les mocks renvoient bien les valeurs que l'on vient de définir: 
 		Mockito.when(technicienRepository.findOne(ID_TECHNICIEN)).thenReturn(technicien);

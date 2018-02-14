@@ -1,28 +1,20 @@
-package com.ipiecoles.java.java340.model;
-import org.joda.time.LocalDate;
-import java.util.Arrays;
-import java.util.Collection;
-import org.assertj.core.api.Assertions;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import com.ipiecoles.java.java340.exception.EmployeException;
 
-@RunWith(value = Parameterized.class)
-public class CommercialAnneeParameterisedTest {
+
+//@RunWith(value = Parameterized.class)
+//public class CommercialAnneeParameterisedTest {
 	
-	private static LocalDate now = LocalDate.now();
-	private static LocalDate yesterday = now.minusDays(1);
-	private static LocalDate tomorrow = now.plusDays(1);
+	//private static LocalDate now = LocalDate.now();
+	//private static LocalDate yesterday = now.minusDays(1);
+	//private static LocalDate tomorrow = now.plusDays(1);
 	
-	@Parameterized.Parameter(value = 0)
+	/*@Parameterized.Parameter(value = 0)
 	LocalDate dateEmbaucheIn;
-	/* C'est la date d'embauche qu'on met en point d'entrée */
+	/* C'est la date d'embauche qu'on met en point d'entrée 
 	
 	
 	@Parameterized.Parameter(value = 1)
 	LocalDate dateEmbaucheExpected;
-	/*C'est la date d'embauche qu'on attend */
+	/*C'est la date d'embauche qu'on attend 
 	
 	@Parameterized.Parameters(name = "dateEmbaucheIn {0} set {1}")
 	public static Collection<Object[]> data() {
@@ -32,12 +24,12 @@ public class CommercialAnneeParameterisedTest {
 	}
 	
 	/* Ici on teste que la fonction SetDateEmbauche effectue bien la verification que la date d'embauche est postérieure à la date du jour
-	 * sinon on leve une exception */
+	 * sinon on leve une exception 
 	@Test
 	public void testSetDateEmbauche() throws EmployeException {
 		//Given
 		Employe commercial = new Commercial();	
-		/*On crée un nouveau commercial auquel on affecte une nouvelle date d'embauche en utilisant les paramètres */
+		/*On crée un nouveau commercial auquel on affecte une nouvelle date d'embauche en utilisant les paramètres 
 		
 		//When
 		try {
@@ -52,3 +44,5 @@ public class CommercialAnneeParameterisedTest {
 		}
 	}
 }
+
+*/
