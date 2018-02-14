@@ -64,8 +64,10 @@ public class TechnicienServiceTest {
         //Then
         ArgumentCaptor<Technicien> technicienCaptor = ArgumentCaptor.forClass(Technicien.class);
         ArgumentCaptor<Manager> managerCaptor = ArgumentCaptor.forClass(Manager.class);
+
         Mockito.verify(technicienRepository, Mockito.times(1)).save(technicienCaptor.capture());
         Assertions.assertThat(technicienCaptor.getValue().getManager()).isEqualTo(employeManager);
+
         Mockito.verify(managerRepository, Mockito.times(1)).save(managerCaptor.capture());
         Assertions.assertThat(managerCaptor.getValue().getEquipe()).contains(employeTechnicien);
 
