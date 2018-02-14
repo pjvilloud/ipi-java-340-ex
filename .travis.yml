@@ -4,4 +4,4 @@ addons:
  	sonarcloud:
 		organization:"pereau-github"
     
-script: mvn clean install sonar:sonar
+script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.organization=pereau-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=com.ipiecoles.java.java340_p -Dsonar.branch=master
