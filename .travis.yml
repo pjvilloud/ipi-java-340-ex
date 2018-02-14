@@ -3,4 +3,6 @@ language : java
 addons:
   sonarcloud:
     organization: "SAYADImanel"
-script: mvn clean install sonar:sonar
+script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+-Dsonar.organization=sayadimanel-github -Dsonar.host.url=https://sonarcloud.io
+  -Dsonar.login=eceb557e772fccd8259bdce1cedbf07c346f3813
