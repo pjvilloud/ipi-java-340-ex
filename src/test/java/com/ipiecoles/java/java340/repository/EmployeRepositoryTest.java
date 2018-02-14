@@ -22,7 +22,7 @@ import com.ipiecoles.java.java340.repository.EmployeRepository;
 @SpringBootTest(classes = SpringWebApplication.class)
 public class EmployeRepositoryTest {
 	
-	@Autowired
+	/*@Autowired
 	EmployeRepository employeRepository;
 	
 	// Déclaration des attributs 
@@ -65,6 +65,6 @@ public class EmployeRepositoryTest {
 		List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("toto");
 		Assertions.assertThat(employes).isEmpty();
 
-	}
+	}*/
 
 }

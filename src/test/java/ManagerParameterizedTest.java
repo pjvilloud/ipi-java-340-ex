@@ -34,7 +34,7 @@ public class ManagerParameterizedTest {
 	      });
 	  }
 	  
-	  // Test 1 : Manager sans équipe
+	  /* Test 1 : Manager sans équipe
 	  @Test
 	  public void testPrimeManagerSansEquipe() {
 			Manager manager = new Manager();
@@ -86,6 +86,6 @@ public class ManagerParameterizedTest {
 			
 			// Then 
 			Assertions.assertThat(equipe).isEqualTo(resultat);
-	  }
+	  }*/
 
 }
