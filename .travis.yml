@@ -1,6 +1,6 @@
 language: java
 addons:
   sonarcloud:
-   organization: "boubseini-github"
+   organization: "boubseini"
    script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.organization=boubseini-github -Dsonar.host.url=https:sonarcloud.io -Dsonar.projectkey=ipi-java-340-ex
  -Dsonar.branch=master
