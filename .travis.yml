@@ -3,10 +3,10 @@ language: java
 addons:
     sonarcloud:
         organization: "stephipi-github"
-    token:
-      secure: 821efbc22a1b3e578c0ee50c42952f56ee02c702 # encrypted value of your token
+    #token:
+       #secure: 821efbc22a1b3e578c0ee50c42952f56ee02c702 # encrypted value of your token
         
         script: 
           # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
           #- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
-        mvn clean install sonar:sonar
+            mvn clean install sonar:sonar
