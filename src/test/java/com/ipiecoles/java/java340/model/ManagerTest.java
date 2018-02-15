@@ -21,8 +21,27 @@ public class ManagerTest
 		//Double salaireEntree = manager.getSalaire();
 		Double salaireSortie = manager.getSalaire();
 		//Then
-		Assertions.assertThat(salaireSortie).isGreaterThan(manager.getSalaire());
+	//	Assertions.assertThat(salaireSortie).isGreaterThan(manager.getSalaire());
 	}
+	
+	public class SetSalaireTest {
+
+		  @Test //dans org.junit.Test
+		  public void testSetSalaireSup(){
+		      //Given = Initialisation des données d'entrée
+			  Manager manager = new Manager();
+		      Double salaireSortie;
+
+		      //When = Exécution de la méthode à tester
+		       
+		    		   manager.setSalaire(1600d);
+		    		   salaireSortie =manager.getSalaire();
+		      //Then = Vérifications de ce qu'a fait la méthode
+		      Assertions.assertThat(salaireSortie).isGreaterThan(1600d);
+		}
+	}
+}
+	
 	
 	/*public void setSalaire(Double salaire) {
 		super.setSalaire(salaire * Entreprise.INDICE_MANAGER + (salaire * (double)equipe.size() / 10));
@@ -51,4 +70,3 @@ public class ManagerTest
 		
 	}*/
 	
-}
