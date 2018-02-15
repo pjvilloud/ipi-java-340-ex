@@ -4,11 +4,12 @@ import com.ipiecoles.java.java340.model.model.Commercial;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
-public class CommercialTest{
+public class CommercialTest {
+
     @Test
     public void testGetPrimeAnnuelleWithCANull(){
         //Given
-        Commercial commercial =new Commercial();
+        Commercial commercial = new Commercial();
         commercial.setCaAnnuel(null);
 
         //When
@@ -19,15 +20,44 @@ public class CommercialTest{
     }
 
     @Test
-    public void testGetPrimeAnnuelleWithCA(){
+    public void getPrimeAnnuelleWithCA0(){
         //Given
-        Commercial commercial =new Commercial();
-        commercial.setCaAnnuel(5000d);
+        Commercial commercial = new Commercial();
+        commercial.setCaAnnuel(0d);
 
         //When
         Double prime = commercial.getPrimeAnnuelle();
 
         //Then
-        Assertions.assertThat(prime).isEqualTo(Math.max(Math.ceil(prime * 0.05), 500d));
+        Assertions.assertThat(prime).isEqualTo(500d);
+
+    }
+
+    @Test
+    public void getPrimeAnnuelleWithCA9000(){
+        //Given
+        Commercial commercial = new Commercial();
+        commercial.setCaAnnuel(9000d);
+
+        //When
+        Double prime = commercial.getPrimeAnnuelle();
+
+        //Then
+        Assertions.assertThat(prime).isEqualTo(500d);
+
+    }
+
+    @Test
+    public void getPrimeAnnuelleWithCA100000(){
+        //Given
+        Commercial commercial = new Commercial();
+        commercial.setCaAnnuel(100000d);
+
+        //When
+        Double prime = commercial.getPrimeAnnuelle();
+
+        //Then
+        Assertions.assertThat(prime).isEqualTo(5000d);
+
     }
 }
