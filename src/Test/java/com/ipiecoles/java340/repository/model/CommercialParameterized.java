@@ -14,7 +14,7 @@ import java.util.Collection;
 @RunWith(value = Parameterized.class)//org.junit.runners.Parameterized
 public class CommercialParameterized{
      @Parameterized.Parameter(value = 0)
-        public Integer perf;
+        public int perf;
      @Parameterized.Parameter(value=1)
          public Note expnotes;
 

@@ -52,7 +52,7 @@ public class MangerTest{
         //given
         Manager manager = new Manager();
         Technicien technicien1=new Technicien("Boubacar","Seini","T12345",new LocalDate(),1500d, (int) 0d);
-        Technicien technicien2=new Technicien("RAZAK","Slimani","T12346",new LocalDate(),1500d, (int) 0d);
+        Technicien technicien2=new Technicien("Razak","Slimani","T12346",new LocalDate(),1500d, (int) 0d);
 
         manager.ajoutTechnicienEquipe(technicien1);
         manager.ajoutTechnicienEquipe(technicien2);
