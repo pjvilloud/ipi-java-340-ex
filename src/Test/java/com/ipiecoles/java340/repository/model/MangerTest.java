@@ -14,19 +14,19 @@ import java.util.Set;
 
 public class MangerTest{
     @Test
-    public void testSetSalaireManagerPasTec(){
+    public void testGetPrimeAnnuelManagerPasTec(){
         //given
         Manager manager = new Manager();
-        Double Salaire=1500d;
 
-        manager.setSalaire(Salaire);
+
+        Entreprise.primeAnnuelleBase();
         //when
 
-        Double  SalaireBase=manager.getSalaire();
+        Double  ManagerSalaire=manager.getPrimeAnnuelle();
 
         //then
 
-        Assertions.assertThat(SalaireBase).isEqualTo(1950d);
+        Assertions.assertThat(ManagerSalaire).isEqualTo(1009d);
 
     }
     @Test
@@ -36,16 +36,16 @@ public class MangerTest{
         Technicien technicien1=new Technicien("Boubacar","Seini","T12345",new LocalDate(),1500d, (int) 0d);
 
         manager.ajoutTechnicienEquipe(technicien1);
-        Double Salaire=1500d;
+        Entreprise.primeAnnuelleBase();
 
-        manager.setSalaire(Salaire);
+
         //when
 
-        Double  SalaireManager=manager.getSalaire();
+        Double  SalaireManager=manager.getPrimeAnnuelle();
 
         //then
-        Assertions.assertThat(SalaireManager).isGreaterThan(1950d);
-        //Assertions.assertThat(SalaireManager).isEqualTo(2100d);
+
+        Assertions.assertThat(SalaireManager).isEqualTo(1259d);
     }
     @Test
     public void testSetSalaireManagerAvecTech2(){
@@ -57,16 +57,15 @@ public class MangerTest{
         manager.ajoutTechnicienEquipe(technicien1);
         manager.ajoutTechnicienEquipe(technicien2);
 
-        Double Salaire=1500d;
-        manager.setSalaire(Salaire);
+        Entreprise.primeAnnuelleBase();
         //when
 
-        Double  SalaireManager=manager.getSalaire();
+        Double  SalaireManager=manager.getPrimeAnnuelle();
 
 
         //then
-        Assertions.assertThat(SalaireManager).isGreaterThan(1950d);
-        //Assertions.assertThat(SalaireManager).isEqualTo(2250d);
+
+        Assertions.assertThat(SalaireManager).isEqualTo(1509d);
     }
 
 }
