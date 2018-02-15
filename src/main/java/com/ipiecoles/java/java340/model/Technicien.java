@@ -16,6 +16,8 @@ public class Technicien extends Employe implements Comparable<Technicien> {
 
 	private Integer grade;
 	
+	private Bruit conditionsDeTravail;
+
 	public Technicien() {
 
 	}
@@ -83,4 +85,14 @@ public class Technicien extends Employe implements Comparable<Technicien> {
 	public int compareTo(Technicien o) {
 		return Integer.compare(o.getGrade(), this.grade);
 	}
+
+	public Bruit getConditionsDeTravail() {
+		return conditionsDeTravail;
+	}
+
+	public void setConditionsDeTravail() {
+		this.conditionsDeTravail = Bruit.MarteauPneumatique;
+	}
+	
+	
 }

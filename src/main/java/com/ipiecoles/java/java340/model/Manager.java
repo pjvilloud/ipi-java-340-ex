@@ -21,6 +21,8 @@ public class Manager extends Employe {
 	@OneToMany(mappedBy = "manager")
 	private Set<Technicien> equipe = new HashSet<>();
 
+	private Bruit conditionsDeTravail;
+
 	public Manager(){
 
 	}
@@ -89,4 +91,13 @@ public class Manager extends Employe {
 	public String toString() {
 		return "Manager{} " + super.toString();
 	}
+
+	public Bruit getConditionsDeTravail() {
+		return conditionsDeTravail;
+	}
+
+	public void setConditionsDeTravail() {
+		this.conditionsDeTravail = Bruit.Glandeur;
+	}
+	
 }

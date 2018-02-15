@@ -3,6 +3,7 @@ package com.ipiecoles.java.java340.model;
 import org.joda.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Commercial extends Employe {
@@ -12,8 +13,13 @@ public class Commercial extends Employe {
 
 	private Double caAnnuel = 0d;
 
+	private Bruit conditionsDeTravail;
+	
 	private Integer performance;
 
+	@ManyToOne
+	private Manager manager;
+	
 	public Commercial() {
 		
 	}
@@ -88,6 +94,14 @@ public class Commercial extends Employe {
 		return Double.compare(that.caAnnuel, caAnnuel) == 0;
 
 	}
+	
+	public Manager getManager() {
+		return manager;
+	}
+
+	public void setManager(Manager manager) {
+		this.manager = manager;
+	}
 
 	@Override
 	public String toString() {
@@ -95,5 +109,13 @@ public class Commercial extends Employe {
 				"caAnnuel=" + caAnnuel +
 				", performance=" + performance +
 				"} " + super.toString();
+	}
+
+	public Bruit getConditionsDeTravail() {
+		return conditionsDeTravail;
+	}
+
+	public void setConditionsDeTravail() {
+		this.conditionsDeTravail = Bruit.ConversationNormale;
 	}
 }

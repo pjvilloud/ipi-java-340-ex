@@ -12,8 +12,6 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-//Test paramétré------------------------------------------------------------------------------
-
 @RunWith(value=Parameterized.class)
 public class ManagerParameterizedTest {
 	

@@ -29,6 +29,8 @@ public abstract class Employe implements Serializable {
 	private LocalDate dateEmbauche;
 	
 	private Double salaire = Entreprise.SALAIRE_BASE;
+
+	
 	
 	public Employe() {
 	}
