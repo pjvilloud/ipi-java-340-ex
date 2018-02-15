@@ -14,78 +14,44 @@ import org.junit.runners.Parameterized.Parameters;
 
 import com.ipiecoles.java.java340.model.Manager;
 import com.ipiecoles.java.java340.model.Technicien;
-/*
+
 @RunWith(value=Parameterized.class)
 public class ManagerParameterizedTest {
 	
+	public Manager manager = new Manager();
+	public Technicien tech = new Technicien(); 
+	public Technicien tech2 = new Technicien(); 
+	public Technicien tech3 = new Technicien();  
 	
 	@Parameter(value=0)
-	public int equipe;
+	public Double salaire;
 	@Parameter(value=1)
-	public Double resultat;
+	public Double salaireFinal;
 	
-	  @Parameters(name = "La prime avec {0} personnes est bien égal à {1}")
+	  @Parameters(name = "Si le manager a {0} euros de salaire alors il gagnera au final {1} ")
 	  public static Collection<Object[]> data() {
 	      return Arrays.asList(new Object[][]{
-	        {0, 0d},
-	        {1, 1500d},
-	        {3, 2000d}
-	        
+	        {0d, 0d},
+	        {1500d, 2100d},
+	        {1600d, 2240d}, 
+	        {2000d, 2800d}
 	      });
 	  }
 	  
-	  /* Test 1 : Manager sans équipe
-	  @Test
-	  public void testPrimeManagerSansEquipe() {
-			Manager manager = new Manager();
-			
-			equipe = (int) manager.getEquipe().size(); 
-			
-			// When 
-			resultat = manager.getPrimeAnnuelle();
-			
-			// Then 
-			Assertions.assertThat(equipe).isEqualTo(resultat); 
-	  }
-	  
-	  // Test 2 : Manager avec une personne
-	  @Test
-	  public void testPrimeManagerAvec1Personne() {
-			Manager manager = new Manager();
-			Technicien tech = new Technicien();
-			tech.setPrenom("Martin");
-			manager.ajoutTechnicienEquipe(tech);
-			
-			equipe = (int) manager.getEquipe().size(); 
-			
-			// When 
-			resultat = manager.getPrimeAnnuelle();
-			
-			// Then 
-			Assertions.assertThat(equipe).isEqualTo(resultat); 
-	  }
-	  
-	  // Test 3 : Manager avec plusieurs personnes
-	  @Test
-	  public void testPrimeManagerAvecEquipe() {
-			Manager manager = new Manager();
-			Technicien tech = new Technicien();
-			tech.setPrenom("Martin");
-			Technicien tech2 = new Technicien();
-			tech2.setPrenom("Alain");
-			Technicien tech3 = new Technicien(); 
-			tech3.setPrenom("Jean");
-			manager.ajoutTechnicienEquipe(tech);
-			manager.ajoutTechnicienEquipe(tech2);
-			manager.ajoutTechnicienEquipe(tech3);
-			
-			equipe = (int) manager.getEquipe().size(); 
-			
-			// When 
-			resultat = manager.getPrimeAnnuelle();
-			
-			// Then 
-			Assertions.assertThat(equipe).isEqualTo(resultat);
-	  }
 
-}*/
+	@Test
+	public void testerSalaireNormalAvecEquipe() {
+		
+		// Given 
+		manager.ajoutTechnicienEquipe(tech);
+		manager.setSalaire(salaire);
+
+		// When 
+		Double resultat = manager.getSalaire(); 
+		
+		// Then 
+		Assertions.assertThat(resultat).isEqualTo(salaireFinal);
+	}
+	
+
+}
