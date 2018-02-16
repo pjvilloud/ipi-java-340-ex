@@ -18,11 +18,11 @@ import com.ipiecoles.java.java340.model.Employe;
 import com.ipiecoles.java.java340.repository.CommercialRepository;
 import com.ipiecoles.java.java340.repository.EmployeRepository;
 
-/*@RunWith(SpringRunner.class)
+@RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringWebApplication.class)
 public class EmployeRepositoryTest {
 	
-	/*@Autowired
+	@Autowired
 	EmployeRepository employeRepository;
 	
 	// Déclaration des attributs 
@@ -41,7 +41,7 @@ public class EmployeRepositoryTest {
 	}
 	
 	
-	@Test
+	/*@Test
 	public void findByNomOrPrenomAllIgnoreCaseNom() {
 		
 		List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("jeanbouin");
@@ -65,6 +65,17 @@ public class EmployeRepositoryTest {
 		List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("toto");
 		Assertions.assertThat(employes).isEmpty();
 
+	}*/
+	
+	@Test
+	public void findEmployesPlusRichesHasSize() {
+		List<Employe> employes = employeRepository.findEmployePlusRiches();
+		Assertions.assertThat(employes).hasSize(1); 
+	}
+	
+	public void findEmployesPlusRichesContains() {
+		List<Employe> employes = employeRepository.findEmployePlusRiches();
+		Assertions.assertThat(employes).contains(commercial); 
 	}
 
-}*/
+}
