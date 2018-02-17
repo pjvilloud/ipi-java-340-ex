@@ -72,9 +72,6 @@ public void testGetPrimeAnnuelleAvecEquipe() {
 		Manager manager =  new Manager("Dupond", "Jacques", "M12345", new LocalDate(), 2000d, new HashSet<>());
 		
 		//When
-		pierreDurand.setManager(manager);
-		jeanJacques.setManager(manager);
-		jacquesDupond.setManager(manager);
 		HashSet<Technicien> equipe = new HashSet<Technicien>() {{
 		    add(pierreDurand);
 		    add(jeanJacques);
