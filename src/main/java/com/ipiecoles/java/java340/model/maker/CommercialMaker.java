@@ -11,8 +11,8 @@ public class CommercialMaker {
                 .withPrenom("Pierre")
                 .withMatricule("C12345")
                 .withDateEmbauche(new LocalDate())
-                .withCaAnnuel(15000d)
-                .withSalaire(1500d)
+                .withCaAnnuel(20000d)
+                .withSalaire(2000d)
                 .withPerformance(150);
     }
 }
