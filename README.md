@@ -54,3 +54,5 @@ TP de Java, module 340 pour l'IPI
    
    
    
+   regarder sur internet logback pour le cours sur maintenabilité : journalisation
+   
