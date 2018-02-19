@@ -2,7 +2,6 @@ package com.ipiecoles.java.java340.model;
 
 import com.ipiecoles.java.java340.model.model.Entreprise;
 import com.ipiecoles.java.java340.model.model.Manager;
-import com.ipiecoles.java.java340.model.model.Technicien;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 

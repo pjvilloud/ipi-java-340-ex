@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.*;
 import org.mockito.runners.MockitoJUnitRunner;
-import javax.persistence.EntityNotFoundException;
 import java.util.HashSet;
 import org.assertj.core.api.Assertions;
 

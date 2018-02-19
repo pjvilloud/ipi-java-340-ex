@@ -1,7 +1,6 @@
 //package com.ipiecoles.java.java340.model;
 //
 //import com.ipiecoles.java.java340.model.exception.EmployeException;
-//import com.ipiecoles.java.java340.model.model.Commercial;
 //import com.ipiecoles.java.java340.model.model.Employe;
 //import org.assertj.core.api.Assertions;
 //import org.junit.Test;
@@ -24,17 +23,19 @@
 //    @Parameterized.Parameter(value = 1)
 //    LocalDate dateEmbaucheExpected;
 //
-//    @Parameterized.Parameters(name = "dateEmbauce {0} set {1}")
+//    @Parameterized.Parameters(name = "dateEmbauche {0} set {1}")
 //    public static Collection<Object[]>data(){
 //        return Arrays.asList(new Object[][]{
-//            {now,now}, {yesterday, yesterday}, {tomorrow, null}
+//            {now,now},
+//            {yesterday, yesterday},
+//            {tomorrow, null}
 //        });
 //    }
 //
 //    @Test
 //    public void testSetDateEmbauche() throws EmployeException{
 //        //Given
-//        Employe commercial = new Commercial("Venet", "Julien", "C00029", new LocalDate(), 10000d, 600000d);
+//        Employe commercial = Maker.makeCommercial(1);
 //
 //        //When
 //        try{

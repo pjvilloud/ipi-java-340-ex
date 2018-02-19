@@ -1,5 +1,6 @@
 package com.ipiecoles.java.java340.model;
 
+import com.ipiecoles.java.java340.model.model.Commercial;
 import com.ipiecoles.java.java340.model.model.Manager;
 import com.ipiecoles.java.java340.model.model.Technicien;
 import org.joda.time.LocalDate;
@@ -34,5 +35,17 @@ public class Maker {
 
         Manager mng = new Manager(nom, prenom, matricule, dateEbauche, salaire, (HashSet<Technicien>) equipe);
         return mng;
+    }
+
+    public static Commercial makeCommercial(Integer i){
+        String nom = "Venet" + i;
+        String prenom = "Julien" + i;
+        String matricule = "M9999"+i;
+        LocalDate dateEbauche = new LocalDate();
+        Double salaire = 1500d;
+        Double CAannuel = 700000d;
+
+        Commercial comm = new Commercial(nom,prenom,matricule,dateEbauche,salaire,CAannuel);
+        return comm;
     }
 }
