@@ -6,6 +6,8 @@ import org.assertj.core.api.Assertions;
 import org.joda.time.LocalDate;
 import org.junit.Test;
 
+import com.ipiecoles.java.java340.exception.EmployeException;
+
 public class ManagerTest {
 @Test
 public void testSetSalaireNominal() {
@@ -21,6 +23,8 @@ public void testSetSalaireNominal() {
 		
 	}
 
+//Ce cas n'a pas de sens, mais il passe. 
+//Il faudrait revoir la méthode pour lever une alerte si on entre un salaire négatif.
 @Test
 public void testSetSalaireNegatif() {
 		//Given
@@ -35,18 +39,19 @@ public void testSetSalaireNegatif() {
 		
 	}
 
-//TODO
+@Test
 public void testSetSalaireNull() {
 		//Given
 		Manager manager =  new Manager("Dupond", "Jacques", "M12345", new LocalDate(), 2500d, new HashSet<>());
 		
 		//When
-		manager.setSalaire(-1250d);
-		
-		
+		try {
+			manager.setSalaire(null);
+			
 		//Then
-		Assertions.assertThat(manager.getSalaire()).isEqualTo(null);
-		
+		} catch (Exception e) {
+			Assertions.assertThat(e.getMessage()).isNull();
+		}
 	}
 
 @Test
@@ -83,7 +88,6 @@ public void testGetPrimeAnnuelleAvecEquipe() {
 		
 	}
 
-
 @Test
 public void testAugmenterSalaireNominal() {
 		//Given
@@ -94,6 +98,22 @@ public void testAugmenterSalaireNominal() {
 		
 		//Then
 		Assertions.assertThat(manager.getSalaire()).isEqualTo(5000d);
+		
+	}
+
+@Test
+public void testAugmenterSalaireNull() {
+		//Given
+		Manager manager =  new Manager("Dupond", "Jacques", "M12345", new LocalDate(), 2500d, new HashSet<>());
+		
+		//When
+		try {
+			manager.augmenterSalaire(null);
+		
+		//Then
+		} catch (Exception e) {
+			Assertions.assertThat(e.getMessage()).isNull();
+		}
 		
 	}
 
