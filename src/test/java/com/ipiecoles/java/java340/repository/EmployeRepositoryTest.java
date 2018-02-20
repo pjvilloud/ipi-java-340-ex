@@ -29,7 +29,7 @@ public class EmployeRepositoryTest {
     @Before
     public void setUp() throws EmployeException {
         employeRepository.deleteAll();
-        pierreDurand = new Commercial("Durand", "Pierre", "C12345", new LocalDate(), 1500d, 0d,0);
+        pierreDurand = new Commercial("Durand", "Pierre", "C12345", new LocalDate(), 15000d, 0d,0);
         jeanJacques = new Commercial("Jean-Jacques", "Jean", "C12346", new LocalDate(), 1500d, 0d,0);
         jacquesDupond = new Commercial("Dupond", "Jean-Jacques", "C12347", new LocalDate(), 1500d, 0d,0);
 
@@ -84,4 +84,12 @@ public class EmployeRepositoryTest {
         List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("toto");
         Assertions.assertThat(employes).isEmpty();
     }
+    
+    @Test
+    public void testFindEmployePlusRiche(){
+        //Given
+    	
+        //When
+        List<Employe> employes = employeRepository.findEmployePlusRiches();       	      
+     }
 }

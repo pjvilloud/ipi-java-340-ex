@@ -52,4 +52,5 @@ public class ManagerTest {
 //       	 Assertions.assertThat(t.getSalaire()).isEqualTo(Entreprise.SALAIRE_BASE);
 //        }
 //    }
+    
 }

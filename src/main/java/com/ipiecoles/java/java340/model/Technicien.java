@@ -83,4 +83,6 @@ public class Technicien extends Employe implements Comparable<Technicien> {
 	public int compareTo(Technicien o) {
 		return Integer.compare(o.getGrade(), this.grade);
 	}
+	
+	
 }

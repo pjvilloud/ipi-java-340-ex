@@ -23,12 +23,12 @@ public class ManagerParameterizedTest {
         return Arrays.asList(new Object[][]{
                 {0d,0d},
                 {1000d,1300d},
-                {2000d,2600d}                
+                {2000d,2600d}               
         });
     }
 
     @Test
-    public void testEquivalenceNote(){
+    public void testSetSalaire(){
         //Given
     	Manager manager = new Manager();
     	/*Manager manager2 = new Manager();
@@ -39,7 +39,7 @@ public class ManagerParameterizedTest {
     	
         //When
         manager.setSalaire(salaire);
-        manager.setSalaire(salaire);
+        
         //Then
         Assertions.assertThat(manager.getSalaire()).isEqualTo(expectedSalaire);
         //Assertions.assertThat(manager2.getSalaire()).isEqualTo(expectedSalaire);
