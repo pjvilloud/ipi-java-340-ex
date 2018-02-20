@@ -25,6 +25,9 @@ public class ManagerServiceTest {
 	@InjectMocks
 	public ManagerService managerService;
 
+	@InjectMocks
+	public TechnicienService technicienService;
+
 	@Mock
 	public ManagerRepository managerRepository;
 
@@ -43,26 +46,25 @@ public class ManagerServiceTest {
 
 		Technicien technicien = new Technicien("Durand", "Pierre", MATRICULE, new LocalDate(), 1500d, 3);
 
+		//When
+		managerService.addTechniciens(ID_MANAGER, MATRICULE);
+		
 		Mockito.when(technicienRepository.findByMatricule(MATRICULE)).thenReturn(technicien);
 		Mockito.when(technicienRepository.save(Mockito.any(Technicien.class))).then(AdditionalAnswers.returnsFirstArg());
 		Mockito.when(managerRepository.save(Mockito.any(Manager.class))).then(AdditionalAnswers.returnsFirstArg());
 
-		//When
-		managerService.addTechniciens(ID_MANAGER, MATRICULE);
-		
 		//then
-		Assertions.assertThat(manager.getEquipe()).hasSize(1);
-		Assertions.assertThat(manager.getEquipe()).isEqualTo(technicien);
-
 		Assertions.assertThat(technicien.getManager()).isEqualTo(manager);
 
 		ArgumentCaptor<Technicien> technicienCaptor = ArgumentCaptor.forClass(Technicien.class);
-		Mockito.verify(technicienRepository).save(technicienCaptor.capture());
-		Assertions.assertThat(technicienCaptor.getValue().getManager()).isEqualTo(manager);
+		Mockito.verify(technicienRepository, Mockito.times(1)).save(technicienCaptor.capture());
+		Assertions.assertThat(technicienCaptor.getValue().getMatricule()).isEqualTo(MATRICULE);
 		
-		ArgumentCaptor<Integer> gradeCaptor = ArgumentCaptor.forClass(Integer.class);
-		ArgumentCaptor<Integer> gradeCaptor2 = ArgumentCaptor.forClass(Integer.class);
-		
-		Mockito.verify(technicienRepository).findByGradeBetween(gradeCaptor.capture(), gradeCaptor2.capture());
+		Assertions.assertThat(manager.getEquipe()).hasSize(1);
+		Assertions.assertThat(manager.getEquipe()).isEqualTo(technicien);
+
+		ArgumentCaptor<Manager> managerCaptor = ArgumentCaptor.forClass(Manager.class);
+		Mockito.verify(managerRepository, Mockito.times(1)).save(managerCaptor.capture());
+        Assertions.assertThat(managerCaptor.getValue().getId()).isEqualTo(ID_MANAGER);        
 	}
 }
