@@ -1,93 +1,110 @@
 package com.ipiecoles.java.java340.repository;
 
-//import java.util.List;
-//
-//import org.assertj.core.api.Assertions;
-//import org.junit.Before;
-//import org.junit.Test;
-//import org.junit.runner.RunWith;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-//import org.springframework.test.context.junit4.SpringRunner;
-//
-//import com.ipiecoles.java.java340.model.Commercial;
-//import com.ipiecoles.java.java340.model.Employe;
-//
-//@RunWith(SpringRunner.class)
-//@DataJpaTest
+import java.util.List;
+
+import org.assertj.core.api.Assertions;
+import org.joda.time.LocalDate;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.ipiecoles.java.java340.exception.EmployeException;
+import com.ipiecoles.java.java340.model.Commercial;
+import com.ipiecoles.java.java340.model.Employe;
+import com.ipiecoles.java.java340.model.Technicien;
+
+@RunWith(SpringRunner.class)
+@DataJpaTest
 public class EmployeRepositoryTest {
 
-//Ici j'ai essayer de reprendre en partie la correcton du tableau pour que les tests passent mais sans succès.
-//Je n'arrive pas à comprendre pourquoi les tests ne passent pas.
+	@Autowired
+    EmployeRepository employeRepository;
+	
+	Commercial pierreDurand, jeanJacques, jacquesDupond, mrRiche, mrRiche2, mrPauvre;
+	
+    @Before
+    public void setUp() throws EmployeException {
+        employeRepository.deleteAll();
+        pierreDurand = new Commercial("Durand", "Pierre", "C12345", new LocalDate(), 100d, 0d,0);
+        jeanJacques = new Commercial("Jean-Jacques", "Jean", "C12346", new LocalDate(), 100d, 0d,0);
+        jacquesDupond = new Commercial("Dupond", "Jean-Jacques", "C12347", new LocalDate(), 100d, 0d,0);
 
+        pierreDurand = employeRepository.save(pierreDurand);
+        jeanJacques = employeRepository.save(jeanJacques);
+        jacquesDupond = employeRepository.save(jacquesDupond);
+    }
 
+    @After
+    public void tearDown(){
+        employeRepository.deleteAll();
+    }
 
+    @Test
+    public void testFindByNomOrPrenomAllIgnoreCasePrenom(){
+        //Given
 
+        //When
+        List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("pierre");
 
+        //Then
+        Assertions.assertThat(employes).hasSize(1);
+        Assertions.assertThat(employes).contains(pierreDurand);
 
-//	@Autowired
-//    EmployeRepository employeRepository;
-//	
-//	Commercial pierreDurand, jeanJacques, jacquesDupond;
-//	
-//	@Before
-//	  public void before(){//Nom before arbitraire
-//		employeRepository.deleteAll();
-//		pierreDurand = new Commercial("Durand", "pierre", "b", null, null, null);
-//		pierreDurand = employeRepository.save(pierreDurand);
-//	  }
-//
-//    @Test
-//    public void testfindByNomOrPrenomAllIgnoreCase(){
-//        //Given
-//        
-//        //When
-//        List<Employe> result = employeRepository.findByNomOrPrenomAllIgnoreCase("durand");
-//        //Then
-//        Assertions.assertThat(result).hasSize(1);
-//        Assertions.assertThat(result).contains(pierreDurand);
-//    }
-//    
-//    @Test
-//    public void testFindByNomOrPrenomAllIgnoreCasePrenom(){
-//        //Given
-//
-//        //When
-//        List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("pierre");
-//        Assertions.assertThat(employes).hasSize(1);
-//        Assertions.assertThat(employes.get(0)).isEqualTo(pierreDurand);
-//    }
-//
-//    @Test
-//    public void testFindByNomOrPrenomAllIgnoreCaseNom(){
-//        //Given
-//
-//        //When
-//        List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("durand");
-//        Assertions.assertThat(employes).hasSize(1);
-//        Assertions.assertThat(employes.get(0)).isEqualTo(pierreDurand);
-//    }
-//
-//    @Test
-//    public void testFindByNomOrPrenomAllIgnoreCaseNomPrenom(){
-//        //Given
-//
-//        //When
-//        List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("jacques");
-//        Assertions.assertThat(employes).hasSize(2);
-//        Assertions.assertThat(employes).contains(jeanJacques, jacquesDupond);
-//    }
+    }
     
+    @Test
+    public void findEmployePlusRichesWith100d(){
+        //Given
+    	mrRiche = new Commercial("MONSIEUR", "Richard", "C13999", new LocalDate(), 100d, 0d,0);
+    	mrPauvre = new Commercial("MONSIEUR", "Paul", "C13999", new LocalDate(), 100d, 0d,0);
+        
+        mrRiche = employeRepository.save(mrRiche);
+        mrPauvre = employeRepository.save(mrPauvre);
+
+        //When
+        List<Employe> employesRiches = employeRepository.findEmployePlusRiches();
+
+        //Then
+        Assertions.assertThat(employesRiches).isEmpty();
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-	//Assertions.assertThat(mng.getEquipe().iterator().next()).isEqualTo(tec);
+    @Test
+    public void findEmployePlusRichesWith4500d(){
+        //Given
+    	mrRiche = new Commercial("MONSIEUR", "Richard", "C13999", new LocalDate(), 4500d, 0d,0);
+    	mrRiche2 = new Commercial("MONSIEUR2", "Richard2", "C13999", new LocalDate(), 4600d, 0d,0);
+    	mrPauvre = new Commercial("MONSIEUR", "Paul", "C13999", new LocalDate(), 100d, 0d,0);
+        
+        mrRiche = employeRepository.save(mrRiche);
+        mrRiche2 = employeRepository.save(mrRiche2);
+        mrPauvre = employeRepository.save(mrPauvre);
+
+        //When
+        List<Employe> employesRiches = employeRepository.findEmployePlusRiches();
+        
+        double moy = 0;
+        double compt = 0;
+        for (Employe empr : employeRepository.findAll()) {
+			compt += 1;
+			moy += empr.getSalaire();
+		}
+        moy /= compt;
+
+        //Then       
+        Assertions.assertThat(moy).isEqualTo(1583.3333333333333);
+        
+        Assertions.assertThat(employesRiches).isNotNull();
+        Assertions.assertThat(employesRiches).hasSize(2);
+        Assertions.assertThat(employesRiches).contains(mrRiche, mrRiche2);
+        for (Employe emp : employesRiches) {
+			Assertions.assertThat(emp.getSalaire()).isGreaterThan(moy);
+		}
+        Assertions.assertThat(employesRiches.iterator().next().getSalaire()).isEqualTo(4500d);
+    }
+   
 }
+

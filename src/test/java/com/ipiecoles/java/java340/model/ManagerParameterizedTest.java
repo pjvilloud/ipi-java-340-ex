@@ -2,14 +2,20 @@ package com.ipiecoles.java.java340.model;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Set;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+/* Il y a peu d'interêt à faire getPrimeAnnuelle de cette manière,
+c'est pour cela que j'ai créer une autre classe pour la methode augmentersalaire en Tests Paramétrés.
+*/
+
 @RunWith(value = Parameterized.class)
 public class ManagerParameterizedTest {
+
 	
 	@Parameterized.Parameter(value = 0)
 	  public Integer expectedsizeEquipe;
@@ -42,8 +48,6 @@ public class ManagerParameterizedTest {
 			Assertions.assertThat(sizeEquipe).isEqualTo(expectedsizeEquipe);
 			Assertions.assertThat(primeAnnuelle).isEqualTo(expectedprimeAnnuelle);
 		}
-	
-	
-	
+		
 
 }
