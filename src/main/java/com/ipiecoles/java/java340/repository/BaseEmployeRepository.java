@@ -28,6 +28,6 @@ public interface BaseEmployeRepository<T extends Employe> extends PagingAndSorti
 
     List<T> findBySalaireGreaterThanOrderBySalaireDesc(Double salaire);
 
-    @Query(value = "SELECT * FROM Employe WHERE salaire > (SELECT avg(e2.salaire) FROM Employe e2)", nativeQuery = true)
+    @Query(value = "SELECT e FROM #{#entityName} e WHERE e.salaire > (SELECT avg(e2.salaire) FROM #{#entityName} e2)")
     List<T> findEmployePlusRiches();
 }

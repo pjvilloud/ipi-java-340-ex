@@ -17,7 +17,6 @@ import com.ipiecoles.java.java340.model.Commercial;
 import com.ipiecoles.java.java340.model.Employe;
 
 @RunWith(SpringRunner.class)
-//@DataJpaTest
 @SpringBootTest(classes = SpringWebApplication.class)
 public class EmployeRepositoryTest {
 	@Autowired
@@ -26,9 +25,9 @@ public class EmployeRepositoryTest {
     @Autowired
     CommercialRepository commercialRepository;
 
-	Commercial pierreDurand = new Commercial("Durand", "Pierre", "C12345",new LocalDate(), 1500d, 0d, 0);
+	Commercial pierreDurand = new Commercial("Durand", "Pierre", "C12345",new LocalDate(), 1700d, 0d, 0);
 	Commercial jeanJacques = new Commercial("Jacques", "Jean", "C12346",new LocalDate(), 1500d, 0d, 0);
-	Commercial jacquesDupond = new Commercial("Dupond", "Jacques", "C12347",new LocalDate(), 1500d, 0d, 0);
+	Commercial jacquesDupond = new Commercial("Dupond", "Jacques", "C12347",new LocalDate(), 100d, 0d, 0);
 	
 	@Before
 	public void setUp(){
@@ -82,5 +81,17 @@ public class EmployeRepositoryTest {
 		Assertions.assertThat(employes).hasSize(1);
 		Assertions.assertThat(employes).contains(pierreDurand);
 	}
-			
+
+	@Test
+	public void testFindEmployesPlusRiches() {
+		//Given
+		
+		//When
+		List<Employe> employes = employeRepository.findEmployePlusRiches();
+		
+		//Then
+		Assertions.assertThat(employes).hasSize(2);
+		Assertions.assertThat(employes.get(0)).isEqualTo((Employe) pierreDurand);	
+		Assertions.assertThat(employes.get(1)).isEqualTo((Employe) jeanJacques);		
+	}
 }
