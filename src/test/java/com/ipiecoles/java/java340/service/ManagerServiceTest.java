@@ -1,0 +1,89 @@
+package com.ipiecoles.java.java340.service;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.assertj.core.api.Assertions;
+import org.joda.time.LocalDate;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.AdditionalAnswers;
+import org.mockito.ArgumentCaptor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
+
+import com.ipiecoles.java.java340.model.Manager;
+import com.ipiecoles.java.java340.model.Technicien;
+import com.ipiecoles.java.java340.repository.ManagerRepository;
+import com.ipiecoles.java.java340.repository.TechnicienRepository;
+
+@RunWith(MockitoJUnitRunner.class)
+public class ManagerServiceTest { 
+	
+	@InjectMocks
+	public ManagerService managerService;
+	
+	@Mock
+	public TechnicienRepository technicienRepository;
+	
+	@Mock
+	public ManagerRepository managerRepository; 
+	
+	@Test
+	public void testAddTechniciens() {
+		
+		// Test consiste à ajouter un ou plusieurs techniciens dans la base de données 
+		
+		// Méthode pour ajouter des techniciens : addTechniciens(Long idManager, String matricule)
+		// Récupère un idManager et un matricule de technicien
+		// Création d'un nouveau manager 
+		// Création des nouveaux techniciens (plusieurs)
+		
+		
+		// Given
+		final Long ID_MANAGER = 1L; 
+		
+		Technicien rouve = new Technicien("Rouve", "Jean-Paul", "T56789", new LocalDate(), 1500d, 2);
+		Technicien dahan = new Technicien("Dahan", "Luc", "T34567", new LocalDate(), 1500d, 3);
+		
+		Manager martin = new Manager("Martin", "Alain", "M99998", new LocalDate(), 2500d, new HashSet<>()); 
+		
+		martin.setId(ID_MANAGER);
+		
+		Mockito.when(managerRepository.findOne(ID_MANAGER)).thenReturn(martin);
+		Mockito.when(technicienRepository.findByMatricule(rouve.getMatricule())).thenReturn(rouve);
+		Mockito.when(technicienRepository.findByMatricule(dahan.getMatricule())).thenReturn(dahan);
+		Mockito.when(managerRepository.save(Mockito.any(Manager.class))).then(AdditionalAnswers.returnsFirstArg());
+		Mockito.when(technicienRepository.save(Mockito.any(Technicien.class))).then(AdditionalAnswers.returnsFirstArg());
+		
+		// When 
+		managerService.addTechniciens(ID_MANAGER, rouve.getMatricule());
+		managerService.addTechniciens(ID_MANAGER, dahan.getMatricule());
+		
+		// Then 
+		Mockito.verify(managerRepository, Mockito.times(1)).findOne(ID_MANAGER);
+		Mockito.verify(technicienRepository, Mockito.times(1)).findByMatricule(rouve.getMatricule());
+		Mockito.verify(technicienRepository, Mockito.times(1)).findByMatricule(dahan.getMatricule());
+		
+
+		Assertions.assertThat(martin.getEquipe()).hasSize(2); 
+		Assertions.assertThat(martin.getEquipe()).contains(rouve, dahan); 
+		Assertions.assertThat(rouve.getManager()).isEqualTo(martin); 
+		Assertions.assertThat(dahan.getManager()).isEqualTo(martin); 
+		
+		ArgumentCaptor<Manager> managerCaptor = ArgumentCaptor.forClass(Manager.class); 
+		Mockito.verify(managerRepository).save(managerCaptor.capture()); 
+		Assertions.assertThat(managerCaptor.getValue().getEquipe()).isEqualTo(rouve);
+		Assertions.assertThat(managerCaptor.getValue().getEquipe()).isEqualTo(dahan);
+		
+		
+		
+	}
+	
+	
+	
+
+}
