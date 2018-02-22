@@ -74,6 +74,33 @@ public class EmployeRepositoryTest {
         Assertions.assertThat(employes).hasSize(2);
         Assertions.assertThat(employes).contains(jeanJacques, jacquesDupond);
     }
+	
+
+//Test de la méthode FindEmployesPlusRiches
+	
+    @Test
+    public void testfindEmployesPlusRiches() {
+    	//Given
+    	
+    	//When
+    	List<Employe> liste = employeRepository.findEmployePlusRiches();
+    	//Then
+    	Assertions.assertThat(liste).contains(pierreDurand);
+    	Assertions.assertThat(liste).contains(jeanJacques);
+    	Assertions.assertThat(liste).hasSize(2);
+    	
+    }
+    
+    @Test
+    public void testfindEmployesPlusRichesNull() {
+    	//Given
+    	
+    	//When
+    	List<Employe> liste = employeRepository.findEmployePlusRiches();
+    	//Then
+    	Assertions.assertThat(liste).isEmpty();
+    	
+    }
 
     @After
     public void tearDown(){
