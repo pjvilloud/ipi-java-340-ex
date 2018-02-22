@@ -6,6 +6,7 @@ import com.ipiecoles.java.java340.model.Employe;
 import com.ipiecoles.java.java340.model.Technicien;
 import com.ipiecoles.java.java340.model.builder.CommercialBuilder;
 import com.ipiecoles.java.java340.model.builder.TechnicienBuilder;
+import com.ipiecoles.java.java340.model.maker.TechnicienMaker;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,11 +30,11 @@ public class EmployeRepositoryTest {
     public void setUp() throws EmployeException{
         employeRepository.deleteAll();
 
-        pierreDurandC = CommercialBuilder.aCommercial().withNom("Durand").withPrenom("Pierre").withSalaire(2500d).build();
+        pierreDurandC = CommercialBuilder.aCommercial().withNom("Durand").withPrenom("Pierre").withSalaire(2600d).build();
         jeanJacquesC = CommercialBuilder.aCommercial().withNom("Jacques").withPrenom("Jean").withSalaire(1900d).build();
         jacquesDupontC = CommercialBuilder.aCommercial().withNom("Dupont").withPrenom("Jacques").withSalaire(1950d).build();
-        charlesXavierT = TechnicienBuilder.aTechnicien().withNom("Charles").withPrenom("Xavier").withSalaire(1650d).build();
-        thomasPesquetT = TechnicienBuilder.aTechnicien().withNom("Thomas").withPrenom("Pesquet").withSalaire(1500d).build();
+        charlesXavierT = TechnicienMaker.aTechnicien().withNom("Charles").withPrenom("Xavier").withSalaire(1650d).build();
+        thomasPesquetT = TechnicienMaker.aTechnicien().withNom("Thomas").withPrenom("Pesquet").withSalaire(1500d).build();
 
         pierreDurandC = employeRepository.save(pierreDurandC);
         jeanJacquesC = employeRepository.save(jeanJacquesC);
@@ -64,7 +65,14 @@ public class EmployeRepositoryTest {
     }
 
     @Test
-    public void findEmployePlusRiches() {
-        
+    public void findEmployePlusRichesWith5Employees() {
+        //Given
+
+        //When
+        List<Employe> liste = employeRepository.findEmployePlusRiches();
+        //Then
+        Assertions.assertThat(liste).hasSize(2);
+        Assertions.assertThat(liste).contains(pierreDurandC,jacquesDupontC);
+
     }
 }

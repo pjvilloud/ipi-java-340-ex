@@ -11,7 +11,7 @@ public class TechnicienMaker {
                 .withPrenom("Pierre")
                 .withMatricule("C12345")
                 .withDateEmbauche(new LocalDate())
-                .withSalaire(1500d)
-                .withGrade(0);
+                .withGrade(0)
+                .withSalaire(1500d);
     }
 }

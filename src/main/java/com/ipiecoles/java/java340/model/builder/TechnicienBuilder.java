@@ -1,6 +1,7 @@
 package com.ipiecoles.java.java340.model.builder;
 
 import com.ipiecoles.java.java340.exception.EmployeException;
+import com.ipiecoles.java.java340.model.Employe;
 import com.ipiecoles.java.java340.model.Entreprise;
 import com.ipiecoles.java.java340.model.Manager;
 import com.ipiecoles.java.java340.model.Technicien;
