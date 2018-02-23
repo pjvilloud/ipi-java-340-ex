@@ -65,7 +65,7 @@ public class EmployeRepositoryTest {
     }
 
     @Test
-    public void findEmployePlusRichesWith5Employees() {
+    public void findEmployePlusRichesWithFiveEmployees() {
         //Given
 
         //When
@@ -73,6 +73,42 @@ public class EmployeRepositoryTest {
         //Then
         Assertions.assertThat(liste).hasSize(2);
         Assertions.assertThat(liste).contains(pierreDurandC,jacquesDupontC);
+    }
 
+    /*
+        Etant donné que la méthode findEmployePlusRiches ne prend pas de paramètres,
+        le seul moyen que j'ai trouvé de faire plus de 1 test, est de réinitiliaser la base
+        de données dans les tests suivants
+     */
+    @Test
+    public void findEmployePlusRichesWithNoEmployees() {
+        //Given
+        employeRepository.deleteAll();
+        //When
+        List<Employe> liste = employeRepository.findEmployePlusRiches();
+        //Then
+        Assertions.assertThat(liste).hasSize(0);
+    }
+
+    @Test
+    public void findEmployePlusRichesWithOneEmployees() throws EmployeException{
+        //Given
+        employeRepository.deleteAll();
+        thomasPesquetT = TechnicienMaker.aTechnicien().withNom("Thomas").withPrenom("Pesquet").withSalaire(1500d).build();
+        thomasPesquetT = employeRepository.save(thomasPesquetT);
+        //When
+        List<Employe> liste = employeRepository.findEmployePlusRiches();
+        //Then
+        Assertions.assertThat(liste).hasSize(0);
+
+        /*
+            Au début, j'avais mis :
+                Assertions.assertThat(liste).hasSize(1);
+                Assertions.assertThat(liste).contains(thomasPesquetT);
+            Mais le résultat attendu était une liste vide.
+            Du coup je me suis dis que la raison était la logique métier :
+            non pas >= moyenne comme je le pensais, mais > moyenne
+
+         */
     }
 }
