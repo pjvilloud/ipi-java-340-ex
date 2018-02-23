@@ -27,4 +27,5 @@ Tests d'intégration
 Créer la classe ManagerServiceTest et tester de manière intégrée la méthode addTechniciens
 Tests d'acceptation
 
-A faire ensemble...
+
+Problème sur la méthode findEmployesPlusRichesHasSize() : la méthode fonctionne mais la requête associée findEmployesPlusRiches() ne se fait de nouveau plus.
