@@ -27,7 +27,7 @@ public interface BaseEmployeRepository<T extends Employe> extends PagingAndSorti
     List<T> findByDateEmbaucheAfter(LocalDate date);
 
     List<T> findBySalaireGreaterThanOrderBySalaireDesc(Double salaire);
-
-    @Query(value = "SELECT e FROM #{#entityName} e WHERE e.salaire > (SELECT avg(e2.salaire) FROM #{#entityName} e2)")
+    
+    @Query(value = "FROM #{#entityName} e WHERE e.salaire > (SELECT avg(e2.salaire) FROM #{#entityName} e2)")
     List<T> findEmployePlusRiches();
 }
