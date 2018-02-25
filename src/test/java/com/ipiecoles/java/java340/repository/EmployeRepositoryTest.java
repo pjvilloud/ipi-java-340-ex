@@ -100,15 +100,5 @@ public class EmployeRepositoryTest {
         List<Employe> liste = employeRepository.findEmployePlusRiches();
         //Then
         Assertions.assertThat(liste).hasSize(0);
-
-        /*
-            Au début, j'avais mis :
-                Assertions.assertThat(liste).hasSize(1);
-                Assertions.assertThat(liste).contains(thomasPesquetT);
-            Mais le résultat attendu était une liste vide.
-            Du coup je me suis dis que la raison était la logique métier :
-            non pas >= moyenne comme je le pensais, mais > moyenne
-
-         */
     }
 }
