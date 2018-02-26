@@ -25,9 +25,9 @@ public class ManagerServiceTest {
     public void setUp() throws EmployeException {
 
     }
-    
+
     @Test
-    public void testAddTechnicien() {
+    public void testAddTechniciens() {
 
     }
 }
