@@ -10,7 +10,18 @@ import java.util.HashSet;
 
 public class ManagerMaker {
 
-    public static ManagerBuilder aManager() throws EmployeException {
+    //création d'un manager sans équipe
+    public static ManagerBuilder aManagerWithoutEquipe() throws EmployeException {
+        return ManagerBuilder.aManager()
+                .withNom("Durand")
+                .withPrenom("Pierre")
+                .withMatricule("M12345")
+                .withDateEmbauche(new LocalDate())
+                .withSalaire(2000d);
+    }
+
+    //création d'un manager avec deux techniciens
+    public static ManagerBuilder bManagerWithTwoTechnicians() throws EmployeException {
         Technicien ericDumas = TechnicienMaker.aTechnicien().withNom("Dumas")
                 .withPrenom("Eric").build();
         Technicien adrienCasejuane = TechnicienMaker.aTechnicien().withNom("Casejuane")

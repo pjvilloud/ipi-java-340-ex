@@ -38,7 +38,7 @@ public class EmployeServiceTest {
         //Given
         Mockito.when(employeRepository.findByMatricule("C12345")).thenReturn(null);
         //When
-        employeService.findByMatricule("inconnu");
+        employeService.findByMatricule("C12345");
         //Then
     }
 
@@ -50,6 +50,7 @@ public class EmployeServiceTest {
         //when
         Employe e1 = employeService.findByMatricule("C12345");
         Employe e2 = employeService.findByMatricule("C56789");
+        //Then
         Assertions.assertThat(e1).isEqualTo(pierreDurand);
         Assertions.assertThat(e2).isEqualTo(jacquesDupont);
     }
