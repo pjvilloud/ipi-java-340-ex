@@ -16,6 +16,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import javax.persistence.EntityNotFoundException;
+import java.util.HashSet;
+
 @RunWith(MockitoJUnitRunner.class)
 public class ManagerServiceTest {
 
@@ -27,13 +30,56 @@ public class ManagerServiceTest {
     @Mock
     TechnicienRepository technicienRepository;
 
-    Manager kevinCostner;
-    Technicien bradPitt;
+    Manager kevinCostner, valKilmer; //valKilmer a une équipe, mais pas kevinCostner
+    Technicien bradPitt, georgeClooney; //georgeClooney a un manager, mais pas BradPitt
 
     @Before
     public void setUp() throws EmployeException {
         kevinCostner = ManagerMaker.aManagerWithoutEquipe().withNom("Costner").withPrenom("Kevin").build();
+        valKilmer = ManagerMaker.aManagerWithoutEquipe().withNom("Kilmer").withPrenom("Val").build();
+
         bradPitt = TechnicienMaker.aTechnicien().withNom("Pitt").withPrenom("Brad").build();
+        georgeClooney = TechnicienMaker.aTechnicien().withNom("Clooney").withPrenom("George").build();
+
+        HashSet<Technicien> liste = new HashSet<>();
+        liste.add(georgeClooney);
+        valKilmer.setEquipe(liste);
+        georgeClooney.setManager(valKilmer);
+    }
+
+    @Test(expected = EntityNotFoundException.class)
+    public void testAddTechniciensManagerNotFound() {
+        //Given
+        Mockito.when(managerRepository.findOneWithEquipeById(Mockito.anyLong())).thenReturn(null);
+
+        //When
+        Technicien t = managerService.addTechniciens(1L, "toto");
+
+        //Then exception
+    }
+
+    @Test(expected = EntityNotFoundException.class)
+    public void testAddTechniciensTechnicienNotFound(){
+        //Given
+        Mockito.when(managerRepository.findOneWithEquipeById(Mockito.anyLong())).thenReturn(kevinCostner);
+        Mockito.when(technicienRepository.findByMatricule(Mockito.anyString())).thenReturn(null);
+
+        //When
+        Technicien t = managerService.addTechniciens(1L, "toto");
+
+        //Then exception
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddTechniciensOneManagerAlready() {
+        //Given
+        Mockito.when(managerRepository.findOneWithEquipeById(Mockito.anyLong())).thenReturn(kevinCostner);
+        Mockito.when(technicienRepository.findByMatricule(Mockito.anyString())).thenReturn(georgeClooney);
+
+        //When
+        Technicien t = managerService.addTechniciens(1L, "toto");
+
+        //Then exception
     }
 
     @Test
