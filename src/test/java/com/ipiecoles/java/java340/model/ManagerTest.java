@@ -7,22 +7,9 @@ import org.junit.Test;
 public class ManagerTest
 {
 	
-	@Test
+	
 	//Les test sont tjs en class void
-	public void testSetSalaire()
-	{
-		//TEST : voir si le salaire en sortie est sup au salaire en entrée
-		//
-		//Given
-		Manager manager = new Manager();
-		manager.setSalaire(1600d);
-		
-		//When
-		//Double salaireEntree = manager.getSalaire();
-		Double salaireSortie = manager.getSalaire();
-		//Then
-	//	Assertions.assertThat(salaireSortie).isGreaterThan(manager.getSalaire());
-	}
+	//TEST : voir si le salaire en sortie est sup au salaire en entrée et donc si la méthode marche
 	
 	public class SetSalaireTest {
 

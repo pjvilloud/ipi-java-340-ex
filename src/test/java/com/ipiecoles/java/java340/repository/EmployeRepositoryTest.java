@@ -28,16 +28,20 @@ public class EmployeRepositoryTest {
 	 public void setUp()
 	 {
 		 employeRepository.deleteAll(); 	//supprime tout
-		 Commercial pierreDurand = new Commercial("Durand", "Pierre", "C12345", new LocalDate(), 1500d, 0d, 0);
-		 Commercial jeanJacques = new Commercial("Jacques", "Jean", "C12335", new LocalDate(), 1600d, 0d, 0);
-		 Commercial jacquesDurand = new Commercial("Durand", "Jacques", "C12845", new LocalDate(), 1800d, 0d, 0);
 		 
-		 
-		 pierreDurand = employeRepository.save(pierreDurand);
 	 }
 	 
 	  @Test
-	    public void testfindByNomOrPrenomAllIgnoreCasePrenom(){
+	    public void testfindByNomOrPrenomAllIgnoreCasePrenom()
+	  {
+		  	Commercial pierreDurand = new Commercial("Durand", "Pierre", "C12345", new LocalDate(), 1500d, 0d, 0);
+			 Commercial jeanJacques = new Commercial("Jacques", "Jean", "C12335", new LocalDate(), 1600d, 0d, 0);
+			 Commercial jacquesDurand = new Commercial("Durand", "Jacques", "C12845", new LocalDate(), 1800d, 0d, 0);
+			 
+			 
+			 pierreDurand = employeRepository.save(pierreDurand);
+			 jeanJacques = employeRepository.save(jeanJacques);
+			 jacquesDurand = employeRepository.save(jacquesDurand);
 	        //Given
 	        //When 	
 	        List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("pierre");
@@ -49,4 +53,23 @@ public class EmployeRepositoryTest {
 	  
 	  //Pour se simplifier la vie on utilise les builder.
 	 
+	  @Test
+	  	public void testFindEmployePlusRicheSalairseIdem()
+	  	{
+		  //Si tous les salaires sont identiques
+		  Commercial pierreDurand = new Commercial("Durand", "Pierre", "C12345", new LocalDate(), 2000d, 0d, 0);
+		  Commercial jeanJacques = new Commercial("Jacques", "Jean", "C12335", new LocalDate(), 2000d, 0d, 0);
+		  Commercial jacquesDurand = new Commercial("Durand", "Jacques", "C12845", new LocalDate(), 2000d, 0d, 0);
+			 
+		  
+		//On affirme qu'il n'y a pas de salarié avec un plus gros salaire, tous ont le même
+		  List<Employe> employes = employeRepository.findEmployePlusRiches();
+		employeRepository.save(pierreDurand);
+		employeRepository.save(jeanJacques);
+		employeRepository.save(jacquesDurand);
+		
+		Assertions.assertThat(employes).isEmpty();
+		//Aucun salarié ne se distingue
+		
+	  	}
 }
