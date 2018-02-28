@@ -95,4 +95,19 @@ public class ManagerServiceTest {
         Assertions.assertThat(kevinCostner.getEquipe().size()).isEqualTo(1);
         Assertions.assertThat(kevinCostner.getEquipe()).contains(res);
     }
+
+    @Test
+    public void testAddTechniciensWhenEquipeNotNull() {
+        //Given
+        Mockito.when(managerRepository.findOneWithEquipeById(Mockito.anyLong())).thenReturn(valKilmer);
+        Mockito.when(technicienRepository.findByMatricule(Mockito.anyString())).thenReturn(bradPitt);
+
+        //When
+        Technicien res = managerService.addTechniciens(1L, "toto");
+
+        //Then
+        Assertions.assertThat(valKilmer.getEquipe().size()).isEqualTo(2);
+        Assertions.assertThat(valKilmer.getEquipe()).contains(bradPitt);
+        Assertions.assertThat(valKilmer.getEquipe()).contains(georgeClooney);
+    }
 }
