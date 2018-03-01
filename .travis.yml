@@ -4,7 +4,6 @@ dist: trusty
 addons:
   sonarcloud:
     organization: "dylanben-github"
-    token:
-      secure: com.ipi.java.340:master
+
 script:
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.organization=dylanben-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=com.ipi.java.340:master -Dsonar.branch=master
