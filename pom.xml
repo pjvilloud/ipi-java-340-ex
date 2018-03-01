@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.ipiecoles.java.java340</groupId>
-	<artifactId>ipi-java-340-ex2</artifactId>
+	<artifactId>ipi-java-340-ex</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>ipi-java-340-ex2</name>
+	<name>ipi-java-340-ex</name>
 	<description>Projet Java 340 qualité logicielle</description>
 
 	<parent>
