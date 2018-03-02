@@ -20,7 +20,7 @@ import com.ipiecoles.java.java340.model.Employe;
 import com.ipiecoles.java.java340.model.Technicien;
 
 @RunWith(SpringRunner.class)
-//@DataJpaTest
+
 @SpringBootTest(classes = SpringWebApplication.class)
 public class EmployeRepositoryTest {
 
