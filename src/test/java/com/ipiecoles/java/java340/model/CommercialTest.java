@@ -4,6 +4,18 @@ import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 public class CommercialTest {
+	
+	@Test
+	public void testPerformanceEquality() {
+		//Given
+		Integer perf = new Integer(3);
+		Commercial commercial = new Commercial();
+		commercial.setPerformance(2);
+		//When
+		Boolean test = commercial.performanceEgale(3);
+		//Then
+		Assertions.assertThat(test).isFalse();
+		}
 
     @Test
     public void testGetPrimeAnnuelleWithCANull(){
@@ -18,6 +30,7 @@ public class CommercialTest {
         Assertions.assertThat(prime).isEqualTo(500d);
     }
 
+    /**
     @Test
     public void getPrimeAnnuelleWithCA0(){
         //Given
@@ -59,4 +72,5 @@ public class CommercialTest {
         Assertions.assertThat(prime).isEqualTo(5000d);
 
     }
+    */
 }
