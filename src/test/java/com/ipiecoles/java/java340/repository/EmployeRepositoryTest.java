@@ -21,8 +21,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
-//
-@SpringBootTest(classes = SpringWebApplication.class)
+@DataJpaTest
+//@SpringBootTest(classes = SpringWebApplication.class)
 public class EmployeRepositoryTest {
 
     @Autowired
@@ -37,6 +37,7 @@ public class EmployeRepositoryTest {
         //jeanJacques = new Commercial("Jean-Jacques", "Jean", "C12346", new LocalDate(), 1500d, 0d,0);
         //jacquesDupond = new Commercial("Dupond", "Jean-Jacques", "C12347", new LocalDate(), 1500d, 0d,0);
 
+        /**
         pierreDurand = new Commercial();
         jeanJacques = new Commercial();
         jacquesDupond = new Commercial();
@@ -47,6 +48,13 @@ public class EmployeRepositoryTest {
         jeanJacques.setNom("Jacques");
         jacquesDupond.setPrenom("Jacques");
         jacquesDupond.setNom("Dupont");
+        */
+        
+        try{
+        	pierreDurand = CommercialBuilder.aCommercial().withNom("Durand").withPrenom("Pierre").build();
+        	jeanJacques = CommercialBuilder.aCommercial().withNom("Jacques").withPrenom("Jean").build();
+        	jacquesDupond = CommercialBuilder.aCommercial().withNom("Dupond").withPrenom("Jacques").build();
+        	} catch (EmployeException e){};
         
         pierreDurand = employeRepository.save(pierreDurand);
         jeanJacques = employeRepository.save(jeanJacques);
