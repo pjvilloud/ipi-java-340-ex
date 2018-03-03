@@ -50,11 +50,13 @@ public class EmployeRepositoryTest {
         jacquesDupond.setNom("Dupont");
         */
         
+        
         try{
         	pierreDurand = CommercialBuilder.aCommercial().withNom("Durand").withPrenom("Pierre").build();
         	jeanJacques = CommercialBuilder.aCommercial().withNom("Jacques").withPrenom("Jean").build();
         	jacquesDupond = CommercialBuilder.aCommercial().withNom("Dupond").withPrenom("Jacques").build();
         	} catch (EmployeException e){};
+        
         
         pierreDurand = employeRepository.save(pierreDurand);
         jeanJacques = employeRepository.save(jeanJacques);
