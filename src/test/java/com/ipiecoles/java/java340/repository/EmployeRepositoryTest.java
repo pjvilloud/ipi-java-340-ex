@@ -21,8 +21,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
-//@SpringBootTest(classes = SpringWebApplication.class)
+//
+@SpringBootTest(classes = SpringWebApplication.class)
 public class EmployeRepositoryTest {
 
     @Autowired
@@ -31,7 +31,7 @@ public class EmployeRepositoryTest {
     Commercial pierreDurand, jeanJacques, jacquesDupond;
 
     @Before
-    public void setUp() {//throws EmployeException {
+    public void setUp() throws EmployeException {
         employeRepository.deleteAll();
         //pierreDurand = new Commercial("Durand", "Pierre", "C12345", new LocalDate(), 1500d, 0d,0);
         //jeanJacques = new Commercial("Jean-Jacques", "Jean", "C12346", new LocalDate(), 1500d, 0d,0);
@@ -53,12 +53,12 @@ public class EmployeRepositoryTest {
         jacquesDupond = employeRepository.save(jacquesDupond);
     }
 
-    /***
+    
     @After
     public void tearDown(){
         employeRepository.deleteAll();
     }
-    */
+    
 
     @Test
     public void testFindByNomOrPrenomAllIgnoreCasePrenom(){
@@ -79,27 +79,20 @@ public class EmployeRepositoryTest {
 
     }
 
-    /**
+    
     @Test
     public void testFindByNomOrPrenomAllIgnoreCaseNom(){
         //Given
 
         //When
+    	// ON recherche un durand en ignorant la case
         List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("durand");
+        // on doit en trouver un
         Assertions.assertThat(employes).hasSize(1);
+        // qui est contenu dans pierreDurand
         Assertions.assertThat(employes).contains(pierreDurand);
     }
 
-    @Test
-    public void testFindByNomOrPrenomAllIgnoreCaseNomPrenom(){
-        //Given
-
-        //When
-        List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("Jean-jacques");
-        Assertions.assertThat(employes).hasSize(2);
-        Assertions.assertThat(employes).contains(jeanJacques, jacquesDupond);
-    }
-    **/
 
     @Test
     public void testFindByNomOrPrenomAllIgnoreCaseNotFound(){
