@@ -150,8 +150,14 @@ public abstract class Employe implements Serializable {
 	/**
 	 * @param salaire the salaire to set
 	 */
+	// Modifications to consider extreme cases 
 	public void setSalaire(Double salaire) {
-		this.salaire = salaire;
+		if (salaire <0d || salaire == null) {
+			this.salaire = 0d;
+		}
+		else  {
+			this.salaire = salaire;
+		}	
 	}
 
 	@Override

@@ -38,8 +38,15 @@ public class Manager extends Employe {
 		this.ajoutTechnicienEquipe(new Technicien(nom, prenom, matricule, dateEmbauche, salaire, grade));
 	}
 	
+	// Modifications to consider extreme cases 
 	public void setSalaire(Double salaire) {
-		super.setSalaire(salaire * Entreprise.INDICE_MANAGER + (salaire * (double)equipe.size() / 10));
+		if (salaire == null) {
+			super.setSalaire(0d);
+		}else if (salaire <0d ) {
+			super.setSalaire(0d);
+		}else {
+			super.setSalaire(salaire * Entreprise.INDICE_MANAGER + (salaire * (double)equipe.size() / 10));
+		}
 	}
 
 	public Double getPrimeAnnuelle() {

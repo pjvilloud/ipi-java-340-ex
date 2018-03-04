@@ -149,6 +149,30 @@ public class ManagerTest {
 		public static final Double INDICE_MANAGER = 1.3;		
 		 */
 		
+		// Set Salaire equal to null and no team mates: should be equal to 0
+		@Test
+		public void testSetSalaireByNull() {
+			//Given
+			Manager manager = new Manager();
+			//When
+			manager.setSalaire(null);
+	        Double salaire = manager.getSalaire();
+	        //Then
+	        Assertions.assertThat(salaire).isEqualTo(0d);
+			}
+		
+		// Set Salaire is negative and no team mates: should be equal to 0
+		@Test
+		public void testSetSalaireByNegative() {
+			//Given
+			Manager manager = new Manager();
+			//When
+			manager.setSalaire(-1000d);
+	        Double salaire = manager.getSalaire();
+	        //Then
+	        Assertions.assertThat(salaire).isEqualTo(0d);
+			}
+		
 		// Set Salaire equal to 0 and no team mates: should be equal to 0
 		@Test
 		public void testSetSalaireBy0() {
