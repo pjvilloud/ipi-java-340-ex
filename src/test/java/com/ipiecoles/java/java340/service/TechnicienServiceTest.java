@@ -52,6 +52,9 @@ public class TechnicienServiceTest {
         Assertions.assertThat(technicien.getManager()).isEqualTo(manager);
 
         //On fait d'autres vérifications avec argument captor
+        //Les deux lignes de code suivantes servent à récupérer le technicien de la classe TechnicienService
+        //En effet, le technicien ne sort pas de la méthode de la classe, or pour pouvoir le tester, il faut pouvoir le récupérer
+        //Ainsi, lors du save de la classe TechnicienService (voir ligne 40), on dit à Mock de récupérer le t
         ArgumentCaptor<Technicien> technicienCaptor = ArgumentCaptor.forClass(Technicien.class);
         Mockito.verify(technicienRepository).save(technicienCaptor.capture());
         Assertions.assertThat(technicienCaptor.getValue().getManager()).isEqualTo(manager);
