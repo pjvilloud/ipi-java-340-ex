@@ -7,6 +7,8 @@ import java.lang.reflect.Field;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
+import com.ipiecoles.java.java340.exception.EmployeException;
+
 public class ManagerTest {
 	
 	/**
@@ -127,7 +129,6 @@ public class ManagerTest {
 			//Given
 			Manager manager = new Manager();
 			manager.setSalaire(1000d);
-			Double inputSalary = manager.getSalaire();
 			//When
 	        manager.augmenterSalaire(-1d);
 	        Double increasedSalary = manager.getSalaire();
@@ -191,9 +192,9 @@ public class ManagerTest {
 			//Given
 			Manager manager = new Manager();
 			LocalDate dateEmbauche = LocalDate.now();
+			//When
 			manager.ajoutTechnicienEquipe("Bob", "Le bricoleur", "01234", dateEmbauche, 1500d, 1);
 			manager.ajoutTechnicienEquipe("Clef", "A molette", "4567", dateEmbauche, 1500d, 1);
-			//When
 			manager.setSalaire(0d);
 	        Double salaire = manager.getSalaire();
 	        //Then
@@ -219,9 +220,9 @@ public class ManagerTest {
 			//Given
 			Manager manager = new Manager();
 			LocalDate dateEmbauche = LocalDate.now();
+			//When
 			manager.ajoutTechnicienEquipe("Bob", "Le bricoleur", "01234", dateEmbauche, 1500d, 1);
 			manager.ajoutTechnicienEquipe("Clef", "A molette", "4567", dateEmbauche, 1500d, 1);
-			//When
 			manager.setSalaire(1000d);
 	        Double salaire = manager.getSalaire();
 	        //Then
@@ -234,6 +235,7 @@ public class ManagerTest {
 			//Given
 			Manager manager = new Manager();
 			LocalDate dateEmbauche = LocalDate.now();
+			//When
 			manager.ajoutTechnicienEquipe("Bob", "Le bricoleur", "01234", dateEmbauche, 1500d, 1);
 			manager.ajoutTechnicienEquipe("Clef", "A molette", "01235", dateEmbauche, 1500d, 1);
 			manager.ajoutTechnicienEquipe("Tourne", "Vis", "01236", dateEmbauche, 1500d, 2);
@@ -244,13 +246,105 @@ public class ManagerTest {
 			manager.ajoutTechnicienEquipe("Scie", "A métaux", "12364", dateEmbauche, 1800d, 2);
 			manager.ajoutTechnicienEquipe("Papier", "Peint", "78451", dateEmbauche, 25000d, 3);
 			manager.ajoutTechnicienEquipe("Ciment", "Mortier", "01836", dateEmbauche, 2200d, 3);
-			//When
 			manager.setSalaire(1000d);
 	        Double salaire = manager.getSalaire();
 	        //Then
 	        Assertions.assertThat(salaire).isEqualTo(2300d);
 			}
-			
+		
+		// ------------------------------------------------------------------------------------------------------------------
+		
+		/**
+		 * 
+		 * Tests about the method "getPrimeAnnuelle" (get annual bonus) 
+		 * 
+		 * Reminder: 
+		 * 	public Double getPrimeAnnuelle() {
+		return Entreprise.primeAnnuelleBase() + equipe.size() * Entreprise.PRIME_MANAGER_PAR_TECHNICIEN;
+		}
+		And we also know that: 
+			public static Double primeAnnuelleBase() {
+		return LocalDate.now().getYear() * 0.5;
+		}
+		And: 
+		public static final Double PRIME_MANAGER_PAR_TECHNICIEN = 250d;
+		 * 
+		 */
+		
+		// Get annual bonus with no team mates: should be equal to 2017/2 = 1009
+		@Test
+		public void testGetPrimeAnnuelleNoTeammate() {
+			//Given
+			Manager manager = new Manager();
+			//When
+	        Double prime = manager.getPrimeAnnuelle();
+	        //Then
+	        Assertions.assertThat(prime).isEqualTo(1009d);
+			}
+		
+		// Get annual bonus with 1 team mate: should be equal to 2017/2 + 1*250 = 1259
+		@Test
+		public void testGetPrimeAnnuelle1Teammate() {
+			//Given
+			Manager manager = new Manager();
+			LocalDate dateEmbauche = LocalDate.now();
+			//When
+			manager.ajoutTechnicienEquipe("Bob", "Le bricoleur", "01234", dateEmbauche, 1500d, 1);
+	        Double prime = manager.getPrimeAnnuelle();
+	        //Then
+	        Assertions.assertThat(prime).isEqualTo(1259d);
+			}
+		
+		// Get annual bonus with 10 team mate: should be equal to 2017/2 + 10*250 = 3509
+		@Test
+		public void testGetPrimeAnnuelle10Teammates() {
+			//Given
+			Manager manager = new Manager();
+			LocalDate dateEmbauche = LocalDate.now();
+			//When
+			manager.ajoutTechnicienEquipe("Bob", "Le bricoleur", "01234", dateEmbauche, 1500d, 1);
+			manager.ajoutTechnicienEquipe("Clef", "A molette", "01235", dateEmbauche, 1500d, 1);
+			manager.ajoutTechnicienEquipe("Tourne", "Vis", "01236", dateEmbauche, 1500d, 2);
+			manager.ajoutTechnicienEquipe("Pierre", "Ponce", "01237", dateEmbauche, 2000d, 1);
+			manager.ajoutTechnicienEquipe("John", "Peint", "01238", dateEmbauche, 3000d, 4);
+			manager.ajoutTechnicienEquipe("Scie", "Sauteuse", "01210", dateEmbauche, 1400d, 1);
+			manager.ajoutTechnicienEquipe("Pon", "ceuse", "01239", dateEmbauche, 500d, 1);
+			manager.ajoutTechnicienEquipe("Scie", "A métaux", "12364", dateEmbauche, 1800d, 2);
+			manager.ajoutTechnicienEquipe("Papier", "Peint", "78451", dateEmbauche, 25000d, 3);
+			manager.ajoutTechnicienEquipe("Ciment", "Mortier", "01836", dateEmbauche, 2200d, 3);
+	        Double prime = manager.getPrimeAnnuelle();
+	        //Then
+	        Assertions.assertThat(prime).isEqualTo(3509d);
+			}
+		
+		// Get annual bonus with a team mate who does not have a name AND surname AND matricule: should be equal to 2017/2 = 1009 as we do not consider him as a teammate 
+		@Test
+		public void testGetPrimeAnnuelleNullTeammate() {
+			//Given
+			Manager manager = new Manager();
+			LocalDate dateEmbauche = LocalDate.now();
+			//When
+			manager.ajoutTechnicienEquipe(null, null, null, dateEmbauche, 1800d, 2);
+	        Double prime = manager.getPrimeAnnuelle();
+	        //Then
+	        Assertions.assertThat(prime).isEqualTo(1009d);
+			}
+		
+		// Get annual bonus with 3 not null team mates (they have only one of the following information: surname, name, matricule): should be equal to 2017/2 + 3*250= 1759 as we have enough information to consider them as teammates
+		@Test
+		public void testGetPrimeAnnuelle3NotNullTeammates() {
+			//Given
+			Manager manager = new Manager();
+			LocalDate dateEmbauche = LocalDate.now();
+			//When
+			manager.ajoutTechnicienEquipe("Bob", null, null, dateEmbauche, 1800d, 2);
+			manager.ajoutTechnicienEquipe(null, "Le Bricoleur", null, dateEmbauche, 1800d, 2);
+			manager.ajoutTechnicienEquipe(null, null, "01234", dateEmbauche, 1800d, 2);
+	        Double prime = manager.getPrimeAnnuelle();
+	        //Then
+	        Assertions.assertThat(prime).isEqualTo(1759d);
+			}
+		
 		
 		}
 

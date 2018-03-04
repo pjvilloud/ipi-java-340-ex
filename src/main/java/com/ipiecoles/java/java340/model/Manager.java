@@ -35,7 +35,10 @@ public class Manager extends Employe {
 	}
 
 	public void ajoutTechnicienEquipe(String nom, String prenom, String matricule, LocalDate dateEmbauche, Double salaire, Integer grade)  {
-		this.ajoutTechnicienEquipe(new Technicien(nom, prenom, matricule, dateEmbauche, salaire, grade));
+		// I modify the method: I accept to include someone in the team if we have at least the name OR surname OR matricule. 
+		if (nom != null || prenom != null || matricule !=null) {
+			this.ajoutTechnicienEquipe(new Technicien(nom, prenom, matricule, dateEmbauche, salaire, grade));
+		}
 	}
 	
 	// Modifications to consider extreme cases 
