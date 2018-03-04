@@ -1,5 +1,8 @@
 package com.ipiecoles.java.java340.model;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+
 import org.joda.time.LocalDate;
 
 public final class Entreprise {
@@ -13,5 +16,6 @@ public final class Entreprise {
 	public static Double primeAnnuelleBase() {
 		return LocalDate.now().getYear() * 0.5;
 	}
+	
 
 }
