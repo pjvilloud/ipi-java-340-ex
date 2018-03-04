@@ -4,8 +4,12 @@ import com.ipiecoles.java.java340.SpringWebApplication;
 import com.ipiecoles.java.java340.exception.EmployeException;
 import com.ipiecoles.java.java340.model.Commercial;
 import com.ipiecoles.java.java340.model.Employe;
+import com.ipiecoles.java.java340.model.Technicien;
 import com.ipiecoles.java.java340.model.builder.CommercialBuilder;
+import com.ipiecoles.java.java340.model.builder.TechnicienBuilder;
 import com.ipiecoles.java.java340.model.maker.CommercialMaker;
+import com.ipiecoles.java.java340.model.maker.TechnicienMaker;
+
 import org.assertj.core.api.Assertions;
 import org.joda.time.LocalDate;
 import org.junit.After;
@@ -30,48 +34,29 @@ public class EmployeRepositoryTest {
     EmployeRepository employeRepository;
 
     Commercial pierreDurand, jeanJacques, jacquesDupond;
-   
+      
 
     @Before
     public void setUp() throws EmployeException {
         employeRepository.deleteAll();
-        //pierreDurand = new Commercial("Durand", "Pierre", "C12345", new LocalDate(), 1500d, 0d,0);
-        //jeanJacques = new Commercial("Jean-Jacques", "Jean", "C12346", new LocalDate(), 1500d, 0d,0);
-        //jacquesDupond = new Commercial("Dupond", "Jean-Jacques", "C12347", new LocalDate(), 1500d, 0d,0);
-
-        /**
-        pierreDurand = new Commercial();
-        jeanJacques = new Commercial();
-        jacquesDupond = new Commercial();
-        
-        pierreDurand.setPrenom("Pierre");
-        pierreDurand.setNom("Durand");
-        jeanJacques.setPrenom("Jean");
-        jeanJacques.setNom("Jacques");
-        jacquesDupond.setPrenom("Jacques");
-        jacquesDupond.setNom("Dupont");
-        */
-        
         
         try{
-        	pierreDurand = CommercialBuilder.aCommercial().withNom("Durand").withPrenom("Pierre").build();
-        	jeanJacques = CommercialBuilder.aCommercial().withNom("Jacques").withPrenom("Jean").build();
-        	jacquesDupond = CommercialBuilder.aCommercial().withNom("Dupond").withPrenom("Jacques").build();
-        } catch (EmployeException e){};
+        	pierreDurand = CommercialBuilder.aCommercial().withNom("Durand").withPrenom("Pierre").withSalaire(5000d).build();
+        	jeanJacques = CommercialBuilder.aCommercial().withNom("Jacques").withPrenom("Jean").withSalaire(3000d).build();
+        	jacquesDupond = CommercialBuilder.aCommercial().withNom("Dupond").withPrenom("Jacques").withSalaire(3000d).build();
+        }catch (EmployeException e){};
         
-        
+        // Persistence
         pierreDurand = employeRepository.save(pierreDurand);
         jeanJacques = employeRepository.save(jeanJacques);
         jacquesDupond = employeRepository.save(jacquesDupond);
     }
-
-    
+  
     @After
     public void tearDown(){
         employeRepository.deleteAll();
     }
     
-
     @Test
     public void testFindByNomOrPrenomAllIgnoreCasePrenom(){
         //Given
@@ -90,8 +75,7 @@ public class EmployeRepositoryTest {
     	Assertions.assertThat(liste).contains(jeanJacques,jacquesDupond);
 
     }
-
-    
+ 
     @Test
     public void testFindByNomOrPrenomAllIgnoreCaseNom(){
         //Given
@@ -127,6 +111,7 @@ public class EmployeRepositoryTest {
     /**
      *  Dans EmployeRepository on ne trouve pas findEmployePlusRiches() mais cependant EmployeRepository étend BaseEmployeRepository
      *  et c'est dans celui-ci que l'on trouve la méthode. 
+     *  
      *  La méthode est donc: 
      *      @Query(value = "SELECT * FROM Employe WHERE salaire > (SELECT avg(e2.salaire) FROM Employe e2)", nativeQuery = true)
      *      List<T> findEmployePlusRiches();
@@ -134,5 +119,5 @@ public class EmployeRepositoryTest {
      *  
      */
     
-    
+      
 }

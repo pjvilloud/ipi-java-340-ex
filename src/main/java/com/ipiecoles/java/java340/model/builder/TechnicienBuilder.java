@@ -1,12 +1,10 @@
 package com.ipiecoles.java.java340.model.builder;
 
 import com.ipiecoles.java.java340.exception.EmployeException;
-import com.ipiecoles.java.java340.model.Commercial;
 import com.ipiecoles.java.java340.model.Entreprise;
 import com.ipiecoles.java.java340.model.Manager;
 import com.ipiecoles.java.java340.model.Technicien;
 
-import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 
 public final class TechnicienBuilder {
@@ -14,7 +12,6 @@ public final class TechnicienBuilder {
 	private String nom;	
 	private String prenom;
 	private String matricule;
-	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	private LocalDate dateEmbauche;	
 	private Double salaire = Entreprise.SALAIRE_BASE;
 	private Manager manager;
@@ -74,9 +71,10 @@ public final class TechnicienBuilder {
         technicien.setPrenom(prenom);
         technicien.setMatricule(matricule);
         technicien.setDateEmbauche(dateEmbauche);
-        technicien.setSalaire(salaire);
         technicien.setManager(manager);
         technicien.setGrade(grade);
+        // Very important to put the grade before the salary because the grade is required for the calculation of the salary
+        technicien.setSalaire(salaire);
         return technicien;
     }
 }
