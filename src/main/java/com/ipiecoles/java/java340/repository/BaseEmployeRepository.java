@@ -1,7 +1,10 @@
 package com.ipiecoles.java.java340.repository;
 
+import com.ipiecoles.java.java340.SpringWebApplication;
 import com.ipiecoles.java.java340.model.Employe;
 import org.joda.time.LocalDate;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -29,7 +32,12 @@ public interface BaseEmployeRepository<T extends Employe> extends PagingAndSorti
 
     List<T> findBySalaireGreaterThanOrderBySalaireDesc(Double salaire);
 
-    @Query(value = "SELECT * FROM Employe WHERE salaire > (SELECT avg(e2.salaire) FROM Employe e2)", nativeQuery = true)
+    // Works only if EmployeRepositoryTest has @DataJpaTest
+    //@Query(value = "SELECT * FROM Employe WHERE salaire > (SELECT avg(e2.salaire) FROM Employe e2)", nativeQuery = true)
+    //List<T> findEmployePlusRiches();
+    
+    // Works for both @DataJpaTest and @SpringBootTest(classes = SpringWebApplication.class)
+    @Query(value = "FROM Employe WHERE salaire > (SELECT avg(e2.salaire) FROM Employe e2)")
     List<T> findEmployePlusRiches();
 
     public default Integer test(){

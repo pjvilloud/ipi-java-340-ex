@@ -6,21 +6,15 @@ import com.ipiecoles.java.java340.model.Commercial;
 import com.ipiecoles.java.java340.model.Employe;
 import com.ipiecoles.java.java340.model.Technicien;
 import com.ipiecoles.java.java340.model.builder.CommercialBuilder;
-import com.ipiecoles.java.java340.model.builder.TechnicienBuilder;
-import com.ipiecoles.java.java340.model.maker.CommercialMaker;
 import com.ipiecoles.java.java340.model.maker.TechnicienMaker;
 
 import org.assertj.core.api.Assertions;
-import org.joda.time.LocalDate;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -34,6 +28,8 @@ public class EmployeRepositoryTest {
     EmployeRepository employeRepository;
 
     Commercial pierreDurand, jeanJacques, jacquesDupond;
+    // Partie evaluation 
+    Technicien bobBrico, scieSauteuse, tourneVis;
       
 
     @Before
@@ -44,12 +40,19 @@ public class EmployeRepositoryTest {
         	pierreDurand = CommercialBuilder.aCommercial().withNom("Durand").withPrenom("Pierre").withSalaire(5000d).build();
         	jeanJacques = CommercialBuilder.aCommercial().withNom("Jacques").withPrenom("Jean").withSalaire(3000d).build();
         	jacquesDupond = CommercialBuilder.aCommercial().withNom("Dupond").withPrenom("Jacques").withSalaire(3000d).build();
+        	// If I use a TechnicienBuilder, I got a null pointer exception so I have to use the maker 
+        	bobBrico = TechnicienMaker.aTechnicien().withNom("Bob").withPrenom("Le Bricoleur").withSalaire(1650d).build();
+            scieSauteuse = TechnicienMaker.aTechnicien().withNom("Thomas").withPrenom("Pesquet").withSalaire(1500d).build();
+            tourneVis = TechnicienMaker.aTechnicien().withNom("Charles").withPrenom("Xavier").withSalaire(1650d).build();
         }catch (EmployeException e){};
         
         // Persistence
         pierreDurand = employeRepository.save(pierreDurand);
         jeanJacques = employeRepository.save(jeanJacques);
         jacquesDupond = employeRepository.save(jacquesDupond);
+        bobBrico = employeRepository.save(bobBrico);
+        scieSauteuse = employeRepository.save(scieSauteuse);
+        tourneVis = employeRepository.save(tourneVis);
     }
   
     @After
@@ -118,6 +121,76 @@ public class EmployeRepositoryTest {
      *  Il nous faut donc une liste de techniciens pour ce test. On va également utiliser un builder comme on l'avait fait pour Commercial
      *  
      */
+    
+    
+    @Test
+    public void testfindEmployePlusRichesWithEmployeesManyResults(){
+        //Given
+
+        //When
+    	List<Employe> employees = employeRepository.findEmployePlusRiches();
+
+        //Then
+    	// Should find 3 people 
+    	Assertions.assertThat(employees).hasSize(3);
+    	// Should find the following people: 
+    	Assertions.assertThat(employees).contains(pierreDurand, jeanJacques, jacquesDupond);
+    }
+    
+    @Test
+    public void testfindEmployePlusRichesWithNoEmployees(){
+        //Given
+    	employeRepository.deleteAll();
+    	
+        //When
+    	List<Employe> employees = employeRepository.findEmployePlusRiches();
+
+        //Then
+    	// Should find nobody
+    	Assertions.assertThat(employees).hasSize(0);
+    	// So the result should be empty
+    	Assertions.assertThat(employees).isEmpty();
+    }
+    
+    @Test
+    public void testfindEmployePlusRichesWithSalaryEqualToMean() throws EmployeException{
+        //Given
+    	employeRepository.deleteAll();
+    	bobBrico = TechnicienMaker.aTechnicien().withNom("Bob").withPrenom("Le Bricoleur").withSalaire(1650d).build();
+    	bobBrico = employeRepository.save(bobBrico);	
+    	
+        //When
+    	List<Employe> employees = employeRepository.findEmployePlusRiches();
+
+        //Then
+    	// Should find nobody as the query is > and not >=
+    	Assertions.assertThat(employees).hasSize(0);
+    	// So the result should be empty
+    	Assertions.assertThat(employees).isEmpty();
+    }
+    
+    @Test
+    public void testfindEmployePlusRichesWithEmployeesOneResult() throws EmployeException{
+        //Given
+    	employeRepository.deleteAll();
+    	bobBrico = TechnicienMaker.aTechnicien().withNom("Bob").withPrenom("Le Bricoleur").withSalaire(1650d).build();
+        scieSauteuse = TechnicienMaker.aTechnicien().withNom("Thomas").withPrenom("Pesquet").withSalaire(1500d).build();
+        tourneVis = TechnicienMaker.aTechnicien().withNom("Charles").withPrenom("Xavier").withSalaire(1650d).build();
+    	pierreDurand = CommercialBuilder.aCommercial().withNom("Durand").withPrenom("Pierre").withSalaire(5000d).build();
+    	bobBrico = employeRepository.save(bobBrico);	
+    	scieSauteuse = employeRepository.save(scieSauteuse);
+    	tourneVis = employeRepository.save(tourneVis);
+    	pierreDurand = employeRepository.save(pierreDurand);
+    	
+        //When
+    	List<Employe> employees = employeRepository.findEmployePlusRiches();
+
+        //Then
+    	// Only one guy is rich
+    	Assertions.assertThat(employees).hasSize(1);
+    	// So the result should have only this guy
+    	Assertions.assertThat(employees).contains(pierreDurand);
+    }
     
       
 }
