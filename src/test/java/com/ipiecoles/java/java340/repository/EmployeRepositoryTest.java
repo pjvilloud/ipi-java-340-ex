@@ -16,19 +16,21 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
-//@SpringBootTest(classes = SpringWebApplication.class)
+//@DataJpaTest
+@SpringBootTest(classes = SpringWebApplication.class)
 public class EmployeRepositoryTest {
 
     @Autowired
     EmployeRepository employeRepository;
 
     Commercial pierreDurand, jeanJacques, jacquesDupond;
+   
 
     @Before
     public void setUp() throws EmployeException {
@@ -55,7 +57,7 @@ public class EmployeRepositoryTest {
         	pierreDurand = CommercialBuilder.aCommercial().withNom("Durand").withPrenom("Pierre").build();
         	jeanJacques = CommercialBuilder.aCommercial().withNom("Jacques").withPrenom("Jean").build();
         	jacquesDupond = CommercialBuilder.aCommercial().withNom("Dupond").withPrenom("Jacques").build();
-        	} catch (EmployeException e){};
+        } catch (EmployeException e){};
         
         
         pierreDurand = employeRepository.save(pierreDurand);
@@ -114,4 +116,23 @@ public class EmployeRepositoryTest {
         // Normalement la liste de résultats doit etre vide
         Assertions.assertThat(employes).isEmpty();
     }
+    
+    
+    /**
+     * ----------------------------------------------------------------------------------------------------------------------
+     * Partie evaluation 
+     * ----------------------------------------------------------------------------------------------------------------------
+     */
+    
+    /**
+     *  Dans EmployeRepository on ne trouve pas findEmployePlusRiches() mais cependant EmployeRepository étend BaseEmployeRepository
+     *  et c'est dans celui-ci que l'on trouve la méthode. 
+     *  La méthode est donc: 
+     *      @Query(value = "SELECT * FROM Employe WHERE salaire > (SELECT avg(e2.salaire) FROM Employe e2)", nativeQuery = true)
+     *      List<T> findEmployePlusRiches();
+     *  Il nous faut donc une liste de techniciens pour ce test. On va également utiliser un builder comme on l'avait fait pour Commercial
+     *  
+     */
+    
+    
 }
