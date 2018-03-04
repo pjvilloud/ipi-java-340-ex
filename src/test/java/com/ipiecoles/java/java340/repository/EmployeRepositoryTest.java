@@ -6,6 +6,9 @@ import com.ipiecoles.java.java340.model.Commercial;
 import com.ipiecoles.java.java340.model.Employe;
 import com.ipiecoles.java.java340.model.Technicien;
 import com.ipiecoles.java.java340.model.builder.CommercialBuilder;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.jpa.repository.Query;
+import org.junit.AfterClass;
 import com.ipiecoles.java.java340.model.maker.TechnicienMaker;
 
 import org.assertj.core.api.Assertions;

@@ -1,10 +1,7 @@
 package com.ipiecoles.java.java340.repository;
 
-import com.ipiecoles.java.java340.SpringWebApplication;
 import com.ipiecoles.java.java340.model.Employe;
 import org.joda.time.LocalDate;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
