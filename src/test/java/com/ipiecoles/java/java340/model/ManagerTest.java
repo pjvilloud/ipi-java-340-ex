@@ -3,6 +3,8 @@ package com.ipiecoles.java.java340.model;
 import org.joda.time.LocalDate;
 
 import java.lang.reflect.Field;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
@@ -48,92 +50,162 @@ public class ManagerTest {
 	 *
 	 */
 	
-	
-		// Increase the salary by 0: the salary should remain the same as first defined 
+		// Increase the salary by 0 of the manager: the salaries of both manager and technician should remain the same as first defined 
 		@Test
 		public void testIncreaseSalaryBy0() {
 			//Given
 			Manager manager = new Manager();
+			Technicien technicien = new Technicien(); 
+			// Don't forget to put at least a name OR surname OR matricule otherwise it is like the technician does not exist
+			technicien.setNom("bob");
+			technicien.setGrade(0);
+			technicien.setManager(manager);
+			manager.ajoutTechnicienEquipe(technicien);
 			manager.setSalaire(1000d);
-			Double inputSalary = manager.getSalaire();
+			technicien.setSalaire(500d);
+			Double inputSalaryMan = manager.getSalaire();
+			Double inputSalaryTech = technicien.getSalaire();
+			int managerTeam = manager.getEquipe().size();
 			//When
 	        manager.augmenterSalaire(0d);
-	        Double increasedSalary = manager.getSalaire();
+	        Double increasedSalaryMan = manager.getSalaire();
+	        Double increasedSalaryTech = technicien.getSalaire();
 	        //Then
-	        Assertions.assertThat(increasedSalary).isEqualTo(inputSalary);
+	        Assertions.assertThat(increasedSalaryMan).isEqualTo(inputSalaryMan);
+	        Assertions.assertThat(increasedSalaryTech).isEqualTo(inputSalaryTech);
+	        Assertions.assertThat(managerTeam).isEqualTo(1);
 			}
 
 
-		//Increase the salary by 10%: the salary should be multiplicated by 1.1
+		//Increase the salary of the manager by 10%: the salaries of both manager and technician should be multiplicated by 1.1
 		@Test
 		public void testIncreaseSalaryBy10() {
 			//Given
 			Manager manager = new Manager();
+			Technicien technicien = new Technicien(); 
+			// Don't forget to put at least a name OR surname OR matricule otherwise it is like the technician does not exist
+			technicien.setNom("bob");
+			technicien.setGrade(0);
+			technicien.setManager(manager);
+			manager.ajoutTechnicienEquipe(technicien);
 			manager.setSalaire(1000d);
-			Double inputSalary = manager.getSalaire();
+			technicien.setSalaire(500d);
+			Double inputSalaryMan = manager.getSalaire();
+			Double inputSalaryTech = technicien.getSalaire();
+			int managerTeam = manager.getEquipe().size();
 			//When
 	        manager.augmenterSalaire(0.1d);
-	        Double increasedSalary = manager.getSalaire();
+	        Double increasedSalaryMan = manager.getSalaire();
+	        Double increasedSalaryTech = technicien.getSalaire();
 	        //Then
-	        Assertions.assertThat(increasedSalary).isEqualTo(inputSalary*1.1d);
+	        Assertions.assertThat(increasedSalaryMan).isEqualTo(inputSalaryMan*1.1d);
+	        Assertions.assertThat(increasedSalaryTech).isEqualTo(inputSalaryTech*1.1d);
+	        Assertions.assertThat(managerTeam).isEqualTo(1);
 			}
 		
-		//Increase the salary by 100%: the salary should be multiplicated by 2
+		//Increase the salary of the manager by 110%: the salaries of both manager and technician should be multiplicated by 2
 		@Test
-		public void testIncreaseSalaryBy100() {
+		public void testIncreaseSalaryBy110() {
 			//Given
 			Manager manager = new Manager();
+			Technicien technicien = new Technicien(); 
+			// Don't forget to put at least a name OR surname OR matricule otherwise it is like the technician does not exist
+			technicien.setNom("bob");
+			technicien.setGrade(0);
+			technicien.setManager(manager);
+			manager.ajoutTechnicienEquipe(technicien);
 			manager.setSalaire(1000d);
-			Double inputSalary = manager.getSalaire();
+			technicien.setSalaire(500d);
+			Double inputSalaryMan = manager.getSalaire();
+			Double inputSalaryTech = technicien.getSalaire();
+			int managerTeam = manager.getEquipe().size();
 			//When
-	        manager.augmenterSalaire(1d);
-	        Double increasedSalary = manager.getSalaire();
+	        manager.augmenterSalaire(1.1d);
+	        Double increasedSalaryMan = manager.getSalaire();
+	        Double increasedSalaryTech = technicien.getSalaire();
 	        //Then
-	        Assertions.assertThat(increasedSalary).isEqualTo(inputSalary*2d);
+	        Assertions.assertThat(increasedSalaryMan).isEqualTo(inputSalaryMan*2.1d);
+	        Assertions.assertThat(increasedSalaryTech).isEqualTo(inputSalaryTech*2.1d);
+	        Assertions.assertThat(managerTeam).isEqualTo(1);
 			}
 
 		// We need to modify the method augmenterSalaire which didn't take into considerations the following cases: 
 		// - if increase is null
 		// - if increase is negative and "stronger" than -100%
-		//Increase the salary by null: the salary should remain as first defined 
+		//Increase the salary of the manager by null: the salaries of both manager and technician should remain as first defined 
 		@Test
 		public void testIncreaseSalaryByNull() {
 			//Given
 			Manager manager = new Manager();
+			Technicien technicien = new Technicien(); 
+			// Don't forget to put at least a name OR surname OR matricule otherwise it is like the technician does not exist
+			technicien.setNom("bob");
+			technicien.setGrade(0);
+			technicien.setManager(manager);
+			manager.ajoutTechnicienEquipe(technicien);
 			manager.setSalaire(1000d);
-			Double inputSalary = manager.getSalaire();
+			technicien.setSalaire(500d);
+			Double inputSalaryMan = manager.getSalaire();
+			Double inputSalaryTech = technicien.getSalaire();
+			int managerTeam = manager.getEquipe().size();
 			//When
 	        manager.augmenterSalaire(null);
-	        Double increasedSalary = manager.getSalaire();
+	        Double increasedSalaryMan = manager.getSalaire();
+	        Double increasedSalaryTech = technicien.getSalaire();
 	        //Then
-	        Assertions.assertThat(increasedSalary).isEqualTo(inputSalary);
+	        Assertions.assertThat(increasedSalaryMan).isEqualTo(inputSalaryMan);
+	        Assertions.assertThat(increasedSalaryTech).isEqualTo(inputSalaryTech);
+	        Assertions.assertThat(managerTeam).isEqualTo(1);
 			}
 		
-		//Increase the salary by negative number between 0 and -1: the salary is decreasing
+		//Increase the salary of the manager by negative number between 0 and -1: the salaries of both manager and technician are decreasing
 		@Test
 		public void testIncreaseSalaryByNegative() {
 			//Given
 			Manager manager = new Manager();
+			Technicien technicien = new Technicien(); 
+			// Don't forget to put at least a name OR surname OR matricule otherwise it is like the technician does not exist
+			technicien.setNom("bob");
+			technicien.setGrade(0);
+			technicien.setManager(manager);
+			manager.ajoutTechnicienEquipe(technicien);
 			manager.setSalaire(1000d);
-			Double inputSalary = manager.getSalaire();
+			technicien.setSalaire(500d);
+			Double inputSalaryMan = manager.getSalaire();
+			Double inputSalaryTech = technicien.getSalaire();
+			int managerTeam = manager.getEquipe().size();
 			//When
 	        manager.augmenterSalaire(-0.2d);
-	        Double increasedSalary = manager.getSalaire();
+	        Double increasedSalaryMan = manager.getSalaire();
+	        Double increasedSalaryTech = technicien.getSalaire();
 	        //Then
-	        Assertions.assertThat(increasedSalary).isEqualTo(inputSalary*0.8d);
+	        Assertions.assertThat(increasedSalaryMan).isEqualTo(inputSalaryMan*0.8d);
+	        Assertions.assertThat(increasedSalaryTech).isEqualTo(inputSalaryTech*0.8d);
+	        Assertions.assertThat(managerTeam).isEqualTo(1);
 			}
 		
-		//Increase the salary by a really negative number: should be equal to 0
+		//Increase the salary of the manager by a really negative number: the salaries of both manager and technician should be equal to 0
 		@Test
 		public void testIncreaseSalaryByTooNegative() {
 			//Given
 			Manager manager = new Manager();
+			Technicien technicien = new Technicien(); 
+			// Don't forget to put at least a name OR surname OR matricule otherwise it is like the technician does not exist
+			technicien.setNom("bob");
+			technicien.setGrade(0);
+			technicien.setManager(manager);
+			manager.ajoutTechnicienEquipe(technicien);
 			manager.setSalaire(1000d);
+			technicien.setSalaire(500d);
+			int managerTeam = manager.getEquipe().size();
 			//When
-	        manager.augmenterSalaire(-1d);
-	        Double increasedSalary = manager.getSalaire();
+	        manager.augmenterSalaire(-1.2d);
+	        Double increasedSalaryMan = manager.getSalaire();
+	        Double increasedSalaryTech = technicien.getSalaire();
 	        //Then
-	        Assertions.assertThat(increasedSalary).isEqualTo(0d);
+	        Assertions.assertThat(increasedSalaryMan).isEqualTo(0d);
+	        Assertions.assertThat(increasedSalaryTech).isEqualTo(0d);
+	        Assertions.assertThat(managerTeam).isEqualTo(1);
 			}
 		
 		
