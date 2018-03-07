@@ -96,11 +96,11 @@ public class ManagerParameterizedTest {
                 {0d, team3, 0d, 2},
                 {0d, team4, 0d, 3},
                 {0d, team5, 0d, 0},
-                {1000d, team1, 1300d, 0},
-                {1000d, team2, 1400d, 1},
-                {1000d, team3, 1500d, 2},
-                {1000d, team4, 1600d, 3},
-                {1000d, team5, 1300d, 0},
+                {1000d, team1, 1000d * Entreprise.INDICE_MANAGER + (1000d * (double)0 / 10), 0},
+                {1000d, team2, 1000d * Entreprise.INDICE_MANAGER + (1000d * (double)1 / 10), 1},
+                {1000d, team3, 1000d * Entreprise.INDICE_MANAGER + (1000d * (double)2 / 10), 2},
+                {1000d, team4, 1000d * Entreprise.INDICE_MANAGER + (1000d * (double)3 / 10), 3},
+                {1000d, team5, 1000d * Entreprise.INDICE_MANAGER + (1000d * (double)0 / 10), 0},
         });
     }
 
