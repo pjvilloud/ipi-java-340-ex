@@ -45,7 +45,7 @@ public class EvalEmployeRepositoryEmployesPlusRichesTest {
 	
 	@Before
 	public void SetupContext() {
-		employeRepository.deleteAll();
+		//employeRepository.deleteAll();
 		
 		pierreDurand = employeRepository.save(new Manager("Durand", "Pierre","C12347",new LocalDate(), 2000d, new HashSet<Technicien>()));
 		patrickDupont= employeRepository.save(new Manager("Dupont", "Patrick","C12345", new LocalDate(), 2500d, new HashSet<Technicien>()));
@@ -97,11 +97,15 @@ public class EvalEmployeRepositoryEmployesPlusRichesTest {
 	public void TestfindEmployePlusRichesAvec1SalaireSupMoy() {
 		
 		//Given , When
+		
+		patrickDupont.setSalaire(10000d);
+		patrickDupont = employeRepository.save(patrickDupont);
 		List<Employe> employesTotal = (List<Employe>) employeRepository.findAll();
-		patrickDupont.setSalaire(1500d);
 		Double avgSal = 0d;
+		Double salary;
 		for (int i = 0; i<employesTotal.size();i++) {
-			avgSal += employesTotal.get(i).getSalaire(); //sommation
+			salary = employesTotal.get(i).getSalaire();
+			avgSal += salary; //sommation
 			
 		}
 	  Double nb = employesTotal.size()*1d;
@@ -124,17 +128,25 @@ public class EvalEmployeRepositoryEmployesPlusRichesTest {
 		
 		
 		//Then
-		Assertions.assertThat(employes).hasSize(expectedEmployes.size());
+		Assertions.assertThat(employes).hasSize(1);
 		Assertions.assertThat(employes).isEqualTo(expectedEmployes);
 	}
 	
 	@Test
-	public void TestfindEmployePlusRichesTousSalairesSupMoy() {
+	public void TestfindEmployePlusRichesTousSalairesEgaux() {
 		
 		//Given , When
+		
+		pierreDurand.setSalaire(3000d);
+		jeanJacques.setSalaire(3000d);
+		patrickDupont.setSalaire(3000d);
+		jacquesDupont.setSalaire(3000d);
+		pierreDurand = employeRepository.save(pierreDurand);
+		jeanJacques = employeRepository.save(jeanJacques);
+		jacquesDupont = employeRepository.save(jacquesDupont);
+		patrickDupont = employeRepository.save(patrickDupont);
+		
 		List<Employe> employesTotal = (List<Employe>) employeRepository.findAll();
-		pierreDurand.setSalaire(4500d);
-		jeanJacques.setSalaire(4000d);
 		Double avgSal = 0d;
 		for (int i = 0; i<employesTotal.size();i++) {
 			avgSal += employesTotal.get(i).getSalaire(); //sommation
@@ -160,45 +172,11 @@ public class EvalEmployeRepositoryEmployesPlusRichesTest {
 		
 		
 		//Then
-		Assertions.assertThat(employes).hasSize(expectedEmployes.size());
-		Assertions.assertThat(employes).isEqualTo(expectedEmployes);
+		Assertions.assertThat(employes).hasSize(0);
+		//Assertions.assertThat(employes).isEqualTo(null);
 	}
 	
-	@Test
-	public void TestfindEmployePlusRichesTousSalairesInfMoy() {
-		
-		//Given , When
-		List<Employe> employesTotal = (List<Employe>) employeRepository.findAll();
-		jacquesDupont.setSalaire(1500d);
-		pierreDurand.setSalaire(2000d);
-		Double avgSal = 0d;
-		for (int i = 0; i<employesTotal.size();i++) {
-			avgSal += employesTotal.get(i).getSalaire(); //sommation
-			
-		}
-	  Double nb = employesTotal.size()*1d;
-		
-	  avgSal = avgSal/nb;
-		
-		List <Employe> expectedEmployes = new ArrayList<Employe>();
-		
-		for (int i = 0; i<employesTotal.size();i++) {
-			if (employesTotal.get(i).getSalaire() > avgSal) {
-				expectedEmployes.add(employesTotal.get(i));
-				
-			}
-			
-		}
-		
-		List<Employe> employes = employeRepository.findEmployePlusRiches();
-		
-		
-		
-		
-		//Then
-		Assertions.assertThat(employes).hasSize(expectedEmployes.size());
-		Assertions.assertThat(employes).isEqualTo(expectedEmployes);
-	}
+	
 		
 	
 	
