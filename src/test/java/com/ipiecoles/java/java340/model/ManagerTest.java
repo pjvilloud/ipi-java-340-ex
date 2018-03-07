@@ -15,7 +15,7 @@ public class ManagerTest {
 	
 	/**
 	 * 
-	 * Tests about the method "augmentersalaire" (increase salary) 
+	 * Tests about the method "augmenterSalaire" (increase salary) 
 	 * 
 	 * Reminder  
 	 * 	public void augmenterSalaire(Double pourcentage) {
