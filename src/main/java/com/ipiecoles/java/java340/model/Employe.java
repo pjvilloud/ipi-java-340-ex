@@ -59,8 +59,17 @@ public abstract class Employe implements Serializable {
 	
 	public abstract Double getPrimeAnnuelle();
 
-	public void augmenterSalaire(Double pourcentage) {
-		this.salaire = this.getSalaire() * (1 + pourcentage);
+	// Modifications to consider extreme cases 
+	public void augmenterSalaire(Double pourcentage) {	
+		if (pourcentage == null) {
+			this.salaire = this.getSalaire();
+		}
+		else if (pourcentage < -1) {
+			this.salaire = 0d;
+		}
+		else {
+			this.salaire = this.getSalaire() * (1 + pourcentage);
+		}
 	}
 
 	public Long getId() {
@@ -141,8 +150,14 @@ public abstract class Employe implements Serializable {
 	/**
 	 * @param salaire the salaire to set
 	 */
+	// Modifications to consider extreme cases 
 	public void setSalaire(Double salaire) {
-		this.salaire = salaire;
+		if (salaire <0d || salaire == null) {
+			this.salaire = 0d;
+		}
+		else  {
+			this.salaire = salaire;
+		}	
 	}
 
 	@Override
