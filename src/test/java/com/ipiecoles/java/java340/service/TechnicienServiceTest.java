@@ -1,7 +1,6 @@
 package com.ipiecoles.java.java340.service;
 
 import java.util.HashSet;
-
 import org.assertj.core.api.Assertions;
 import org.joda.time.LocalDate;
 import org.junit.Test;

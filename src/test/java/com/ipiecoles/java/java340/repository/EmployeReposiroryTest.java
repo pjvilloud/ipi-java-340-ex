@@ -26,11 +26,9 @@ import com.ipiecoles.java.java340.model.Employe;
 public class EmployeReposiroryTest {
 
 
-    Commercial pierreDurand = new Commercial("Durand", "Pierre", "C12345", new LocalDate(), 1500d, 0d,0);
-
-    Commercial jeanJacques = new Commercial("Jacques", "Jean", "C12346", new LocalDate(), 1500d, 0d,0);
-
-    Commercial jacquesDupond = new Commercial("Dupond", "Jacques", "C12347", new LocalDate(), 1500d, 0d,0);
+    Commercial pierreDurand = new Commercial("Durand", "Pierre", "C12345", new LocalDate(), 1500d, 1.5d,1);
+    Commercial jeanJacques = new Commercial("Jacques", "Jean", "C12346", new LocalDate(), 2500d, 2.5d,2);
+    Commercial jacquesDupond = new Commercial("Dupond", "Jacques", "C12347", new LocalDate(), 3500d, 3.5d,3);
 
     @Before
     public void setUp(){
@@ -80,5 +78,20 @@ public class EmployeReposiroryTest {
     @After
     public void tearDown(){
         employeRepository.deleteAll();
+    }
+    
+   /*Tester la méthode findEmployesPlusRiches dans EmployeRepositoryTest (bien utiliser dans les tests EmployeRepository et 
+    * pas BaseEmployeRepository qui est juste une classe permettant de factoriser du code) de manière intégrée avec des vrais 
+    * données (test spring)*/
+    
+    @Test
+    public void findEmployesPlusRiches(){
+    	
+    	//Given
+    	
+    	//When
+    	 Assertions.assertThat(employeRepository.findEmployePlusRiches().get(0)).isEqualTo(jacquesDupond);
+    	
+    	//Then
     }
 }

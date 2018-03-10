@@ -6,7 +6,6 @@ import com.ipiecoles.java.java340.repository.ManagerRepository;
 import com.ipiecoles.java.java340.repository.TechnicienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.persistence.EntityNotFoundException;
 
 @Service
