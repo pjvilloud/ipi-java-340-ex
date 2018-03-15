@@ -24,18 +24,20 @@ public class EmployeRepositoryTest {
     @Autowired
     EmployeRepository employeRepository;
 
-    Commercial pierreDurand, jeanJacques, jacquesDupond;
+    Commercial pierreDurand, jeanJacques, jacquesDupond, julienPinteaux;
 
     @Before
     public void setUp() throws EmployeException {
         employeRepository.deleteAll();
-        pierreDurand = new Commercial("Durand", "Pierre", "C12345", new LocalDate(), 15000d, 0d,0);
+        pierreDurand = new Commercial("Durand", "Pierre", "C12345", new LocalDate(), 1500d, 0d,0);
         jeanJacques = new Commercial("Jean-Jacques", "Jean", "C12346", new LocalDate(), 1500d, 0d,0);
         jacquesDupond = new Commercial("Dupond", "Jean-Jacques", "C12347", new LocalDate(), 1500d, 0d,0);
+        julienPinteaux= new Commercial("Pinteaux", "Julien", "C12399", new LocalDate(), 1800d, 0d,0);
 
         pierreDurand = employeRepository.save(pierreDurand);
         jeanJacques = employeRepository.save(jeanJacques);
         jacquesDupond = employeRepository.save(jacquesDupond);
+        julienPinteaux = employeRepository.save(julienPinteaux);
     }
 
     @After
@@ -51,6 +53,7 @@ public class EmployeRepositoryTest {
         List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("pierre");
 
         //Then
+            
         Assertions.assertThat(employes).hasSize(1);
         Assertions.assertThat(employes).contains(pierreDurand);
 
@@ -89,7 +92,11 @@ public class EmployeRepositoryTest {
     public void testFindEmployePlusRiche(){
         //Given
     	
-        //When
-        List<Employe> employes = employeRepository.findEmployePlusRiches();       	      
+        //When    	
+        List<Employe> employes = employeRepository.findEmployePlusRiches();
+        Assertions.assertThat(employes).hasSize(1);
+        for (Employe e : employes) {
+        	Assertions.assertThat(e.getSalaire()).isGreaterThan(2000);   	
+        }
      }
 }
