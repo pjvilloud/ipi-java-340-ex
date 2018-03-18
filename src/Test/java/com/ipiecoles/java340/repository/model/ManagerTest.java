@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-public class MangerTest{
+public class ManagerTest{
     @Test
     public void testGetPrimeAnnuelManagerPasTec(){
         //given
