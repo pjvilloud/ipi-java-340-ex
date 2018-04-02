@@ -1,4 +1,4 @@
- master
+<<<<<<< HEAD
 package com.ipiecoles.java.java340.repository;
 
 import com.ipiecoles.java.java340.model.Employe;
@@ -32,7 +32,7 @@ public interface BaseEmployeRepository<T extends Employe> extends PagingAndSorti
     @Query(value = "FROM Employe WHERE salaire > (SELECT avg(e2.salaire) FROM Employe e2)")
     List<T> findEmployePlusRiches();
 }
-
+=======
 package com.ipiecoles.java.java340.repository;
 
 import com.ipiecoles.java.java340.model.Employe;
@@ -43,7 +43,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 public interface BaseEmployeRepository<T extends Employe> extends PagingAndSortingRepository<T, Long> {
@@ -64,11 +63,7 @@ public interface BaseEmployeRepository<T extends Employe> extends PagingAndSorti
 
     List<T> findBySalaireGreaterThanOrderBySalaireDesc(Double salaire);
 
-    @Query(value = "SELECT * FROM Employe WHERE salaire > (SELECT avg(e2.salaire) FROM Employe e2)", nativeQuery = true)
+    @Query(value = "FROM Employe WHERE salaire > (SELECT avg(e2.salaire) FROM Employe e2)")
     List<T> findEmployePlusRiches();
-
-    public default Integer test(){
-        throw new EntityNotFoundException("Exception");
-    }
 }
- master
+>>>>>>> bd251691c61aa5f0344fb47d05e6fd989810c39b
