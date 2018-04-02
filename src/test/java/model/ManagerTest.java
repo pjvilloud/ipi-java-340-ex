@@ -1,12 +1,21 @@
 package model;
 
+import java.util.Collection;
+
 import org.assertj.core.api.Assertions;
+import org.assertj.core.internal.Arrays;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
 import com.ipiecoles.java.java340.model.Entreprise;
 import com.ipiecoles.java.java340.model.Manager;
 import com.ipiecoles.java.java340.model.Technicien;
 
+import javassist.compiler.ast.ASTList;
+
+@RunWith(Parameterized.class)
 public class ManagerTest {
 	
 	@Test
@@ -47,7 +56,16 @@ public class ManagerTest {
 		
 		
 		Double prime = m.getPrimeAnnuelle();
-		Assertions.assertThat(prime).isEqualTo(1260);
+		Assertions.assertThat(prime).isEqualTo(1259);
+		
+	}
+	
+	@Parameters
+	public static Collection<Object[]> params() {
+		return Arrays.asList(
+				new Object[] {1,1259d}
+				
+				);
 		
 	}
 
