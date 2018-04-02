@@ -2,6 +2,12 @@ language: java
 
 addons:
   sonarcloud:
+ master
     organization: "AbderzakS-github"
 
 script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.organization=abderzaks-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=ipiecoles -Dsonar.branch=master
+
+    organization: "pjvilloud-github"
+
+script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.organization=pjvilloud-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=com.ipiecoles.java:java340:master  -Dsonar.branch=master
+ master
