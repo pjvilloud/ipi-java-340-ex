@@ -22,7 +22,7 @@ import cucumber.api.java.Before;
 @DataJpaTest
 public class EmployeRepositoryTest {
 
-    Commercial pierreDurand = new Commercial("Durand", "Pierre", "C12345", new LocalDate(), 1500d, 0d,0);
+    Commercial pierreDurand = new Commercial("Durand", "Pierre", "C12345", new LocalDate(), 2500d, 0d,0);
 
     Commercial jeanJacques = new Commercial("Jacques", "Jean", "C12346", new LocalDate(), 1500d, 0d,0);
 
@@ -76,5 +76,16 @@ public class EmployeRepositoryTest {
     @After
     public void tearDown(){
         employeRepository.deleteAll();
+    }
+    
+    @Test
+    public void TFindEmployesPlusRiches() {
+    	pierreDurand = employeRepository.save(pierreDurand);
+    	jeanJacques = employeRepository.save(jeanJacques);
+    	jacquesDupond = employeRepository.save(jacquesDupond);
+    	
+    	List<Employe> employesPlusRiches = employeRepository.findEmployePlusRiches();
+    	Assertions.assertThat(employesPlusRiches).isEqualTo(1);
+    	
     }
 }
