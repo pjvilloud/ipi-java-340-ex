@@ -71,7 +71,7 @@ public abstract class Employe implements Serializable {
 		this.id = id;
 	}
 
-	/**
+	/** 
 	 * @return the nom
 	 */
 	public String getNom() {
@@ -131,7 +131,7 @@ public abstract class Employe implements Serializable {
 		this.dateEmbauche = dateEmbauche;
 	}
 
-	/**
+	/** 
 	 * @return the salaire
 	 */
 	public Double getSalaire() {

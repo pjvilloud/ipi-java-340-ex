@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.ipiecoles.java.java340.model.Commercial;
 import com.ipiecoles.java.java340.model.Employe;
+import com.ipiecoles.java.java340.model.Manager;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest  //Si ça marche pas, utiliser @SpringBootTest(classes = SpringWebApplication.class)
@@ -46,8 +47,8 @@ public class EmployeRepositoryTest {
 		List <Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("pierre");
 		
 		//Then
-		//Assertions.assertThat(employes).hasSize(1);
-		//Assertions.assertThat(employes).contains(pierreDurand);
+		Assertions.assertThat(employes).hasSize(1);
+		Assertions.assertThat(employes).contains(pierreDurand);
 	}
 	
 	
@@ -59,8 +60,8 @@ public class EmployeRepositoryTest {
 		List <Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("Durand");
 		
 		//Then
-		//Assertions.assertThat(employes).hasSize(1);
-		//Assertions.assertThat(employes).contains(pierreDurand);
+		Assertions.assertThat(employes).hasSize(1);
+		Assertions.assertThat(employes).contains(pierreDurand);
 	}
 	
 	@Test
@@ -71,8 +72,8 @@ public class EmployeRepositoryTest {
 		List <Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("jacques");
 		
 		//Then
-		//Assertions.assertThat(employes).hasSize(2);
-		//Assertions.assertThat(employes).contains(jeanJacques, jacquesDupond);
+		Assertions.assertThat(employes).hasSize(2);
+		Assertions.assertThat(employes).contains(jeanJacques, jacquesDupond);
 	}
 	
 	
@@ -84,7 +85,29 @@ public class EmployeRepositoryTest {
 		List <Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("toto");
 		
 		//Then
-		//Assertions.assertThat(employes).isEmpty();
+		Assertions.assertThat(employes).isEmpty();
+	}
+	
+	@Test
+	public void findEmployesPlusRichesHasSize() {
+		//Given
+		
+		//When
+		List <Employe> employes = employeRepository.findEmployePlusRiches();
+		
+		//Then
+		Assertions.assertThat(employes).hasSize(1);
+	}
+	
+	@Test
+	public void findEmployesPlusRichesContains() {
+		Commercial commercial = new Commercial();
+		
+		//When
+		List <Employe> employes = employeRepository.findEmployePlusRiches();
+		
+		//Then
+		Assertions.assertThat(employes).contains(commercial);
 	}
 }
 

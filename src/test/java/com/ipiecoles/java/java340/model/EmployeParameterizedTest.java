@@ -2,7 +2,6 @@ package com.ipiecoles.java.java340.model;
 
 import java.util.Arrays;
 import java.util.Collection;
-
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
