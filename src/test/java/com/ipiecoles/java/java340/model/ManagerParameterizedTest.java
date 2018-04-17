@@ -46,13 +46,12 @@ public class ManagerParameterizedTest {
 		
 		//Given
 	    Manager manager = new Manager("the", "Manager", "M82898", new LocalDate(), 2000d, new HashSet<>());
-	    
-	    //When
-	    manager.setEquipe(equipe);
-	
+
+ 		// When 
+ 		Double sonSalaire = manager.getSalaire(); 
 	
 	    //Then
-	    Assertions.assertThat(manager.getPrimeAnnuelle()).isEqualTo(expectedPrime);
+	    Assertions.assertThat(sonSalaire).isEqualTo(expectedPrime);
 
 	}
 }
