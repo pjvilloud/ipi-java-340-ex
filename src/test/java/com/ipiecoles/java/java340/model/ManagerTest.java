@@ -21,7 +21,7 @@ public class ManagerTest {
 			}};
 			theManager.setEquipe(equipe);
 			//Then
-			Assertions.assertThat(theManager.getPrimeAnnuelle()).isEqualTo(1600d);
+			Assertions.assertThat(theManager.getPrimeAnnuelle()).isEqualTo(1259d);
 			
 		}
 }
