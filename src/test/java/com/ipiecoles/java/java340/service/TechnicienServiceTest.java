@@ -36,8 +36,8 @@ public class TechnicienServiceTest {
 		final String  MATRICULE= "M12345";
 		final Long ID_TECHNICIEN = 1L;
 		
-		Technicien technicien = new Technicien("Pierre", "Jean", "T01234", new LocalDate(), 2500d, 3) ;
-		Manager manager = new Manager("Dupond", "Jack", MATRICULE, new LocalDate(), 2500d, new HashSet<Technicien>());
+		Technicien technicien = new Technicien("Sona", "Karma", "M49898", new LocalDate(), 2500d, 3) ;
+		Manager manager = new Manager("Leona", "Diana", MATRICULE, new LocalDate(), 2500d, new HashSet<Technicien>());
 		
 		// TEST Mock Bonnes Valeurs
 		Mockito.when(technicienRepository.findOne(ID_TECHNICIEN)).thenReturn(technicien);

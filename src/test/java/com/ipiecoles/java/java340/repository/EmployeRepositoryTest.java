@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.ipiecoles.java.java340.model.Commercial;
 import com.ipiecoles.java.java340.model.Employe;
+import com.ipiecoles.java.java340.repository.EmployeRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
