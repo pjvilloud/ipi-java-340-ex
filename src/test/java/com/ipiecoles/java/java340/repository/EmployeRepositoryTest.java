@@ -28,7 +28,7 @@ public class EmployeRepositoryTest {
 	// Déclaration des attributs 
 	Commercial commercial, commercial1, commercial2;
 	
-	@Before
+	/*@Before
 	public void setUp() {
 		employeRepository.deleteAll(); 
 		commercial = new Commercial("Jeanbouin", "Luc", "C12346", new LocalDate(), 1500d, 0d, 0);
@@ -41,7 +41,7 @@ public class EmployeRepositoryTest {
 	}
 	
 	
-	/*@Test
+	@Test
 	public void findByNomOrPrenomAllIgnoreCaseNom() {
 		
 		List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("jeanbouin");
