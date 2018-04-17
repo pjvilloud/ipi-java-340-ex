@@ -62,7 +62,7 @@ public class EmployeRepositoryTest {
 		
 		List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("toto");
 		Assertions.assertThat(employes).isEmpty();
-	}*/
+	}
 	
 	@Test
 	public void findEmployesPlusRichesHasSize() {
@@ -73,6 +73,6 @@ public class EmployeRepositoryTest {
 	public void findEmployesPlusRichesContains() {
 		List<Employe> employes = employeRepository.findEmployePlusRiches();
 		Assertions.assertThat(employes).contains(commercial); 
-	}
+	}*/
 
 }
