@@ -9,19 +9,17 @@ public class ManagerTest {
 	
 	
 	@Test
-	public void getPrimeAnnuelleTest() {
-			//Given
-			Technicien theTechnicien = new Technicien("the", "Technicien", "T18911",new LocalDate(), 1500d, 0);
-		
-			Manager theManager =  new Manager("the", "Manager", "M52428", new LocalDate(), 2000d, new HashSet<>());
+	  public void testPrimeManager() {
+			Manager manager = new Manager();
+			Technicien technicien = new Technicien();
+			manager.ajoutTechnicienEquipe(technicien);
 			
-			//When
-			HashSet<Technicien> equipe = new HashSet<Technicien>() {{
-			    add(theTechnicien);
-			}};
-			theManager.setEquipe(equipe);
-			//Then
-			Assertions.assertThat(theManager.getPrimeAnnuelle()).isEqualTo(1259d);
+			manager.getEquipe().size(); 
 			
-		}
+			// When 
+			Double primeAnnuelle = manager.getPrimeAnnuelle();
+			
+			// Then 
+			Assertions.assertThat(primeAnnuelle).isEqualTo(1259d); 
+	  }
 }

@@ -45,7 +45,7 @@ public class ManagerParameterizedTest {
 	public void testgetPrimeAnnuelle() {
 		
 		//Given
-	    Manager manager = new Manager("the", "Manager", "M82898", new LocalDate(), 2000d, new HashSet<>());
+	    Manager manager = new Manager("the", "Manager", "M82898", new LocalDate(), 1600d, new HashSet<>());
 
  		// When 
  		Double sonSalaire = manager.getSalaire(); 
