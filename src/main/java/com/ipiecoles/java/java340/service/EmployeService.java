@@ -1,11 +1,7 @@
 package com.ipiecoles.java.java340.service;
 
-import com.ipiecoles.java.java340.model.Commercial;
 import com.ipiecoles.java.java340.model.Employe;
 import com.ipiecoles.java.java340.repository.EmployeRepository;
-
-import org.joda.time.LocalDate;
-import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
