@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class ClientMapper {
     public ClientDTO map(Client entity) {
         ClientDTO dto = new ClientDTO();
+        dto.setId(entity.getId());
         dto.setNom(entity.getNom());
         dto.setPrenom(entity.getPrenom());
         return dto;

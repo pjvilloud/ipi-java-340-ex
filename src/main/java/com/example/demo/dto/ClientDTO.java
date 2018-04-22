@@ -5,6 +5,16 @@ package com.example.demo.dto;
  * Created by Kayne on 09/04/2018.
  */
 public class ClientDTO {
+    private Long id;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     private String prenom;
 

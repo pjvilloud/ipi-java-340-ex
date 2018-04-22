@@ -22,4 +22,12 @@ public class ClientService {
     public List<ClientDTO> findAllClients() {
         return clientRepository.findAll().stream().map(c-> clientMapper.map(c)).collect(toList());
     }
+
+    public ClientDTO findById(Long clientId) {
+        return clientRepository.findById(clientId)
+                .map(clientMapper::map)
+                .orElseThrow(() ->
+                        new IllegalArgumentException("Client non connu " + clientId)
+                );
+    }
 }

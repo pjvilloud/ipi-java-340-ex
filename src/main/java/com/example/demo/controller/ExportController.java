@@ -5,7 +5,9 @@ import com.example.demo.dto.FactureDTO;
 import com.example.demo.service.ClientService;
 import com.example.demo.service.FactureService;
 import com.example.demo.service.export.ExportCSVService;
+/*import com.example.demo.service.export.ExportPDFITextService;*/
 import com.example.demo.service.export.ExportPDFITextService;
+import com.example.demo.service.export.ExportXLSXService;
 import com.itextpdf.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,8 +27,11 @@ public class ExportController {
     @Autowired
     private ClientService clientService;
 
+
     @Autowired
     private ExportCSVService exportCSVService;
+    @Autowired
+    private ExportXLSXService exportXLSXService;
 
     @Autowired
     private FactureService factureService;
@@ -49,5 +54,27 @@ public class ExportController {
         FactureDTO facture = factureService.findById(id);
         exportPDFITextService.export(response.getOutputStream(), facture);
     }
+
+
+    @GetMapping("/clients/xlsx")
+    public void clientsXLSX(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // response.setContentType("text/xlsx");
+        response.setHeader("Content-Disposition", "attachment; filename=\"clients.xlsx\"");
+        List<ClientDTO> clients = clientService.findAllClients();
+        exportXLSXService.export(response.getOutputStream(), clients);
+    }
+
+    @GetMapping("/clients/{id}/factures/xlsx")
+    public void facturesDUnClient(@PathVariable("id") Long clientId, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("application/vnd.ms-excel");
+        response.setHeader("Content-Disposition", "attachment; filename=\"facturesClient"+clientId+".xlsx\"");
+        // Tu récupère la liste des factures en fonction de l'id facture
+        List<FactureDTO> factures = factureService.findFacturesByClient(clientId);
+        exportXLSXService.exportFactures(response.getOutputStream(), factures);
+    }
+
+
+
+
 
 }

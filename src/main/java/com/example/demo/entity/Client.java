@@ -12,6 +12,8 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
+
     @Column
     private String prenom;
 
