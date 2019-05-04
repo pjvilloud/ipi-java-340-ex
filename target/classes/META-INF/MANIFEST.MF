@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: ipi-java-340-ex
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Z
+Implementation-Vendor-Id: com.ipiecoles.java.java340
+Build-Jdk: 1.8.0_131
+Implementation-URL: http://projects.spring.io/spring-boot/ipi-java-340
+ -ex/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
